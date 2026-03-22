@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Ather Assadullah — ML Engineer | No Degree, Pure Results</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -24,12 +24,12 @@
   --f2:'Space Mono',monospace;
   --f3:'Inter',sans-serif;
 }
-html{scroll-behavior:smooth; background: var(--bg);}
+html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--txt);font-family:var(--f3);cursor:none;overflow-x:hidden;}
 
 /* CURSOR */
 #c{position:fixed;width:6px;height:6px;background:#fff;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s,background .2s;}
-#cr{position:fixed;width:28px;height:28px;border:1px solid rgba(255,107,53,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:opacity .2s;}
+#cr{position:fixed;width:28px;height:28px;border:1px solid rgba(255,107,53,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);}
 .h #c{transform:translate(-50%,-50%) scale(3);background:var(--orange);}
 .h #cr{opacity:0;}
 
@@ -39,7 +39,7 @@ body{background:var(--bg);color:var(--txt);font-family:var(--f3);cursor:none;ove
 .ld-line-h{position:absolute;left:0;right:0;height:1px;background:var(--orange);top:50%;transform:scaleX(0);transform-origin:left;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:2rem 4vw;display:flex;align-items:center;justify-content:space-between;transition: all 0.3s ease;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:2rem 4vw;display:flex;align-items:center;justify-content:space-between;}
 .n-logo{font-family:var(--f1);font-size:1.4rem;letter-spacing:.15em;color:#fff;text-decoration:none;}
 .n-right{display:flex;align-items:center;gap:3rem;}
 .n-links{display:flex;gap:2.5rem;list-style:none;}
@@ -48,7 +48,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:2rem 4vw;display:fle
 .n-cta{font-family:var(--f2);font-size:.62rem;letter-spacing:.12em;padding:.5rem 1.25rem;border:1px solid rgba(255,107,53,.4);border-radius:6px;color:var(--orange);text-decoration:none;cursor:none;transition:all .2s;background:rgba(255,107,53,.05);}
 .n-cta:hover{background:var(--orange);color:#000;}
 
-/* HERO — full screen */
+/* HERO — full screen, enhanced 3D particles */
 #hero{height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:0 4vw 5vh;}
 #cv{position:absolute;inset:0;width:100%;height:100%;}
 .h-tag{font-family:var(--f2);font-size:.62rem;letter-spacing:.2em;color:var(--orange);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;opacity:0;}
@@ -95,7 +95,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:2rem 4vw;display:fle
 .wl:hover{border-color:var(--orange);color:var(--orange);}
 .wl.live{border-color:rgba(255,107,53,.4);color:var(--orange);background:rgba(255,107,53,.06);}
 
-/* VALIDATED SECTION */
+/* VALIDATED */
 .val-sec{padding:10vh 4vw;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:center;}
 .vs-label{font-family:var(--f2);font-size:.62rem;color:var(--orange);letter-spacing:.2em;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;}
 .vs-label::before{content:'';width:20px;height:1px;background:var(--orange);}
@@ -103,13 +103,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:2rem 4vw;display:fle
 .vs-big .accent{color:var(--orange);}
 .vs-para{font-size:.9rem;color:var(--mid);line-height:1.8;margin-bottom:2.5rem;}
 .vs-para b{color:#fff;font-weight:500;}
-.vs-comparison{display:flex;gap:3rem;padding:2rem;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02);align-items:center;justify-content:center;}
+.vs-comparison{display:flex;gap:3rem;padding:2rem;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02);}
 .vc{text-align:center;}
 .vc-val{font-family:var(--f1);font-size:2.8rem;line-height:1;}
 .vc-val.m{color:var(--orange);text-shadow:0 0 40px rgba(255,107,53,.5);}
 .vc-val.a{color:var(--blue);}
 .vc-label{font-family:var(--f2);font-size:.55rem;color:var(--dim);letter-spacing:.1em;margin-top:.25rem;}
-.vc-sep{font-family:var(--f2);font-size:.9rem;color:var(--orange);font-weight:bold;}
+.vc-sep{font-family:var(--f2);font-size:.7rem;color:var(--dim);align-self:center;}
 
 /* ABOUT */
 .about-sec{padding:10vh 4vw;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:8vw;}
@@ -163,6 +163,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:2rem 4vw;display:fle
 .ct-btn.outline{border:1px solid var(--line);color:var(--mid);}
 .ct-btn.outline:hover{border-color:var(--orange);color:var(--orange);}
 
+/* FOOTER */
 footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
 .ft-l{font-family:var(--f2);font-size:.6rem;color:var(--dim);letter-spacing:.08em;}
 .ft-r{font-family:var(--f1);font-size:1.3rem;letter-spacing:.12em;color:var(--orange);}
@@ -201,22 +202,25 @@ footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-be
   <a href="#hero" class="n-logo">ATHER.</a>
   <div class="n-right">
     <ul class="n-links">
-      <li><a href="#work">WORK</a></li>
-      <li><a href="#about">ABOUT</a></li>
-      <li><a href="#contact">CONTACT</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="https://rain-predictor-app.streamlit.app" target="_blank" class="n-cta">LIVE APP</a>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO - Enhanced with 4-shape morphing particles -->
 <section id="hero">
   <canvas id="cv"></canvas>
+
   <div class="h-tag" id="htag">OPEN FOR INTERNSHIP — BANGALORE / HYDERABAD</div>
+
   <div class="h-name">
     <span class="h-n1" id="hn1">ATHER</span>
     <span class="h-n2" id="hn2">ASSADULLAH</span>
   </div>
+
   <div class="h-bottom" id="hbot">
     <div class="h-desc">
       ML Engineer. Kashmir, India.<br/>
@@ -229,6 +233,7 @@ footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-be
       <div class="h-num"><div class="h-nv" data-target="63">0</div><div class="h-nl">Commits</div></div>
     </div>
   </div>
+
   <div class="h-scroll" id="hscroll">SCROLL DOWN</div>
 </section>
 
@@ -252,101 +257,287 @@ footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-be
     <div class="w-hcell">Stack</div>
     <div class="w-hcell">Links</div>
   </div>
-  <div class="w-row"><div class="w-num">01</div><div class="w-name">ML FROM SCRATCH</div><div class="w-stack">Python · NumPy · Pure Math</div><div class="w-link"><a href="https://github.com/ather-ops/Machine-Learning-from-scratch" target="_blank" class="wl">GitHub ↗</a></div></div>
-  <div class="w-row"><div class="w-num">02</div><div class="w-name">ML WITH SCIKIT-LEARN</div><div class="w-stack">Sklearn · Pandas · 8 Notebooks</div><div class="w-link"><a href="https://github.com/ather-ops/ML-with-Scikit-Learn" target="_blank" class="wl">GitHub ↗</a></div></div>
-  <div class="w-row"><div class="w-num">03</div><div class="w-name">RAIN PREDICTOR APP</div><div class="w-stack">Streamlit · Joblib · Sklearn</div><div class="w-link"><a href="https://github.com/ather-ops/Rain-Predictor-App" target="_blank" class="wl">GitHub ↗</a><a href="https://rain-predictor-app.streamlit.app" target="_blank" class="wl live">Live ↗</a></div></div>
-  <div class="w-row"><div class="w-num">04</div><div class="w-name">ECORIPE BACKEND</div><div class="w-stack">Python · Vercel · Production</div><div class="w-link"><a href="https://github.com/ather-ops/EcoRipe-Backend" target="_blank" class="wl">GitHub ↗</a></div></div>
+
+  <div class="w-row">
+    <div class="w-num">01</div>
+    <div class="w-name">ML FROM SCRATCH</div>
+    <div class="w-stack">Python · NumPy · Pure Math</div>
+    <div class="w-link"><a href="https://github.com/ather-ops/Machine-Learning-from-scratch" target="_blank" class="wl">GitHub ↗</a></div>
+  </div>
+
+  <div class="w-row">
+    <div class="w-num">02</div>
+    <div class="w-name">ML WITH SCIKIT-LEARN</div>
+    <div class="w-stack">Sklearn · Pandas · 8 Notebooks</div>
+    <div class="w-link"><a href="https://github.com/ather-ops/ML-with-Scikit-Learn" target="_blank" class="wl">GitHub ↗</a></div>
+  </div>
+
+  <div class="w-row">
+    <div class="w-num">03</div>
+    <div class="w-name">RAIN PREDICTOR APP</div>
+    <div class="w-stack">Streamlit · Joblib · Sklearn</div>
+    <div class="w-link">
+      <a href="https://github.com/ather-ops/Rain-Predictor-App" target="_blank" class="wl">GitHub ↗</a>
+      <a href="https://rain-predictor-app.streamlit.app" target="_blank" class="wl live">Live ↗</a>
+    </div>
+  </div>
+
+  <div class="w-row">
+    <div class="w-num">04</div>
+    <div class="w-name">ECORIPE BACKEND</div>
+    <div class="w-stack">Python · Vercel · Production</div>
+    <div class="w-link"><a href="https://github.com/ather-ops/EcoRipe-Backend" target="_blank" class="wl">GitHub ↗</a></div>
+  </div>
 </div>
 
 <!-- VALIDATED -->
 <div class="val-sec">
-  <div class="vs-left"><div class="vs-label">REAL WORLD VALIDATION</div><div class="vs-big">BUILT AT<br/><span class="accent">MIDNIGHT.</span><br/>MATCHED<br/><span class="accent">ACCUWEATHER.</span></div></div>
-  <div class="vs-right"><div class="vs-para">The night before Eid. Fed live weather readings into the model at midnight. Got <b>60.09%</b> chance of rain. Opened AccuWeather. It showed <b>60%</b> for the same conditions. Difference: <b>0.09%</b>. That is not luck. That is a working model.</div><div class="vs-comparison"><div class="vc"><div class="vc-val m">60.09%</div><div class="vc-label">Our Model</div></div><div class="vc-sep">vs</div><div class="vc"><div class="vc-val a">60.00%</div><div class="vc-label">AccuWeather</div></div><div class="vc-sep">= 0.09%</div></div></div>
+  <div class="vs-left">
+    <div class="vs-label">REAL WORLD VALIDATION</div>
+    <div class="vs-big">
+      BUILT AT<br/>
+      <span class="accent">MIDNIGHT.</span><br/>
+      MATCHED<br/>
+      <span class="accent">ACCUWEATHER.</span>
+    </div>
+  </div>
+  <div class="vs-right">
+    <div class="vs-para">
+      The night before Eid. Fed live weather readings into the model at midnight. Got <b>60.09%</b> chance of rain. Opened AccuWeather. It showed <b>60%</b> for the same conditions. Difference: <b>0.09%</b>. That is not luck. That is a working model.
+    </div>
+    <div class="vs-comparison">
+      <div class="vc"><div class="vc-val m">60.09%</div><div class="vc-label">Our Model</div></div>
+      <div class="vc-sep">vs</div>
+      <div class="vc"><div class="vc-val a">60.00%</div><div class="vc-label">AccuWeather</div></div>
+      <div class="vc-sep">= 0.09%</div>
+    </div>
+  </div>
 </div>
 
 <!-- ABOUT with updated email -->
 <div class="about-sec" id="about">
-  <div class="as-left"><div class="as-label">ABOUT</div><div class="as-big"><span class="w">18.</span><br/><span class="w">KASHMIR.</span><br/>NO DEGREE.<br/><span class="w">ALL</span><br/>RESULTS.</div></div>
-  <div class="as-right"><div class="as-body"><p>I am a self-taught ML Engineer from Jammu and Kashmir. No bootcamp. No formal CS degree. Just Python, GitHub, and a goal that does not sleep.</p><p>I build every model <span class="hl">twice</span> — once from pure NumPy mathematics, then with Scikit-Learn. This forces me to understand what every library call does internally.</p><p>I have <b>partial hearing loss</b> — so I communicate best via <span class="hl">text, WhatsApp, or written messages</span>. I work independently, deliver clean code, and communicate clearly in writing. No face-to-face dependency.</p></div><div class="as-info"><div class="ai-row"><span class="ai-k">Location</span><span class="ai-v">Jammu and Kashmir, India</span></div><div class="ai-row"><span class="ai-k">Target</span><span class="ai-v">ML Internship — Bangalore / Hyderabad</span></div><div class="ai-row"><span class="ai-k">Education</span><span class="ai-v">Delhi University — CS (Ongoing)</span></div><div class="ai-row"><span class="ai-k">Email</span><span class="ai-v"><a href="mailto:peerather07@gmail.com">peerather07@gmail.com</a></span></div><div class="ai-row"><span class="ai-k">Status</span><span class="ai-v live">Available Now</span></div></div></div>
+  <div class="as-left">
+    <div class="as-label">ABOUT</div>
+    <div class="as-big">
+      <span class="w">18.</span><br/>
+      <span class="w">KASHMIR.</span><br/>
+      NO DEGREE.<br/>
+      <span class="w">ALL</span><br/>
+      RESULTS.
+    </div>
+  </div>
+  <div class="as-right">
+    <div class="as-body">
+      <p>I am a self-taught ML Engineer from Jammu and Kashmir. No bootcamp. No formal CS degree. Just Python, GitHub, and a goal that does not sleep.</p>
+      <p>I build every model <span class="hl">twice</span> — once from pure NumPy mathematics, then with Scikit-Learn. This forces me to understand what every library call does internally.</p>
+      <p>I have <b>partial hearing loss</b> — so I communicate best via <span class="hl">text, WhatsApp, or written messages</span>. I work independently, deliver clean code, and communicate clearly in writing. No face-to-face dependency.</p>
+    </div>
+    <div class="as-info">
+      <div class="ai-row"><span class="ai-k">Location</span><span class="ai-v">Jammu and Kashmir, India</span></div>
+      <div class="ai-row"><span class="ai-k">Target</span><span class="ai-v">ML Internship — Bangalore / Hyderabad</span></div>
+      <div class="ai-row"><span class="ai-k">Education</span><span class="ai-v">Delhi University — CS (Ongoing)</span></div>
+      <div class="ai-row"><span class="ai-k">Email</span><span class="ai-v"><a href="mailto:peerather07@gmail.com">peerather07@gmail.com</a></span></div>
+      <div class="ai-row"><span class="ai-k">Status</span><span class="ai-v live">Available Now</span></div>
+    </div>
+  </div>
 </div>
 
 <!-- SKILLS -->
-<div class="skills-sec"><div class="sk-label">SKILLS</div><div class="sk-groups"><div class="sk-group"><div class="sk-group-name">Languages</div><div class="sk-items"><div class="sk-item">Python</div><div class="sk-item">NumPy</div><div class="sk-item">Pandas</div><div class="sk-item">Matplotlib</div></div></div><div class="sk-group"><div class="sk-group-name">Machine Learning</div><div class="sk-items"><div class="sk-item">Linear Regression</div><div class="sk-item">Logistic Regression</div><div class="sk-item">Gradient Descent</div><div class="sk-item">Scikit-Learn</div><div class="sk-item">Feature Engineering</div></div></div><div class="sk-group"><div class="sk-group-name">Data Pipeline</div><div class="sk-items"><div class="sk-item">EDA</div><div class="sk-item">IQR Outlier Detection</div><div class="sk-item">One-Hot Encoding</div><div class="sk-item">StandardScaler</div><div class="sk-item">Missing Value Imputation</div></div></div><div class="sk-group"><div class="sk-group-name">Deployment</div><div class="sk-items"><div class="sk-item">Streamlit</div><div class="sk-item">Joblib</div><div class="sk-item">Git / GitHub</div><div class="sk-item">Vercel</div><div class="sk-item">Jupyter</div></div></div></div></div>
+<div class="skills-sec">
+  <div class="sk-label">SKILLS</div>
+  <div class="sk-groups">
+    <div class="sk-group">
+      <div class="sk-group-name">Languages</div>
+      <div class="sk-items">
+        <div class="sk-item">Python</div>
+        <div class="sk-item">NumPy</div>
+        <div class="sk-item">Pandas</div>
+        <div class="sk-item">Matplotlib</div>
+      </div>
+    </div>
+    <div class="sk-group">
+      <div class="sk-group-name">Machine Learning</div>
+      <div class="sk-items">
+        <div class="sk-item">Linear Regression</div>
+        <div class="sk-item">Logistic Regression</div>
+        <div class="sk-item">Gradient Descent</div>
+        <div class="sk-item">Scikit-Learn</div>
+        <div class="sk-item">Feature Engineering</div>
+      </div>
+    </div>
+    <div class="sk-group">
+      <div class="sk-group-name">Data Pipeline</div>
+      <div class="sk-items">
+        <div class="sk-item">EDA</div>
+        <div class="sk-item">IQR Outlier Detection</div>
+        <div class="sk-item">One-Hot Encoding</div>
+        <div class="sk-item">StandardScaler</div>
+        <div class="sk-item">Missing Value Imputation</div>
+      </div>
+    </div>
+    <div class="sk-group">
+      <div class="sk-group-name">Deployment</div>
+      <div class="sk-items">
+        <div class="sk-item">Streamlit</div>
+        <div class="sk-item">Joblib</div>
+        <div class="sk-item">Git / GitHub</div>
+        <div class="sk-item">Vercel</div>
+        <div class="sk-item">Jupyter</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- CONTACT with updated email -->
-<section id="contact"><div class="ct-label">CONTACT</div><div class="ct-title">LET US<br/><span class="stroke">BUILD.</span></div><div class="ct-grid"><div class="ct-links"><a href="mailto:peerather07@gmail.com" class="ctl"><span class="ctl-name">peerather07@gmail.com</span><span class="ctl-arr">↗</span></a><a href="https://github.com/ather-ops" target="_blank" class="ctl"><span class="ctl-name">github.com/ather-ops</span><span class="ctl-arr">↗</span></a><a href="https://linkedin.com/in/ather-assadullah" target="_blank" class="ctl"><span class="ctl-name">LinkedIn</span><span class="ctl-arr">↗</span></a><a href="tel:9103107882" class="ctl"><span class="ctl-name">91031-07882</span><span class="ctl-arr">↗</span></a></div><div class="ct-right"><div class="ct-btns"><a href="https://drive.google.com/file/d/13ZHd8kIpxfqApe9cYnQaqfdjBxrD9L-b/view?usp=drive_link" target="_blank" class="ct-btn primary">DOWNLOAD RESUME</a><a href="https://rain-predictor-app.streamlit.app" target="_blank" class="ct-btn outline">VIEW LIVE APP</a></div></div></div></section>
+<section id="contact">
+  <div class="ct-label">CONTACT</div>
+  <div class="ct-title">
+    LET US<br/>
+    <span class="stroke">BUILD.</span>
+  </div>
+  <div class="ct-grid">
+    <div class="ct-links">
+      <a href="mailto:peerather07@gmail.com" class="ctl"><span class="ctl-name">peerather07@gmail.com</span><span class="ctl-arr">↗</span></a>
+      <a href="https://github.com/ather-ops" target="_blank" class="ctl"><span class="ctl-name">github.com/ather-ops</span><span class="ctl-arr">↗</span></a>
+      <a href="https://linkedin.com/in/ather-assadullah" target="_blank" class="ctl"><span class="ctl-name">LinkedIn</span><span class="ctl-arr">↗</span></a>
+      <a href="tel:9103107882" class="ctl"><span class="ctl-name">91031-07882</span><span class="ctl-arr">↗</span></a>
+    </div>
+    <div class="ct-right">
+      <div class="ct-btns">
+        <a href="https://drive.google.com/file/d/13ZHd8kIpxfqApe9cYnQaqfdjBxrD9L-b/view?usp=drive_link" target="_blank" class="ct-btn primary">DOWNLOAD RESUME</a>
+        <a href="https://rain-predictor-app.streamlit.app" target="_blank" class="ct-btn outline">VIEW LIVE APP</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-<footer><div class="ft-l">Ather Assadullah — Self-taught ML Engineer from Kashmir</div><div class="ft-r">ATHER.</div></footer>
+<footer>
+  <div class="ft-l">Ather Assadullah — Self-taught ML Engineer from Kashmir</div>
+  <div class="ft-r">ATHER.</div>
+</footer>
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
-// THREE.JS DYNAMIC PARTICLES
-const canvasEl = document.getElementById('cv');
-const renderer = new THREE.WebGLRenderer({ canvas: canvasEl, antialias: true, alpha: true });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
-camera.position.z = 5;
-const COUNT = 5500;
-function mkSphere(n, r = 1.9) { const p = new Float32Array(n * 3); for (let i = 0; i < n; i++) { const ph = Math.acos(2 * Math.random() - 1), th = 2 * Math.PI * Math.random(); p[i*3] = r * Math.sin(ph) * Math.cos(th); p[i*3+1] = r * Math.sin(ph) * Math.sin(th); p[i*3+2] = r * Math.cos(ph); } return p; }
-function mkTorus(n, R = 1.6, r = 0.65) { const p = new Float32Array(n * 3); for (let i = 0; i < n; i++) { const u = Math.random() * 2 * Math.PI, v = Math.random() * 2 * Math.PI; p[i*3] = (R + r * Math.cos(v)) * Math.cos(u); p[i*3+1] = (R + r * Math.cos(v)) * Math.sin(u); p[i*3+2] = r * Math.sin(v); } return p; }
-function mkWave(n) { const p = new Float32Array(n * 3); for (let i = 0; i < n; i++) { const x = (Math.random() - 0.5) * 4, z = (Math.random() - 0.5) * 4; p[i*3] = x; p[i*3+2] = z; p[i*3+1] = Math.sin(x * 1.5) * Math.cos(z * 1.2) * 1.2; } return p; }
-const shapes = [mkSphere(COUNT), mkTorus(COUNT), mkWave(COUNT)];
-let cs = 0;
-const geo = new THREE.BufferGeometry();
-const pos = new Float32Array(COUNT * 3);
+
+/* THREE.JS PARTICLES - Enhanced with 4 shapes (Sphere, Torus, Diamond, Cube) */
+const canvas=document.getElementById('cv');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(50,1,0.1,100);
+camera.position.z=5;
+const COUNT=5000;
+
+function mkSphere(n,r=1.8){const p=new Float32Array(n*3);for(let i=0;i<n;i++){const ph=Math.acos(2*Math.random()-1),th=2*Math.PI*Math.random();p[i*3]=r*Math.sin(ph)*Math.cos(th);p[i*3+1]=r*Math.sin(ph)*Math.sin(th);p[i*3+2]=r*Math.cos(ph);}return p;}
+function mkTorus(n,R=1.5,r=.6){const p=new Float32Array(n*3);for(let i=0;i<n;i++){const u=Math.random()*2*Math.PI,v=Math.random()*2*Math.PI;p[i*3]=(R+r*Math.cos(v))*Math.cos(u);p[i*3+1]=(R+r*Math.cos(v))*Math.sin(u);p[i*3+2]=r*Math.sin(v);}return p;}
+function mkDiamond(n){const p=new Float32Array(n*3);for(let i=0;i<n;i++){const t=Math.random(),a=Math.random()*2*Math.PI,h=(t<.5?t*2:(1-t)*2)*1.4;p[i*3]=h*Math.cos(a);p[i*3+1]=t<.5?-2+t*4:( t-.5)*4;p[i*3+2]=h*Math.sin(a);}return p;}
+function mkCube(n,s=1.6){const p=new Float32Array(n*3),h=s/2;for(let i=0;i<n;i++){const f=Math.floor(Math.random()*6),u=(Math.random()-.5)*s,v=(Math.random()-.5)*s;switch(f){case 0:p[i*3]=u;p[i*3+1]=v;p[i*3+2]=h;break;case 1:p[i*3]=u;p[i*3+1]=v;p[i*3+2]=-h;break;case 2:p[i*3]=h;p[i*3+1]=u;p[i*3+2]=v;break;case 3:p[i*3]=-h;p[i*3+1]=u;p[i*3+2]=v;break;case 4:p[i*3]=u;p[i*3+1]=h;p[i*3+2]=v;break;case 5:p[i*3]=u;p[i*3+1]=-h;p[i*3+2]=v;break;}}return p;}
+
+const shapes=[mkSphere(COUNT),mkTorus(COUNT),mkDiamond(COUNT),mkCube(COUNT)];
+let cs=0;
+const geo=new THREE.BufferGeometry();
+const pos=new Float32Array(COUNT*3);
 pos.set(shapes[0]);
-geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-const clrs = new Float32Array(COUNT * 3);
-for (let i = 0; i < COUNT; i++) { const t = i / COUNT; clrs[i*3] = 1 - 0.1 * t; clrs[i*3+1] = 0.45 + 0.2 * t; clrs[i*3+2] = 0.25 + 0.6 * t; }
-geo.setAttribute('color', new THREE.BufferAttribute(clrs, 3));
-const mat = new THREE.PointsMaterial({ size: 0.016, vertexColors: true, transparent: true, opacity: 0.85, blending: THREE.AdditiveBlending });
-const pts = new THREE.Points(geo, mat);
+geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+const clrs=new Float32Array(COUNT*3);
+for(let i=0;i<COUNT;i++){const t=i/COUNT;clrs[i*3]=1-.15*t;clrs[i*3+1]=.42+.18*t;clrs[i*3+2]=.21+.65*t;}
+geo.setAttribute('color',new THREE.BufferAttribute(clrs,3));
+const mat=new THREE.PointsMaterial({size:.018,vertexColors:true,transparent:true,opacity:.9,sizeAttenuation:true});
+const pts=new THREE.Points(geo,mat);
 scene.add(pts);
-let morphing = false, morphT = 0;
-const fromPos = new Float32Array(COUNT * 3), toPos = new Float32Array(COUNT * 3);
-fromPos.set(shapes[0]);
-function morphToNext() { if (morphing) return; morphing = true; morphT = 0; fromPos.set(pos); cs = (cs + 1) % shapes.length; toPos.set(shapes[cs]); }
-setInterval(morphToNext, 4200);
-let mouseX = 0, mouseY = 0;
-document.addEventListener('mousemove', e => { mouseX = (e.clientX / window.innerWidth - 0.5) * 2; mouseY = (e.clientY / window.innerHeight - 0.5) * 1.5; });
-function resizeCanvas() { const w = canvasEl.clientWidth, h = canvasEl.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); }
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-const clock = new THREE.Clock();
-function animate() { requestAnimationFrame(animate); const dt = clock.getElapsedTime(); if (morphing) { morphT = Math.min(morphT + 0.018, 1); const ease = morphT < 0.5 ? 4 * morphT * morphT * morphT : 1 - Math.pow(-2 * morphT + 2, 3) / 2; for (let i = 0; i < COUNT * 3; i++) pos[i] = fromPos[i] + (toPos[i] - fromPos[i]) * ease; geo.attributes.position.needsUpdate = true; if (morphT >= 1) morphing = false; } pts.rotation.y = dt * 0.2 + mouseX * 0.4; pts.rotation.x = Math.sin(dt * 0.12) * 0.1 + mouseY * 0.2; mat.opacity = 0.8 + Math.sin(dt) * 0.05; renderer.render(scene, camera); }
-animate();
 
-// CURSOR
-const cursorDot = document.getElementById('c'), cursorRing = document.getElementById('cr');
-let ringX = 0, ringY = 0, dotX = 0, dotY = 0;
-document.addEventListener('mousemove', e => { dotX = e.clientX; dotY = e.clientY; cursorDot.style.left = dotX + 'px'; cursorDot.style.top = dotY + 'px'; });
-function ringLoop() { ringX += (dotX - ringX) * 0.12; ringY += (dotY - ringY) * 0.12; cursorRing.style.left = ringX + 'px'; cursorRing.style.top = ringY + 'px'; requestAnimationFrame(ringLoop); }
-ringLoop();
-document.querySelectorAll('a, button, .w-row, .sk-item, .ctl').forEach(el => { el.addEventListener('mouseenter', () => document.body.classList.add('h')); el.addEventListener('mouseleave', () => document.body.classList.remove('h')); });
+let mph=false,mT=0;
+const mF=new Float32Array(COUNT*3),mTo=new Float32Array(COUNT*3);
+mF.set(shapes[0]);
+function morph(){if(mph)return;mph=true;mT=0;mF.set(pos);cs=(cs+1)%shapes.length;mTo.set(shapes[cs]);}
+setInterval(morph,3500);
 
-// LOADER
-let loaderVal = 0;
-const countSpan = document.getElementById('lcount'), lineFill = document.getElementById('lline');
-const loadInt = setInterval(() => { loaderVal += Math.floor(Math.random() * 10) + 2; if (loaderVal >= 100) { loaderVal = 100; clearInterval(loadInt); } countSpan.textContent = loaderVal; }, 50);
-gsap.to(lineFill, { scaleX: 1, duration: 2.0, ease: "power2.inOut", onComplete: () => { gsap.to('#ld', { yPercent: -100, duration: 1, ease: "expo.inOut", delay: 0.3, onComplete: () => { document.getElementById('ld').style.display = 'none'; heroReveal(); } }); } });
+let mx=0,my=0;
+document.addEventListener('mousemove',e=>{mx=(e.clientX/window.innerWidth-.5)*2;my=(e.clientY/window.innerHeight-.5)*1.5;});
 
-function heroReveal() {
-  gsap.to('#htag', { opacity: 1, duration: 0.6, delay: 0.1 });
-  gsap.fromTo('#hn1', { y: '110%' }, { y: '0%', duration: 0.9, delay: 0.2, ease: "expo.out" });
-  gsap.fromTo('#hn2', { y: '110%' }, { y: '0%', duration: 0.9, delay: 0.4, ease: "expo.out" });
-  gsap.to('#hbot', { opacity: 1, y: 0, duration: 0.8, delay: 0.7 });
-  gsap.to('#hscroll', { opacity: 1, duration: 0.8, delay: 1.1 });
-  document.querySelectorAll('[data-target]').forEach(el => { gsap.to({ val: 0 }, { val: +el.dataset.target, duration: 1.6, delay: 0.8, ease: "power2.out", onUpdate: function() { el.textContent = Math.round(this.targets()[0].val); } }); });
+function resize(){
+  const w=canvas.clientWidth,h=canvas.clientHeight;
+  renderer.setSize(w,h,false);
+  camera.aspect=w/h;
+  camera.updateProjectionMatrix();
+}
+resize();
+window.addEventListener('resize',resize);
+
+const clk=new THREE.Clock();
+(function loop(){
+  requestAnimationFrame(loop);
+  const t=clk.getElapsedTime();
+  if(mph){
+    mT=Math.min(mT+.016,1);
+    const e=mT<.5?4*mT*mT*mT:1-Math.pow(-2*mT+2,3)/2;
+    for(let i=0;i<COUNT*3;i++)pos[i]=mF[i]+(mTo[i]-mF[i])*e;
+    geo.attributes.position.needsUpdate=true;
+    if(mT>=1)mph=false;
+  }
+  pts.rotation.y=t*.2+mx*.35;
+  pts.rotation.x=Math.sin(t*.12)*.12+my*.2;
+  mat.opacity=.82+Math.sin(t)*.08;
+  renderer.render(scene,camera);
+})();
+
+/* CURSOR */
+const cur=document.getElementById('c'),ring=document.getElementById('cr');
+let rx=0,ry=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
+(function l(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(l);})();
+document.querySelectorAll('a,button,.w-row,.sk-item,.ctl').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('h'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('h'));
+});
+
+/* LOADER */
+let count=0;
+const lcount=document.getElementById('lcount');
+const lline=document.getElementById('lline');
+const interval=setInterval(()=>{
+  count+=Math.floor(Math.random()*12)+3;
+  if(count>=100){count=100;clearInterval(interval);}
+  lcount.textContent=count;
+},60);
+gsap.to(lline,{scaleX:1,duration:2.2,ease:'power2.inOut',onComplete:()=>{
+  gsap.to('#ld',{yPercent:-100,duration:1,ease:'expo.inOut',delay:.2,
+    onComplete(){document.getElementById('ld').style.display='none';}});
+  heroIn();
+}});
+
+function heroIn(){
+  gsap.to('#htag',{opacity:1,y:0,duration:.6,delay:.1,ease:'power3.out'});
+  gsap.fromTo('#hn1',{y:'110%'},{y:'0%',duration:.8,delay:.2,ease:'expo.out'});
+  gsap.fromTo('#hn2',{y:'110%'},{y:'0%',duration:.8,delay:.32,ease:'expo.out'});
+  gsap.to('#hbot',{opacity:1,y:0,duration:.7,delay:.6,ease:'power3.out'});
+  gsap.to('#hscroll',{opacity:1,duration:.6,delay:1});
+  document.querySelectorAll('[data-target]').forEach(el=>{
+    gsap.to({v:0},{v:+el.dataset.target,duration:1.5,ease:'power2.out',delay:.8,
+      onUpdate(){el.textContent=Math.round(this.targets()[0].v);}});
+  });
 }
 
-window.addEventListener('scroll', () => { const navBar = document.querySelector('nav'); if (window.scrollY > 60) { navBar.style.borderBottom = '1px solid rgba(255,255,255,0.08)'; navBar.style.backdropFilter = 'blur(16px)'; navBar.style.background = 'rgba(0,0,8,0.7)'; } else { navBar.style.borderBottom = 'none'; navBar.style.backdropFilter = 'none'; navBar.style.background = 'transparent'; } });
+window.addEventListener('scroll',()=>{
+  const nav=document.querySelector('nav');
+  nav.style.borderBottom=scrollY>80?'1px solid rgba(255,255,255,.06)':'none';
+  nav.style.backdropFilter=scrollY>80?'blur(20px)':'none';
+  nav.style.background=scrollY>80?'rgba(0,0,5,.8)':'';
+});
 
-// SCROLL ANIMATIONS
-gsap.utils.toArray('.st-text, .vs-big, .as-big, .ct-title').forEach(el => gsap.fromTo(el, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 85%" } }));
-gsap.utils.toArray('.w-row').forEach((r, i) => gsap.fromTo(r, { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, delay: i * 0.08, ease: "power3.out", scrollTrigger: { trigger: r, start: "top 88%" } }));
-gsap.utils.toArray('.vs-right, .as-right').forEach(el => gsap.fromTo(el, { x: 30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 85%" } }));
-gsap.utils.toArray('.sk-item').forEach((s, i) => gsap.fromTo(s, { opacity: 0, x: -8 }, { opacity: 1, x: 0, duration: 0.4, delay: i * 0.02, stagger: 0.03, scrollTrigger: { trigger: '.skills-sec', start: "top 80%" } }));
+/* SCROLL REVEALS */
+gsap.utils.toArray('.st-text,.vs-big,.as-big,.ct-title').forEach(el=>
+  gsap.fromTo(el,{y:50,opacity:0},{y:0,opacity:1,duration:.9,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 85%'}}));
+gsap.utils.toArray('.w-row').forEach((r,i)=>
+  gsap.fromTo(r,{x:-30,opacity:0},{x:0,opacity:1,duration:.6,delay:i*.08,ease:'power3.out',
+    scrollTrigger:{trigger:r,start:'top 88%'}}));
+gsap.utils.toArray('.vs-right,.as-right').forEach(el=>
+  gsap.fromTo(el,{x:30,opacity:0},{x:0,opacity:1,duration:.8,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 85%'}}));
+gsap.utils.toArray('.sk-item').forEach((s,i)=>
+  gsap.fromTo(s,{opacity:0,x:-8},{opacity:1,x:0,duration:.4,delay:i*.02,stagger:.03,
+    scrollTrigger:{trigger:'.skills-sec',start:'top 80%'}}));
 </script>
 </body>
 </html>
