@@ -48,18 +48,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:2rem 4vw;display:fle
 .n-cta{font-family:var(--f2);font-size:.62rem;letter-spacing:.12em;padding:.5rem 1.25rem;border:1px solid rgba(255,107,53,.4);border-radius:6px;color:var(--orange);text-decoration:none;cursor:none;transition:all .2s;background:rgba(255,107,53,.05);}
 .n-cta:hover{background:var(--orange);color:#000;}
 
-/* HERO */
+/* HERO - no photo */
 #hero{height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:0 4vw 5vh;}
 #cv{position:absolute;inset:0;width:100%;height:100%;}
-.hero-left{position:absolute;top:15vh;left:4vw;z-index:20;}
-
-/* CARTOON PHOTO FRAME */
-.cartoon-frame{width:140px;height:140px;animation:floatFrame 3s ease-in-out infinite;}
-@keyframes floatFrame{0%,100%{transform:translateY(0px);}50%{transform:translateY(-8px);}}
-.frame-border{width:100%;height:100%;border-radius:24px;background:linear-gradient(135deg,var(--orange),var(--orange2));padding:3px;animation:borderPulse 2s ease-in-out infinite;}
-@keyframes borderPulse{0%,100%{box-shadow:0 0 8px rgba(255,107,53,.4);}50%{box-shadow:0 0 20px rgba(255,107,53,.8);}}
-.frame-img{width:100%;height:100%;border-radius:22px;object-fit:cover;background:#1a1a2a;display:block;}
-
+.hero-content{position:relative;z-index:10;max-width:100%;}
 .h-tag{font-family:var(--f2);font-size:.62rem;letter-spacing:.2em;color:var(--orange);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;opacity:0;}
 .h-tag::before{content:'';width:24px;height:1px;background:var(--orange);}
 .h-name{font-family:var(--f1);font-size:clamp(5rem,14vw,17rem);line-height:.85;letter-spacing:.02em;overflow:hidden;margin-bottom:2.5rem;}
@@ -170,7 +162,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:2rem 4vw;display:fle
 .sk-item:hover{color:#fff;}
 .sk-item:hover::before{background:var(--orange);}
 
-/* CONTACT - icons only, no visible text */
+/* CONTACT - ICONS ONLY WITH WORKING LINKS */
 #contact{padding:12vh 4vw 8vh;border-bottom:1px solid var(--line);}
 .ct-label{font-family:var(--f2);font-size:.62rem;color:var(--orange);letter-spacing:.2em;margin-bottom:2rem;display:flex;align-items:center;gap:.75rem;}
 .ct-label::before{content:'';width:20px;height:1px;background:var(--orange);}
@@ -194,8 +186,6 @@ footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-be
 
 @media(max-width:900px){
   #hero{padding:0 5vw 6vh;}
-  .hero-left{top:10vh;left:4vw;}
-  .cartoon-frame{width:90px;height:90px;}
   .h-name{font-size:clamp(4rem,15vw,8rem);}
   .h-bottom{flex-direction:column;gap:2rem;align-items:flex-start;}
   .h-nums{justify-content:flex-start;}
@@ -234,34 +224,26 @@ footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-be
   </div>
 </nav>
 
-<!-- HERO with cartoon photo left side -->
+<!-- HERO - no photo -->
 <section id="hero">
   <canvas id="cv"></canvas>
-  
-  <!-- Cartoon Photo Frame - Left Side -->
-  <div class="hero-left">
-    <div class="cartoon-frame">
-      <div class="frame-border">
-        <img class="frame-img" src="https://drive.google.com/uc?export=view&id=1AYDerm2n4ePExI9MX-GNleP1AzTVGPoM" alt="Ather Cartoon" onerror="this.src='https://via.placeholder.com/140x140/ff6b35/ffffff?text=ATHER'">
+  <div class="hero-content">
+    <div class="h-tag" id="htag">OPEN FOR INTERNSHIP — BANGALORE / HYDERABAD</div>
+    <div class="h-name">
+      <span class="h-n1" id="hn1">ATHER</span>
+      <span class="h-n2" id="hn2">ASSADULLAH</span>
+    </div>
+    <div class="h-bottom" id="hbot">
+      <div class="h-desc">
+        ML Engineer. Kashmir, India.<br/>
+        <b>Pure mathematics → deployed models.</b><br/>
+        Validated vs AccuWeather — <b>0.09% diff.</b>
       </div>
-    </div>
-  </div>
-
-  <div class="h-tag" id="htag">OPEN FOR INTERNSHIP — BANGALORE / HYDERABAD</div>
-  <div class="h-name">
-    <span class="h-n1" id="hn1">ATHER</span>
-    <span class="h-n2" id="hn2">ASSADULLAH</span>
-  </div>
-  <div class="h-bottom" id="hbot">
-    <div class="h-desc">
-      ML Engineer. Kashmir, India.<br/>
-      <b>Pure mathematics → deployed models.</b><br/>
-      Validated vs AccuWeather — <b>0.09% diff.</b>
-    </div>
-    <div class="h-nums">
-      <div class="h-num"><div class="h-nv" data-target="8">0</div><div class="h-nl">Notebooks</div></div>
-      <div class="h-num"><div class="h-nv" data-target="5">0</div><div class="h-nl">Live Repos</div></div>
-      <div class="h-num"><div class="h-nv" data-target="89">0</div><div class="h-nl">Commits</div></div>
+      <div class="h-nums">
+        <div class="h-num"><div class="h-nv" data-target="8">0</div><div class="h-nl">Notebooks</div></div>
+        <div class="h-num"><div class="h-nv" data-target="5">0</div><div class="h-nl">Live Repos</div></div>
+        <div class="h-num"><div class="h-nv" data-target="89">0</div><div class="h-nl">Commits</div></div>
+      </div>
     </div>
   </div>
   <div class="h-scroll" id="hscroll">SCROLL DOWN</div>
@@ -430,7 +412,7 @@ footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-be
   </div>
 </div>
 
-<!-- CONTACT - ICONS ONLY, NO VISIBLE TEXT, OPENS DIRECTLY -->
+<!-- CONTACT - ALL BUTTONS WORKING -->
 <section id="contact">
   <div class="ct-label">CONTACT</div>
   <div class="ct-title">
@@ -438,7 +420,7 @@ footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-be
     <span class="stroke">BUILD.</span>
   </div>
   <div class="contact-icons">
-    <a href="mailto:peerather07@gmail.com?subject=ML%20Internship%20Opportunity&body=Hi%20Ather,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect." class="contact-icon-link" target="_blank">
+    <a href="mailto:peerather07@gmail.com?subject=ML%20Internship%20Opportunity&body=Hi%20Ather,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect." class="contact-icon-link">
       <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
     </a>
     <a href="https://github.com/ather-ops" target="_blank" class="contact-icon-link">
@@ -465,7 +447,7 @@ footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-be
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-// THREE.JS PARTICLES (condensed - functional)
+// THREE.JS PARTICLES
 const canvas=document.getElementById('cv');
 const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
 renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
