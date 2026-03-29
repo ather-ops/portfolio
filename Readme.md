@@ -1,35 +1,45 @@
 # Ather Assadullah — ML Engineer Portfolio
 
+[![Live Portfolio](https://img.shields.io/badge/Live_Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://portofolio-eight-fawn.vercel.app/)
+[![GitHub](https://img.shields.io/badge/GitHub_Profile-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ather-ops)
+
 A modern, interactive portfolio website for a self-taught Machine Learning Engineer from Kashmir. Features 3D particle animations, project modals, and a clean dark aesthetic.
 
 ## Live Demo
 
-[View Live Portfolio](https://your-portfolio-link.com)
+[View Live Portfolio](https://portofolio-eight-fawn.vercel.app/)
 
 ## Screenshots
 
-![Hero Section](https://via.placeholder.com/1200x600/000005/ff6b35?text=Hero+Section)
-![Projects Section](https://via.placeholder.com/1200x600/000005/ff6b35?text=Projects+Section)
-![Contact Section](https://via.placeholder.com/1200x600/000005/ff6b35?text=Contact+Section)
+| Hero Section | Projects Section |
+|:---:|:---:|
+| ![Hero Section](./screenshots/hero.png) | ![Projects Section](./screenshots/projects.png) |
+
+| Validation Section | Contact Section |
+|:---:|:---:|
+| ![Validation Section](./screenshots/validation.png) | ![Contact Section](./screenshots/contact.png) |
+
+*Note: Replace `./screenshots/` paths with your actual screenshot locations.*
 
 ## Features
 
-- 3D Particle Background with shape morphing animation
+- 3D Particle Background with shape morphing animation (Sphere, Torus, Wave)
 - Custom Cursor with hover effects
 - Interactive Project Modals with next/previous navigation
-- Animated Scroll Reveals
-- Responsive Design for all devices
-- Contact Icons with pre-filled message templates
-- Real-world validation showcase (0.09% vs AccuWeather)
+- Animated Scroll Reveals using GSAP
+- Fully Responsive Design for all devices
+- Contact Icons with pre-filled message templates for Email and WhatsApp
+- Real-world validation showcase (0.09% difference vs AccuWeather)
 
 ## Tech Stack
 
-- HTML5
-- CSS3 (Custom properties, Grid, Flexbox)
-- JavaScript (ES6)
-- Three.js for 3D particle effects
-- GSAP for scroll animations
-- Google Fonts (Bebas Neue, Space Mono, Inter)
+| Category | Technologies |
+|----------|--------------|
+| Frontend | HTML5, CSS3, JavaScript (ES6) |
+| 3D Graphics | Three.js |
+| Animations | GSAP (ScrollTrigger) |
+| Typography | Google Fonts (Bebas Neue, Space Mono, Inter) |
+| Deployment | Vercel |
 
 ## Projects Featured
 
@@ -62,9 +72,9 @@ Predicts telecom customer churn. Production-ready with missing column handling a
 - Stack: Scikit-Learn, Logistic Regression, Joblib
 - [GitHub Repository](https://github.com/ather-ops/Customer-churn-predictor)
 
-## Validation
+## Real World Validation
 
-During a live test, the Rain Predictor model processed real-time weather readings and predicted 60.09% chance of rain. AccuWeather's forecast for identical conditions showed 60.00%. The 0.09% margin demonstrates real-world accuracy.
+During a live test, the Rain Predictor model processed real-time weather readings and predicted **60.09%** chance of rain. AccuWeather's forecast for identical conditions showed **60.00%**. The **0.09%** margin demonstrates the model's real-world accuracy and robust mathematical foundation.
 
 ## Skills
 
@@ -81,17 +91,6 @@ A self-taught ML Engineer from Jammu and Kashmir, India. Age 18. No bootcamp, no
 
 Partial hearing loss — communicates best via text, WhatsApp, or written messages. Works independently, delivers clean code, and communicates clearly.
 
-Target: ML Internship in Bangalore or Hyderabad.
+**Target:** ML Internship in Bangalore or Hyderabad.
 
-## Contact
-
-Contact options are available on the portfolio website via clickable icons.
-
-## Installation
-
-To run this portfolio locally:
-
-```bash
-git clone https://github.com/ather-ops/portfolio.git
-cd portfolio
-open index.html
+## Project Structure
