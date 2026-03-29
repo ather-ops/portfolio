@@ -34,18 +34,21 @@ A modern, interactive portfolio website for a self-taught Machine Learning Engin
 ## Projects Featured
 
 ### 01. ML FROM SCRATCH
+
 Complete implementations of machine learning algorithms using only NumPy. Linear Regression, Logistic Regression, Gradient Descent from first principles.
 
 - Stack: Python, NumPy, Pure Mathematics
 - [GitHub Repository](https://github.com/ather-ops/Machine-Learning-from-scratch)
 
 ### 02. ML WITH SCIKIT-LEARN
+
 8 complete notebooks covering classification, regression, feature engineering, and model evaluation.
 
 - Stack: Scikit-Learn, Pandas, 8 Notebooks
 - [GitHub Repository](https://github.com/ather-ops/ML-with-Scikit-Learn)
 
 ### 03. RAIN PREDICTOR APP
+
 Deployed ML model predicting rain probability. Validated against AccuWeather with 0.09% difference.
 
 - Stack: Streamlit, Joblib, Scikit-Learn
@@ -53,6 +56,7 @@ Deployed ML model predicting rain probability. Validated against AccuWeather wit
 - [Live Demo](https://rain-predictor-app.streamlit.app)
 
 ### 04. CUSTOMER CHURN PREDICTOR
+
 Predicts telecom customer churn. Production-ready with missing column handling and batch prediction.
 
 - Stack: Scikit-Learn, Logistic Regression, Joblib
@@ -64,31 +68,12 @@ During a live test, the Rain Predictor model processed real-time weather reading
 
 ## Skills
 
-Languages
-- Python
-- NumPy
-- Pandas
-- Matplotlib
-- Basic SQL
-
-Machine Learning
-- Scikit-Learn
-- Linear Regression
-- Logistic Regression
-- Gradient Descent
-- Feature Engineering
-
-Data Pipeline
-- EDA
-- IQR Outlier Detection
-- One-Hot Encoding
-- StandardScaler
-
-Deployment
-- Streamlit
-- Joblib
-- Git / GitHub
-- Vercel
+| Category | Skills |
+|----------|--------|
+| Languages | Python, NumPy, Pandas, Matplotlib, Basic SQL |
+| Machine Learning | Scikit-Learn, Linear Regression, Logistic Regression, Gradient Descent, Feature Engineering |
+| Data Pipeline | EDA, IQR Outlier Detection, One-Hot Encoding, StandardScaler |
+| Deployment | Streamlit, Joblib, Git / GitHub, Vercel |
 
 ## About The Developer
 
@@ -100,11 +85,7 @@ Target: ML Internship in Bangalore or Hyderabad.
 
 ## Contact
 
-- Email: peerather07@gmail.com
-- GitHub: [github.com/ather-ops](https://github.com/ather-ops)
-- LinkedIn: [linkedin.com/in/ather-assadullah](https://linkedin.com/in/ather-assadullah)
-- WhatsApp: +91 91031-07882
-- Resume: [Download Resume](https://drive.google.com/file/d/13ZHd8kIpxfqApe9cYnQaqfdjBxrD9L-b/view)
+Contact options are available on the portfolio website via clickable icons.
 
 ## Installation
 
