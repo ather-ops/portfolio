@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Ather Assadullah — ML Engineer | No Degree, Pure Results</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<title>Ather Assadullah — AI/ML Engineer | No Degree, Pure Results</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -39,13 +39,13 @@ body{background:var(--bg);color:var(--txt);font-family:var(--f3);cursor:none;ove
 .ld-line-h{position:absolute;left:0;right:0;height:1px;background:var(--orange);top:50%;transform:scaleX(0);transform-origin:left;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:2rem 4vw;display:flex;align-items:center;justify-content:space-between;}
-.n-logo{font-family:var(--f1);font-size:1.4rem;letter-spacing:.15em;color:#fff;text-decoration:none;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:2rem 4vw;display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,5,.6);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,107,53,.15);}
+.n-logo{font-family:var(--f1);font-size:1.5rem;letter-spacing:.12em;color:#fff;text-decoration:none;background:linear-gradient(135deg,#fff,var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .n-right{display:flex;align-items:center;gap:3rem;}
 .n-links{display:flex;gap:2.5rem;list-style:none;}
 .n-links a{font-family:var(--f2);font-size:.62rem;color:var(--mid);text-decoration:none;letter-spacing:.15em;transition:color .2s;}
-.n-links a:hover{color:#fff;}
-.n-cta{font-family:var(--f2);font-size:.62rem;letter-spacing:.12em;padding:.5rem 1.25rem;border:1px solid rgba(255,107,53,.4);border-radius:6px;color:var(--orange);text-decoration:none;cursor:none;transition:all .2s;background:rgba(255,107,53,.05);}
+.n-links a:hover{color:var(--orange);}
+.n-cta{font-family:var(--f2);font-size:.62rem;letter-spacing:.12em;padding:.5rem 1.25rem;border:1px solid rgba(255,107,53,.4);border-radius:30px;color:var(--orange);text-decoration:none;cursor:none;transition:all .2s;background:rgba(255,107,53,.05);}
 .n-cta:hover{background:var(--orange);color:#000;}
 
 /* HERO */
@@ -54,12 +54,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:2rem 4vw;display:fle
 .hero-content{position:relative;z-index:10;max-width:100%;}
 .h-tag{font-family:var(--f2);font-size:.62rem;letter-spacing:.2em;color:var(--orange);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;opacity:0;}
 .h-tag::before{content:'';width:24px;height:1px;background:var(--orange);}
-.h-name{font-family:var(--f1);font-size:clamp(5rem,14vw,17rem);line-height:.85;letter-spacing:.02em;overflow:hidden;margin-bottom:2.5rem;}
+.h-name{font-family:var(--f1);font-size:clamp(5rem,14vw,17rem);line-height:.85;letter-spacing:.02em;overflow:hidden;margin-bottom:2rem;}
 .h-n1,.h-n2{display:block;transform:translateY(110%);}
 .h-n1{color:#fff;}
 .h-n2{color:transparent;-webkit-text-stroke:1px rgba(255,107,53,.8);filter:drop-shadow(0 0 20px rgba(255,107,53,.2));}
 .h-bottom{display:flex;align-items:flex-end;justify-content:space-between;opacity:0;}
-.h-desc{font-family:var(--f3);font-size:.88rem;color:var(--mid);line-height:1.7;max-width:340px;}
+.h-desc{font-family:var(--f3);font-size:.88rem;color:var(--mid);line-height:1.7;max-width:380px;}
 .h-desc b{color:#fff;font-weight:500;}
 .h-nums{display:flex;gap:3rem;}
 .h-num{text-align:right;}
@@ -69,20 +69,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:2rem 4vw;display:fle
 .h-scroll::after{content:'';width:40px;height:1px;background:var(--dim);}
 
 /* STATEMENT */
-.statement{padding:10vh 4vw;border-bottom:1px solid var(--line);}
+.statement{padding:8vh 4vw;border-bottom:1px solid var(--line);}
 .st-text{font-family:var(--f1);font-size:clamp(2.5rem,6vw,7rem);line-height:.95;letter-spacing:.02em;max-width:900px;}
 .st-text .dim{color:var(--dim);}
 .st-text .hl{color:var(--orange);}
-.st-side{display:flex;justify-content:flex-end;margin-top:2rem;}
+.st-side{display:flex;justify-content:flex-end;margin-top:1.5rem;}
 .st-sub{font-family:var(--f2);font-size:.68rem;color:var(--mid);letter-spacing:.12em;max-width:280px;line-height:1.7;text-align:right;}
 
 /* WORK */
 #work{border-bottom:1px solid var(--line);}
 .w-header{display:grid;grid-template-columns:80px 1fr 200px 160px;gap:0;padding:1.5rem 4vw;border-bottom:1px solid var(--line);}
 .w-hcell{font-family:var(--f2);font-size:.58rem;color:var(--dim);letter-spacing:.15em;text-transform:uppercase;}
-.w-row{display:grid;grid-template-columns:80px 1fr 200px 160px;gap:0;padding:2.2rem 4vw;border-bottom:1px solid var(--line);align-items:center;cursor:pointer;transition:background .25s;position:relative;overflow:hidden;}
+.w-row{display:grid;grid-template-columns:80px 1fr 200px 160px;gap:0;padding:2rem 4vw;border-bottom:1px solid var(--line);align-items:center;cursor:pointer;transition:background .25s;position:relative;overflow:hidden;}
 .w-row::after{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--orange);transform:scaleY(0);transition:transform .3s;transform-origin:bottom;}
-.w-row:hover{background:rgba(255,107,53,.03);}
+.w-row:hover{background:rgba(255,107,53,.04);}
 .w-row:hover::after{transform:scaleY(1);}
 .w-row:hover .w-name{color:var(--orange);text-shadow:0 0 30px rgba(255,107,53,.3);}
 .w-num{font-family:var(--f2);font-size:.7rem;color:var(--dim);letter-spacing:.1em;}
@@ -95,13 +95,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:2rem 4vw;display:fle
 .project-hint{font-family:var(--f2);font-size:.5rem;color:var(--dim);letter-spacing:.08em;margin-left:.5rem;opacity:0.5;}
 
 /* MODAL */
-.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:10000;justify-content:center;align-items:center;backdrop-filter:blur(5px);}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.96);z-index:10000;justify-content:center;align-items:center;backdrop-filter:blur(5px);}
 .modal-content{background:#0a0a12;border:1px solid rgba(255,107,53,.3);border-radius:24px;max-width:650px;width:90%;max-height:80vh;overflow-y:auto;padding:2rem;position:relative;animation:modalFade .25s ease;}
 @keyframes modalFade{from{opacity:0;transform:scale(.96);}to{opacity:1;transform:scale(1);}}
 .modal-close{position:absolute;top:1rem;right:1.2rem;font-size:1.8rem;cursor:pointer;color:var(--mid);transition:color .2s;}
 .modal-close:hover{color:var(--orange);}
 .modal-title{font-family:var(--f1);font-size:1.8rem;margin-bottom:.5rem;color:#fff;}
-.modal-stack{font-family:var(--f2);font-size:.65rem;color:var(--orange);margin-bottom:1.2rem;display:inline-block;padding:.2rem .8rem;background:rgba(255,107,53,.1);border-radius:20px;}
+.modal-stack{font-family:var(--f2);font-size:.65rem;color:var(--orange);margin-bottom:1rem;display:inline-block;padding:.2rem .8rem;background:rgba(255,107,53,.1);border-radius:20px;}
 .modal-desc{color:var(--mid);line-height:1.65;margin-bottom:1.2rem;font-size:.85rem;}
 .modal-section{margin-bottom:1.2rem;}
 .modal-section h4{font-family:var(--f2);font-size:.65rem;color:var(--orange);letter-spacing:.08em;margin-bottom:.6rem;text-transform:uppercase;}
@@ -117,66 +117,75 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:2rem 4vw;display:fle
 .modal-prev:hover,.modal-next:hover{background:rgba(255,107,53,.1);border-color:var(--orange);color:var(--orange);}
 
 /* VALIDATED */
-.val-sec{padding:10vh 4vw;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:center;}
-.vs-label{font-family:var(--f2);font-size:.62rem;color:var(--orange);letter-spacing:.2em;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;}
+.val-sec{padding:8vh 4vw;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center;}
+.vs-label{font-family:var(--f2);font-size:.62rem;color:var(--orange);letter-spacing:.2em;margin-bottom:1.2rem;display:flex;align-items:center;gap:.75rem;}
 .vs-label::before{content:'';width:20px;height:1px;background:var(--orange);}
-.vs-big{font-family:var(--f1);font-size:clamp(4rem,9vw,9rem);line-height:.9;letter-spacing:.03em;margin-bottom:2rem;}
+.vs-big{font-family:var(--f1);font-size:clamp(3.5rem,8vw,7rem);line-height:.9;letter-spacing:.03em;margin-bottom:1.5rem;}
 .vs-big .accent{color:var(--orange);}
-.vs-para{font-size:.9rem;color:var(--mid);line-height:1.8;margin-bottom:2.5rem;}
+.vs-para{font-size:.88rem;color:var(--mid);line-height:1.7;margin-bottom:2rem;}
 .vs-para b{color:#fff;font-weight:500;}
-.vs-comparison{display:flex;gap:3rem;padding:2rem;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02);}
+.vs-comparison{display:flex;gap:2rem;padding:1.5rem;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.02);justify-content:center;}
 .vc{text-align:center;}
-.vc-val{font-family:var(--f1);font-size:2.8rem;line-height:1;}
+.vc-val{font-family:var(--f1);font-size:2.5rem;line-height:1;}
 .vc-val.m{color:var(--orange);}
 .vc-val.a{color:var(--blue);}
-.vc-label{font-family:var(--f2);font-size:.55rem;color:var(--dim);margin-top:.25rem;}
+.vc-label{font-family:var(--f2);font-size:.55rem;color:var(--dim);margin-top:.2rem;}
 .vc-sep{font-family:var(--f2);font-size:.7rem;color:var(--dim);align-self:center;}
 
 /* ABOUT */
-.about-sec{padding:10vh 4vw;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:8vw;}
-.as-label{font-family:var(--f2);font-size:.62rem;color:var(--orange);letter-spacing:.2em;margin-bottom:2rem;display:flex;align-items:center;gap:.75rem;}
+.about-sec{padding:8vh 4vw;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:6vw;}
+.as-label{font-family:var(--f2);font-size:.62rem;color:var(--orange);letter-spacing:.2em;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;}
 .as-label::before{content:'';width:20px;height:1px;background:var(--orange);}
-.as-big{font-family:var(--f1);font-size:clamp(2rem,4vw,4rem);line-height:.95;letter-spacing:.02em;margin-bottom:2rem;color:var(--dim);}
+.as-big{font-family:var(--f1);font-size:clamp(2rem,4vw,3.8rem);line-height:.95;letter-spacing:.02em;margin-bottom:1.5rem;color:var(--dim);}
 .as-big .w{color:#fff;}
-.as-body{font-size:.88rem;color:var(--mid);line-height:1.85;}
-.as-body p{margin-bottom:1.1rem;}
+.as-body{font-size:.85rem;color:var(--mid);line-height:1.7;}
+.as-body p{margin-bottom:1rem;}
 .as-body b{color:#fff;font-weight:500;}
 .as-body .hl{color:var(--orange2);}
-.as-info{margin-top:2.5rem;display:flex;flex-direction:column;gap:0;}
-.ai-row{display:flex;justify-content:space-between;align-items:center;padding:.85rem 0;border-bottom:1px solid var(--line);font-size:.82rem;}
+.as-info{margin-top:2rem;display:flex;flex-direction:column;gap:0;}
+.ai-row{display:flex;justify-content:space-between;align-items:center;padding:.7rem 0;border-bottom:1px solid var(--line);font-size:.8rem;}
 .ai-row:last-child{border-bottom:none;}
-.ai-k{font-family:var(--f2);font-size:.58rem;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;}
+.ai-k{font-family:var(--f2);font-size:.55rem;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;}
 .ai-v{color:var(--txt);}
 .ai-v.live{color:var(--orange);}
 .ai-v a{color:var(--orange);text-decoration:none;}
 
-/* SKILLS */
-.skills-sec{padding:8vh 4vw;border-bottom:1px solid var(--line);}
-.sk-label{font-family:var(--f2);font-size:.62rem;color:var(--orange);letter-spacing:.2em;margin-bottom:3rem;display:flex;align-items:center;gap:.75rem;}
+/* SKILLS - 5 columns */
+.skills-sec{padding:6vh 4vw;border-bottom:1px solid var(--line);}
+.sk-label{font-family:var(--f2);font-size:.62rem;color:var(--orange);letter-spacing:.2em;margin-bottom:2.5rem;display:flex;align-items:center;gap:.75rem;}
 .sk-label::before{content:'';width:20px;height:1px;background:var(--orange);}
-.sk-groups{display:grid;grid-template-columns:repeat(4,1fr);gap:3rem;}
-.sk-group-name{font-family:var(--f2);font-size:.6rem;color:var(--dim);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.25rem;}
-.sk-items{display:flex;flex-direction:column;gap:.5rem;}
-.sk-item{font-size:.82rem;color:var(--mid);display:flex;align-items:center;gap:.6rem;transition:color .2s;cursor:none;}
+.sk-groups{display:grid;grid-template-columns:repeat(5,1fr);gap:2rem;}
+.sk-group-name{font-family:var(--f2);font-size:.6rem;color:var(--dim);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1rem;}
+.sk-items{display:flex;flex-direction:column;gap:.4rem;}
+.sk-item{font-size:.78rem;color:var(--mid);display:flex;align-items:center;gap:.6rem;transition:color .2s;cursor:none;}
 .sk-item::before{content:'';width:4px;height:4px;background:var(--dim);border-radius:50%;flex-shrink:0;transition:background .2s;}
 .sk-item:hover{color:#fff;}
 .sk-item:hover::before{background:var(--orange);}
 
+/* TIMELINE / CAREER PATH - Updated with correct years */
+.timeline-section{padding:6vh 4vw;border-bottom:1px solid var(--line);}
+.timeline-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2rem;}
+.timeline-card{padding:1.5rem;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.02);transition:all .3s;}
+.timeline-card:hover{border-color:var(--orange);transform:translateY(-3px);}
+.timeline-year{font-family:var(--f1);font-size:1.8rem;color:var(--orange);margin-bottom:.5rem;}
+.timeline-title{font-family:var(--f2);font-size:.7rem;color:var(--dim);margin-bottom:.5rem;letter-spacing:.1em;}
+.timeline-desc{font-size:.75rem;color:var(--mid);line-height:1.5;}
+
 /* CONTACT */
-#contact{padding:12vh 4vw 8vh;border-bottom:1px solid var(--line);}
-.ct-label{font-family:var(--f2);font-size:.62rem;color:var(--orange);letter-spacing:.2em;margin-bottom:2rem;display:flex;align-items:center;gap:.75rem;}
+#contact{padding:8vh 4vw 6vh;border-bottom:1px solid var(--line);}
+.ct-label{font-family:var(--f2);font-size:.62rem;color:var(--orange);letter-spacing:.2em;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;}
 .ct-label::before{content:'';width:20px;height:1px;background:var(--orange);}
-.ct-title{font-family:var(--f1);font-size:clamp(4rem,13vw,16rem);line-height:.88;letter-spacing:.02em;margin-bottom:4rem;}
+.ct-title{font-family:var(--f1);font-size:clamp(3.5rem,10vw,12rem);line-height:.88;letter-spacing:.02em;margin-bottom:3rem;}
 .ct-title .stroke{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.2);}
-.contact-icons{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin:2rem 0;}
+.contact-icons{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;margin:2rem 0;}
 .contact-icon-link{width:70px;height:70px;border-radius:50%;background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.3);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .3s ease;cursor:pointer;}
 .contact-icon-link:hover{transform:scale(1.08);background:rgba(255,107,53,.2);border-color:var(--orange);}
 .contact-icon-link svg{width:32px;height:32px;stroke:var(--orange);fill:none;stroke-width:1.5;}
 .contact-icon-link .fill-icon{fill:var(--orange);stroke:none;}
-.contact-note{text-align:center;font-family:var(--f2);font-size:.6rem;color:var(--dim);margin-top:2rem;letter-spacing:.08em;}
+.contact-note{text-align:center;font-family:var(--f2);font-size:.6rem;color:var(--dim);margin-top:1.5rem;letter-spacing:.08em;}
 .contact-note span{color:var(--orange);}
 
-footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+footer{padding:1.5rem 4vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
 .ft-l{font-family:var(--f2);font-size:.6rem;color:var(--dim);letter-spacing:.08em;}
 .ft-r{font-family:var(--f1);font-size:1.3rem;letter-spacing:.12em;color:var(--orange);}
 
@@ -184,6 +193,9 @@ footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-be
 ::-webkit-scrollbar-track{background:var(--bg);}
 ::-webkit-scrollbar-thumb{background:var(--orange);}
 
+@media(max-width:1000px){
+  .sk-groups{grid-template-columns:repeat(3,1fr);}
+}
 @media(max-width:900px){
   #hero{padding:0 5vw 6vh;}
   .h-name{font-size:clamp(4rem,15vw,8rem);}
@@ -191,8 +203,9 @@ footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-be
   .h-nums{justify-content:flex-start;}
   .w-header,.w-row{grid-template-columns:40px 1fr;gap:1rem;}
   .w-hcell:nth-child(3),.w-hcell:nth-child(4),.w-stack,.w-link{display:none;}
-  .val-sec,.about-sec,.ct-grid{grid-template-columns:1fr;}
+  .val-sec,.about-sec{grid-template-columns:1fr;}
   .sk-groups{grid-template-columns:1fr 1fr;}
+  .timeline-grid{grid-template-columns:1fr;}
   .n-links,.n-cta{display:none;}
   .ct-title{font-size:clamp(3rem,10vw,8rem);}
   .contact-icon-link{width:55px;height:55px;}
@@ -216,9 +229,10 @@ footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-be
   <a href="#hero" class="n-logo">ATHER.</a>
   <div class="n-right">
     <ul class="n-links">
-      <li><a href="#work">Work</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#work">WORK</a></li>
+      <li><a href="#skills">SKILLS</a></li>
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#contact">CONTACT</a></li>
     </ul>
     <a href="https://rain-predictor-app.streamlit.app" target="_blank" class="n-cta">LIVE APP</a>
   </div>
@@ -228,21 +242,21 @@ footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-be
 <section id="hero">
   <canvas id="cv"></canvas>
   <div class="hero-content">
-    <div class="h-tag" id="htag">OPEN FOR INTERNSHIP — BANGALORE / HYDERABAD</div>
+    <div class="h-tag" id="htag">OPEN FOR AI/ML JUNIOR ENGINEER ROLE — BANGALORE / HYDERABAD</div>
     <div class="h-name">
       <span class="h-n1" id="hn1">ATHER</span>
       <span class="h-n2" id="hn2">ASSADULLAH</span>
     </div>
     <div class="h-bottom" id="hbot">
       <div class="h-desc">
-        ML Engineer. Kashmir, India.<br/>
-        <b>Pure mathematics → deployed models.</b><br/>
+        AI/ML Engineer. Kashmir, India.<br/>
+        <b>Pure mathematics → deployed models → RAG systems.</b><br/>
         Validated vs AccuWeather — <b>0.09% diff.</b>
       </div>
       <div class="h-nums">
         <div class="h-num"><div class="h-nv" data-target="8">0</div><div class="h-nl">Notebooks</div></div>
-        <div class="h-num"><div class="h-nv" data-target="5">0</div><div class="h-nl">Live Repos</div></div>
-        <div class="h-num"><div class="h-nv" data-target="89">0</div><div class="h-nl">Commits</div></div>
+        <div class="h-num"><div class="h-nv" data-target="6">0</div><div class="h-nl">Live Repos</div></div>
+        <div class="h-num"><div class="h-nv" data-target="110">0</div><div class="h-nl">Commits</div></div>
       </div>
     </div>
   </div>
@@ -253,11 +267,11 @@ footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-be
 <div class="statement">
   <div class="st-text">
     <span class="dim">COMPANIES HIRE DEGREES.</span><br/>
-    <span class="w">I HIRE <span class="hl">RESULTS.</span></span><br/>
-    <span class="dim">PROOF IS ON GITHUB.</span>
+    <span class="w">I DELIVER <span class="hl">PRODUCTION ML.</span></span><br/>
+    <span class="dim">FROM SCRATCH TO RAG.</span>
   </div>
   <div class="st-side">
-    <div class="st-sub">No degree. No bootcamp. Every model built from pure mathematics first — sigmoid, gradients, cost functions — then Scikit-Learn. That is how I know what every line does.</div>
+    <div class="st-sub">No degree. No bootcamp. Every model built from pure mathematics first — sigmoid, gradients, cost functions — then Scikit-Learn. Now building RAG systems with embeddings and vector databases.</div>
   </div>
 </div>
 
@@ -301,6 +315,13 @@ footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-be
     <div class="w-stack">Sklearn · Logistic Regression · Joblib</div>
     <div class="w-link"><a href="https://github.com/ather-ops/Customer-churn-predictor" target="_blank" class="wl" onclick="event.stopPropagation()">GitHub</a><span class="project-hint">tap</span></div>
   </div>
+
+  <div class="w-row" data-project="4">
+    <div class="w-num">05</div>
+    <div class="w-name">CORTEX RAG</div>
+    <div class="w-stack">RAG · Embeddings · ChromaDB · LLM</div>
+    <div class="w-link"><a href="https://github.com/ather-ops/Cortex_RAG" target="_blank" class="wl" onclick="event.stopPropagation()">GitHub</a><span class="project-hint">tap</span></div>
+  </div>
 </div>
 
 <!-- MODAL -->
@@ -339,6 +360,16 @@ footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-be
   </div>
 </div>
 
+<!-- TIMELINE / CAREER PATH - Updated: Both Foundations and Classical ML in 2025 -->
+<div class="timeline-section">
+  <div class="sk-label">LEARNING PATH</div>
+  <div class="timeline-grid">
+    <div class="timeline-card"><div class="timeline-year">2025</div><div class="timeline-title">FOUNDATIONS & CLASSICAL ML</div><div class="timeline-desc">Python, NumPy, Pandas, Mathematics for ML. Built models from scratch. Scikit-Learn, Feature Engineering, EDA, Model Deployment with Streamlit.</div></div>
+    <div class="timeline-card"><div class="timeline-year">2026</div><div class="timeline-title">MODERN AI</div><div class="timeline-desc">RAG Systems, Embeddings, Vector Databases, LLM Integration, ChromaDB, Semantic Search.</div></div>
+    <div class="timeline-card"><div class="timeline-year">2026+</div><div class="timeline-title">CURRENT FOCUS</div><div class="timeline-desc">Deep Learning, Fine-tuning LLMs, Production RAG pipelines, MLOps.</div></div>
+  </div>
+</div>
+
 <!-- ABOUT -->
 <div class="about-sec" id="about">
   <div class="as-left">
@@ -347,29 +378,30 @@ footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-be
       <span class="w">18.</span><br/>
       <span class="w">KASHMIR.</span><br/>
       NO DEGREE.<br/>
-      <span class="w">ALL</span><br/>
-      RESULTS.
+      <span class="w">PRODUCTION</span><br/>
+      READY.
     </div>
   </div>
   <div class="as-right">
     <div class="as-body">
-      <p>I am a self-taught ML Engineer from Jammu and Kashmir. No bootcamp. No formal CS degree. Just Python, GitHub, and a goal that does not sleep.</p>
-      <p>I build every model <span class="hl">twice</span> — once from pure NumPy mathematics, then with Scikit-Learn. This forces me to understand what every library call does internally.</p>
+      <p>I am a self-taught AI/ML Engineer from Jammu and Kashmir. No bootcamp. No formal CS degree. Just Python, GitHub, and a goal that does not sleep.</p>
+      <p>I build every model <span class="hl">twice</span> — once from pure NumPy mathematics, then with Scikit-Learn. This forces me to understand what every library call does internally. Now I am building RAG systems with embeddings and vector databases.</p>
       <p>I have <b>partial hearing loss</b> — so I communicate best via <span class="hl">text, WhatsApp, or written messages</span>. I work independently, deliver clean code, and communicate clearly in writing. No face-to-face dependency.</p>
     </div>
     <div class="as-info">
       <div class="ai-row"><span class="ai-k">Location</span><span class="ai-v">Jammu and Kashmir, India</span></div>
-      <div class="ai-row"><span class="ai-k">Target</span><span class="ai-v">ML Internship — Bangalore / Hyderabad</span></div>
+      <div class="ai-row"><span class="ai-k">Target Role</span><span class="ai-v">AI/ML Junior Engineer</span></div>
+      <div class="ai-row"><span class="ai-k">Preferred Locations</span><span class="ai-v">Bangalore / Hyderabad</span></div>
       <div class="ai-row"><span class="ai-k">Education</span><span class="ai-v">Delhi University — CS (Ongoing)</span></div>
       <div class="ai-row"><span class="ai-k">Email</span><span class="ai-v"><a href="mailto:peerather07@gmail.com">peerather07@gmail.com</a></span></div>
-      <div class="ai-row"><span class="ai-k">Status</span><span class="ai-v live">Available Now</span></div>
+      <div class="ai-row"><span class="ai-k">Status</span><span class="ai-v live">Available for Junior Role</span></div>
     </div>
   </div>
 </div>
 
-<!-- SKILLS -->
-<div class="skills-sec">
-  <div class="sk-label">SKILLS</div>
+<!-- SKILLS - Expanded with 5 columns -->
+<div class="skills-sec" id="skills">
+  <div class="sk-label">TECHNICAL SKILLS</div>
   <div class="sk-groups">
     <div class="sk-group">
       <div class="sk-group-name">Languages</div>
@@ -389,6 +421,17 @@ footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-be
         <div class="sk-item">Logistic Regression</div>
         <div class="sk-item">Gradient Descent</div>
         <div class="sk-item">Feature Engineering</div>
+      </div>
+    </div>
+    <div class="sk-group">
+      <div class="sk-group-name">RAG & AI</div>
+      <div class="sk-items">
+        <div class="sk-item">RAG Systems</div>
+        <div class="sk-item">LLMs</div>
+        <div class="sk-item">Embeddings</div>
+        <div class="sk-item">Vector Search</div>
+        <div class="sk-item">ChromaDB</div>
+        <div class="sk-item">SentenceTransformers</div>
       </div>
     </div>
     <div class="sk-group">
@@ -412,31 +455,26 @@ footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-be
   </div>
 </div>
 
-<!-- CONTACT - ALL BUTTONS WORKING WITH UPDATED RESUME LINK -->
+<!-- CONTACT -->
 <section id="contact">
-  <div class="ct-label">CONTACT</div>
+  <div class="ct-label">GET IN TOUCH</div>
   <div class="ct-title">
-    LET US<br/>
+    LET'S<br/>
     <span class="stroke">BUILD.</span>
   </div>
   <div class="contact-icons">
-    <!-- Email - Complete template -->
-    <a href="mailto:peerather07@gmail.com?subject=ML%20Internship%20Opportunity%20-%20Ather%20Assadullah&body=Hi%20Ather,%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20was%20impressed%20by%20your%20work%20in%20Machine%20Learning.%20I%20would%20like%20to%20discuss%20an%20opportunity%20with%20you.%0D%0A%0D%0AJob%20Role%3A%20%5BML%20Intern%20%2F%20ML%20Engineer%5D%0D%0ACompany%3A%20%5BCompany%20Name%5D%0D%0ALocation%3A%20%5BBangalore%20%2F%20Hyderabad%20%2F%20Remote%5D%0D%0A%0D%0APlease%20let%20me%20know%20a%20convenient%20time%20to%20connect%20or%20share%20more%20details%20about%20the%20role.%0D%0A%0D%0ALooking%20forward%20to%20hearing%20from%20you.%0D%0A%0D%0ABest%20regards%2C%0D%0A%5BYour%20Name%5D%0D%0A%5BYour%20Company%5D" class="contact-icon-link">
+    <a href="mailto:peerather07@gmail.com?subject=AI/ML%20Junior%20Engineer%20Opportunity%20-%20Ather%20Assadullah&body=Hi%20Ather,%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20was%20impressed%20by%20your%20work%20in%20Machine%20Learning%20and%20RAG.%20I%20would%20like%20to%20discuss%20an%20opportunity%20with%20you.%0D%0A%0D%0ARole%3A%20%5BAI/ML%20Junior%20Engineer%5D%0D%0ACompany%3A%20%5BCompany%20Name%5D%0D%0ALocation%3A%20%5BBangalore%20%2F%20Hyderabad%20%2F%20Remote%5D%0D%0A%0D%0APlease%20let%20me%20know%20a%20convenient%20time%20to%20connect%20or%20share%20more%20details%20about%20the%20role.%0D%0A%0D%0ABest%20regards%2C%0D%0A%5BYour%20Name%5D" class="contact-icon-link">
       <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
     </a>
-    <!-- GitHub -->
     <a href="https://github.com/ather-ops" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
       <svg viewBox="0 0 24 24" fill="currentColor" class="fill-icon"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.21.68-.48 0-.24-.01-.87-.01-1.71-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C19.13 20.17 22 16.42 22 12c0-5.52-4.48-10-10-10z"/></svg>
     </a>
-    <!-- LinkedIn -->
     <a href="https://www.linkedin.com/in/ather-assadullah-164492301/" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
       <svg viewBox="0 0 24 24" fill="currentColor" class="fill-icon"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
     </a>
-    <!-- WhatsApp -->
-    <a href="https://wa.me/919103107882?text=Hi%20Ather,%0A%0AI%20came%20across%20your%20portfolio%20and%20was%20impressed%20by%20your%20ML%20work.%20I%20would%20like%20to%20discuss%20an%20opportunity%20with%20you.%0A%0AJob%20Role%3A%20%5BML%20Intern%20%2F%20ML%20Engineer%5D%0ACompany%3A%20%5BCompany%20Name%5D%0ALocation%3A%20%5BBangalore%20%2F%20Hyderabad%5D%0A%0APlease%20share%20your%20availability%20or%20any%20additional%20details%20about%20the%20role.%0A%0AThanks!%0A%5BYour%20Name%5D" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
+    <a href="https://wa.me/919103107882?text=Hi%20Ather,%0A%0AI%20came%20across%20your%20portfolio%20and%20was%20impressed%20by%20your%20ML%20and%20RAG%20work.%20I%20would%20like%20to%20discuss%20an%20AI/ML%20Junior%20Engineer%20opportunity%20with%20you.%0A%0ACompany%3A%20%5BCompany%20Name%5D%0ALocation%3A%20%5BBangalore%20%2F%20Hyderabad%5D%0A%0AThanks!%0A%5BYour%20Name%5D" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
       <svg viewBox="0 0 24 24" fill="currentColor" class="fill-icon"><path d="M12 2C6.48 2 2 6.48 2 12c0 2.09.67 4.02 1.8 5.6L2.14 21.2c-.16.4.2.78.6.62l3.65-1.45C7.56 20.63 9.7 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm1.08 14.25c-.45.45-1.08.68-1.73.68-.65 0-1.28-.23-1.73-.68L8 13.5l2.62-2.62c.9-.9 2.36-.9 3.26 0L15 12l-1.92 1.92zm-2.62-5.12L8.5 13.5l2.62 2.62c.45.45 1.08.68 1.73.68.65 0 1.28-.23 1.73-.68L15 12l-1.92-1.92c-.9-.9-2.36-.9-3.26 0z"/></svg>
     </a>
-    <!-- Resume - Updated Google Drive Link -->
     <a href="https://drive.google.com/file/d/1zgjoNwaAV5LfxLMLjk4ocCw6aYTz7uHA/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="contact-icon-link">
       <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
     </a>
@@ -445,14 +483,14 @@ footer{padding:2rem 4vw;display:flex;align-items:center;justify-content:space-be
 </section>
 
 <footer>
-  <div class="ft-l">Ather Assadullah — Self-taught ML Engineer from Kashmir</div>
+  <div class="ft-l">Ather Assadullah — Self-taught AI/ML Engineer from Kashmir</div>
   <div class="ft-r">ATHER.</div>
 </footer>
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-// THREE.JS PARTICLES (condensed for brevity, fully functional)
+// THREE.JS PARTICLES (condensed, fully functional)
 const canvas=document.getElementById('cv');
 const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
 renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
@@ -489,7 +527,7 @@ const cur=document.getElementById('c'),ring=document.getElementById('cr');
 let rx=0,ry=0,cx=0,cy=0;
 document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
 (function l(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(l);})();
-document.querySelectorAll('a,button,.w-row,.sk-item,.contact-icon-link').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('h'));el.addEventListener('mouseleave',()=>document.body.classList.remove('h'));});
+document.querySelectorAll('a,button,.w-row,.sk-item,.contact-icon-link,.timeline-card').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('h'));el.addEventListener('mouseleave',()=>document.body.classList.remove('h'));});
 
 // LOADER
 let count=0;
@@ -499,12 +537,13 @@ gsap.to(lline,{scaleX:1,duration:2.2,onComplete:()=>{gsap.to('#ld',{yPercent:-10
 function heroIn(){gsap.to('#htag',{opacity:1,duration:.6,delay:.1});gsap.fromTo('#hn1',{y:'110%'},{y:'0%',duration:.8,delay:.2});gsap.fromTo('#hn2',{y:'110%'},{y:'0%',duration:.8,delay:.35});gsap.to('#hbot',{opacity:1,y:0,duration:.7,delay:.6});gsap.to('#hscroll',{opacity:1,duration:.6,delay:1});document.querySelectorAll('[data-target]').forEach(el=>{gsap.to({v:0},{v:+el.dataset.target,duration:1.5,delay:.8,onUpdate(){el.textContent=Math.round(this.targets()[0].v);}});});}
 window.addEventListener('scroll',()=>{const nav=document.querySelector('nav');if(scrollY>80){nav.style.borderBottom='1px solid rgba(255,255,255,.06)';nav.style.backdropFilter='blur(20px)';nav.style.background='rgba(0,0,5,.8)';}else{nav.style.borderBottom='none';nav.style.backdropFilter='none';nav.style.background='transparent';}});
 
-// PROJECT DATA (unchanged)
+// PROJECT DATA
 const projects=[
 {title:"ML FROM SCRATCH",stack:"Python · NumPy · Pure Mathematics",desc:"Complete implementations of machine learning algorithms from first principles using only NumPy. No black boxes — every gradient, cost function, and update rule is written from scratch.",details:["Linear Regression with gradient descent from scratch","Logistic Regression with sigmoid function implementation","Cost functions (MSE, Cross-Entropy) manually coded","Batch gradient descent with learning rate tuning"],skills:"NumPy, Linear Algebra, Multivariable Calculus, Optimization",github:"https://github.com/ather-ops/Machine-Learning-from-scratch",live:null},
 {title:"ML WITH SCIKIT-LEARN",stack:"Scikit-Learn · Pandas · 8 Notebooks",desc:"8 complete machine learning notebooks covering classification, regression, feature engineering, and model evaluation. Production-ready pipelines with real-world datasets.",details:["EDA for pattern discovery","Outlier detection using IQR","One-hot encoding for categorical features","Train-test split, cross-validation, hyperparameter tuning"],skills:"Scikit-Learn, Pandas, Feature Engineering, Model Evaluation",github:"https://github.com/ather-ops/ML-with-Scikit-Learn",live:null},
 {title:"RAIN PREDICTOR APP",stack:"Streamlit · Joblib · Scikit-Learn",desc:"Deployed machine learning model that predicts rain probability based on weather features. Validated against AccuWeather with only 0.09% difference.",details:["Interactive Streamlit web app with real-time predictions","Model saved with Joblib for production deployment","Feature engineering: temperature, humidity, pressure","Live validation: 60.09% vs 60.00% AccuWeather"],skills:"Streamlit, Scikit-Learn, Joblib, Model Deployment",github:"https://github.com/ather-ops/Rain-Predictor-App",live:"https://rain-predictor-app.streamlit.app"},
-{title:"CUSTOMER CHURN PREDICTOR",stack:"Scikit-Learn · Logistic Regression · Joblib",desc:"Predicts which telecom customers are likely to churn. Business insight: retaining a customer costs 5x less than acquiring a new one. Production-ready with missing column handling.",details:["Logistic Regression on customer behavior data","Pattern: short tenure + month-to-month + electronic check = high risk","Handles missing columns in new customer data","Batch prediction for multiple customers at once"],skills:"Scikit-Learn, Logistic Regression, Joblib, Production ML",github:"https://github.com/ather-ops/Customer-churn-predictor",live:null}
+{title:"CUSTOMER CHURN PREDICTOR",stack:"Scikit-Learn · Logistic Regression · Joblib",desc:"Predicts which telecom customers are likely to churn. Business insight: retaining a customer costs 5x less than acquiring a new one. Production-ready with missing column handling.",details:["Logistic Regression on customer behavior data","Pattern: short tenure + month-to-month + electronic check = high risk","Handles missing columns in new customer data","Batch prediction for multiple customers at once"],skills:"Scikit-Learn, Logistic Regression, Joblib, Production ML",github:"https://github.com/ather-ops/Customer-churn-predictor",live:null},
+{title:"CORTEX RAG",stack:"RAG · Embeddings · ChromaDB · LLM",desc:"End-to-end Retrieval Augmented Generation system built from scratch. Combines embeddings, vector databases, and LLMs to create a system that can search a knowledge base and answer from real retrieved documents.",details:["Embeddings: From zero to semantic search with SentenceTransformer","Netflix Semantic Search Pipeline with full EDA dashboard","Custom cosine similarity implementation to understand the math","Vector database integration with ChromaDB","Complete RAG pipeline connecting retrieval + generation"],skills:"RAG, SentenceTransformers, Embeddings, Cosine Similarity, Semantic Search, ChromaDB, LLMs",github:"https://github.com/ather-ops/Cortex_RAG",live:null}
 ];
 let currentProject=0;
 function openModal(i){currentProject=i;const p=projects[currentProject];document.getElementById('modalContent').innerHTML=`<h2 class="modal-title">${p.title}</h2><span class="modal-stack">${p.stack}</span><p class="modal-desc">${p.desc}</p><div class="modal-section"><h4>key features</h4><ul>${p.details.map(d=>`<li>${d}</li>`).join('')}</ul></div><div class="modal-section"><h4>technologies</h4><p>${p.skills}</p></div><div class="modal-links"><a href="${p.github}" target="_blank" class="modal-link">github</a>${p.live?`<a href="${p.live}" target="_blank" class="modal-link live">live demo</a>`:''}</div>`;document.getElementById('projectModal').style.display='flex';document.body.style.overflow='hidden';}
@@ -518,7 +557,7 @@ document.querySelector('.modal-close')?.addEventListener('click',closeModal);
 document.getElementById('projectModal')?.addEventListener('click',(e)=>{if(e.target===document.getElementById('projectModal'))closeModal();});
 gsap.utils.toArray('.st-text,.vs-big,.as-big,.ct-title').forEach(el=>gsap.fromTo(el,{y:50,opacity:0},{y:0,opacity:1,duration:.9,scrollTrigger:{trigger:el,start:'top 85%'}}));
 gsap.utils.toArray('.w-row').forEach((r,i)=>gsap.fromTo(r,{x:-30,opacity:0},{x:0,opacity:1,duration:.6,delay:i*.08,scrollTrigger:{trigger:r,start:'top 88%'}}));
-gsap.utils.toArray('.vs-right,.as-right').forEach(el=>gsap.fromTo(el,{x:30,opacity:0},{x:0,opacity:1,duration:.8,scrollTrigger:{trigger:el,start:'top 85%'}}));
+gsap.utils.toArray('.timeline-card').forEach((c,i)=>gsap.fromTo(c,{y:30,opacity:0},{y:0,opacity:1,duration:.6,delay:i*.1,scrollTrigger:{trigger:c,start:'top 85%'}}));
 gsap.utils.toArray('.sk-item').forEach((s,i)=>gsap.fromTo(s,{opacity:0,x:-8},{opacity:1,x:0,duration:.4,delay:i*.02,scrollTrigger:{trigger:'.skills-sec',start:'top 80%'}}));
 </script>
 </body>
