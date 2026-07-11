@@ -317,6 +317,174 @@
   .gh-head span{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);}
   @media(max-width:900px){.gh-row{grid-template-columns:40px 1fr auto;}.gh-desc,.gh-lang{display:none;}}
 
+  /* ACHIEVEMENTS */
+  .achieve-section{ position:relative; }
+  .achieve-banner{
+    position:relative; overflow:hidden;
+    border:1px solid var(--line); border-radius:2px;
+    background: linear-gradient(135deg, #0d0d0d 0%, #111108 50%, #0d0d0d 100%);
+    margin-bottom:1px;
+  }
+  /* Subtle Amazon-orange accent top bar */
+  .achieve-banner::before{
+    content:''; position:absolute; top:0; left:0; right:0; height:2px;
+    background: linear-gradient(90deg, transparent 0%, #FF9900 30%, #C5FF3D 70%, transparent 100%);
+  }
+  /* Background glow */
+  .achieve-banner::after{
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background: radial-gradient(ellipse at 80% 50%, rgba(255,153,0,.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 50%, rgba(197,255,61,.04) 0%, transparent 50%);
+  }
+  .achieve-inner{
+    position:relative; z-index:1;
+    display:grid; grid-template-columns:1fr auto;
+    gap:40px; align-items:center;
+    padding:56px 56px;
+  }
+  @media(max-width:900px){
+    .achieve-inner{ grid-template-columns:1fr; gap:32px; padding:40px 28px; }
+  }
+  .achieve-eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--mono); font-size:10px; text-transform:uppercase;
+    letter-spacing:.2em; color:#FF9900;
+    margin-bottom:24px;
+  }
+  .achieve-eyebrow .a-dot{
+    width:6px; height:6px; border-radius:50%; background:#FF9900;
+    box-shadow: 0 0 8px #FF9900; animation:pulse 2s infinite;
+  }
+  .achieve-title{
+    font-size:clamp(28px, 4vw, 52px);
+    font-weight:300; letter-spacing:-0.03em; line-height:1.05;
+    margin-bottom:20px;
+  }
+  .achieve-title em{ font-family:var(--serif); font-style:italic; color:#FF9900; }
+  .achieve-sub{
+    font-size:14px; color:var(--muted); line-height:1.7; max-width:560px;
+  }
+  .achieve-sub strong{ color:var(--ink); font-weight:500; }
+  .achieve-stats{
+    display:flex; gap:32px; margin-top:36px; flex-wrap:wrap;
+  }
+  .astat{
+    display:flex; flex-direction:column; gap:4px;
+    padding:0 32px 0 0; border-right:1px solid var(--line-2);
+  }
+  .astat:last-child{ border-right:none; padding-right:0; }
+  .astat-num{
+    font-family:var(--serif); font-style:italic;
+    font-size:36px; line-height:1; color:var(--ink);
+  }
+  .astat-num span{ color:#FF9900; }
+  .astat-label{
+    font-family:var(--mono); font-size:9px; text-transform:uppercase;
+    letter-spacing:.2em; color:var(--muted);
+  }
+  /* Selection badge */
+  .achieve-badge-wrap{ display:flex; flex-direction:column; gap:16px; align-items:flex-end; }
+  @media(max-width:900px){ .achieve-badge-wrap{ align-items:flex-start; } }
+  .achieve-badge{
+    position:relative; width:200px; height:200px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; flex-shrink:0;
+  }
+  .badge-ring-outer{
+    position:absolute; inset:0; border-radius:50%;
+    border:1px solid rgba(255,153,0,.25);
+    animation:badgeSpin 18s linear infinite;
+  }
+  .badge-ring-inner{
+    position:absolute; inset:16px; border-radius:50%;
+    border:1px solid rgba(255,153,0,.12);
+    animation:badgeSpin 12s linear infinite reverse;
+  }
+  .badge-ring-outer::after{
+    content:''; position:absolute; top:-4px; left:50%;
+    width:8px; height:8px; border-radius:50%;
+    background:#FF9900; transform:translateX(-50%);
+    box-shadow:0 0 12px #FF9900;
+  }
+  @keyframes badgeSpin{ from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+  .badge-core{
+    position:relative; z-index:1; display:flex; flex-direction:column;
+    align-items:center; gap:6px; padding:8px;
+  }
+  .badge-icon{
+    width:44px; height:44px; margin-bottom:4px;
+  }
+  .badge-label{
+    font-family:var(--mono); font-size:9px; text-transform:uppercase;
+    letter-spacing:.18em; color:#FF9900; font-weight:500;
+  }
+  .badge-text{
+    font-size:11px; color:rgba(255,255,255,.55); line-height:1.4; max-width:120px;
+  }
+  .badge-year{
+    font-family:var(--serif); font-style:italic;
+    font-size:22px; color:var(--ink); line-height:1;
+  }
+  /* Email mockup preview */
+  .achieve-email{
+    position:relative; border:1px solid var(--line);
+    background:#0f0f0f; border-radius:2px; overflow:hidden;
+    margin-top:1px;
+  }
+  .email-bar{
+    display:flex; align-items:center; gap:8px;
+    padding:10px 20px; border-bottom:1px solid var(--line);
+    background:#0c0c0c;
+  }
+  .email-bar .e-dot{ width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.06); }
+  .email-bar .e-title{ font-family:var(--mono); font-size:10px; color:var(--muted); margin-left:auto; letter-spacing:.08em; }
+  .email-body{ padding:36px 40px; }
+  @media(max-width:768px){ .email-body{ padding:24px 20px; } }
+  .email-from{
+    display:flex; align-items:center; gap:12px; margin-bottom:28px;
+  }
+  .email-avatar{
+    width:36px; height:36px; border-radius:50%; flex-shrink:0;
+    background: linear-gradient(135deg, #FF9900, #e67e00);
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px; font-weight:700; color:#000;
+  }
+  .email-from-info .ef-name{ font-size:13px; font-weight:500; color:var(--ink); }
+  .email-from-info .ef-addr{ font-family:var(--mono); font-size:10px; color:var(--muted); margin-top:1px; }
+  .email-subject{
+    font-size:clamp(14px,2.5vw,20px); font-weight:500;
+    color:var(--ink); margin-bottom:24px; letter-spacing:-0.01em; line-height:1.35;
+  }
+  .email-subject .es-hl{
+    background:rgba(255,153,0,.12); color:#FF9900;
+    padding:1px 6px; border-radius:2px; font-style:italic; font-family:var(--serif);
+  }
+  .email-divider{ height:1px; background:var(--line); margin:20px 0; }
+  .email-para{ font-size:13px; color:var(--muted); line-height:1.75; margin-bottom:14px; }
+  .email-para strong{ color:var(--ink); font-weight:500; }
+  .email-highlight{
+    border-left:2px solid #FF9900; padding:16px 20px;
+    background:rgba(255,153,0,.05); border-radius:0 2px 2px 0;
+    margin:20px 0;
+  }
+  .email-highlight p{ font-size:13px; color:var(--dim); line-height:1.65; }
+  .email-highlight strong{ color:#FF9900; }
+  .email-tag-row{
+    display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;
+  }
+  .email-tag{
+    font-family:var(--mono); font-size:10px; text-transform:uppercase;
+    letter-spacing:.15em; padding:6px 12px;
+    border:1px solid var(--line-2); border-radius:2px; color:var(--dim);
+  }
+  .email-tag.orange{ border-color:rgba(255,153,0,.3); color:#FF9900; background:rgba(255,153,0,.06); }
+  .email-tag.green{ border-color:rgba(197,255,61,.25); color:var(--accent); background:rgba(197,255,61,.04); }
+  /* Timeline connector */
+  .achieve-tl-line{
+    width:1px; height:48px; background:linear-gradient(to bottom, var(--line), transparent);
+    margin:0 auto;
+  }
+
   /* CERTIFICATES */
   .cert-wrap{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
   .cert-card{
@@ -405,6 +573,7 @@
       <a href="#about" data-hover>Journey</a>
       <a href="#work" data-hover>Work</a>
       <a href="#github" data-hover>GitHub</a>
+      <a href="#achievements" data-hover>Achievements</a>
       <a href="#certs" data-hover>Certs</a>
       <a href="#contact" data-hover>Contact</a>
     </div>
@@ -905,11 +1074,129 @@
   </div>
 </section>
 
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="container">
+    <div class="section-title reveal">
+      <span><span class="num">05</span> — Achievements</span>
+      <span>Competitive · 2026</span>
+    </div>
+
+    <!-- Main achievement banner -->
+    <div class="achieve-banner reveal">
+      <div class="achieve-inner">
+        <!-- Left: content -->
+        <div>
+          <div class="achieve-eyebrow">
+            <span class="a-dot"></span>
+            Amazon ML Summer School — 2026
+          </div>
+          <h2 class="achieve-title">
+            Shortlisted among<br>
+            <em>~30,000</em> candidates.
+          </h2>
+          <p class="achieve-sub">
+            Selected after rigorous SOP evaluation from a pool of
+            <strong>134,000+ applicants</strong> across India for the
+            <strong>Amazon ML Summer School 2026</strong> — a highly competitive machine learning
+            programme run by Amazon scientists. Qualified for the Selection Assessment stage.
+          </p>
+          <div class="achieve-stats">
+            <div class="astat">
+              <div class="astat-num">134<span>K+</span></div>
+              <div class="astat-label">Total Applicants</div>
+            </div>
+            <div class="astat">
+              <div class="astat-num">~30<span>K</span></div>
+              <div class="astat-label">Shortlisted</div>
+            </div>
+            <div class="astat">
+              <div class="astat-num">22<span>%</span></div>
+              <div class="astat-label">Selection Rate</div>
+            </div>
+          </div>
+        </div>
+        <!-- Right: rotating badge -->
+        <div class="achieve-badge-wrap">
+          <div class="achieve-badge">
+            <div class="badge-ring-outer"></div>
+            <div class="badge-ring-inner"></div>
+            <div class="badge-core">
+              <!-- Amazon-style A logo SVG -->
+              <svg class="badge-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="22" cy="22" r="21" stroke="rgba(255,153,0,.25)" stroke-width="1"/>
+                <circle cx="22" cy="22" r="14" fill="rgba(255,153,0,.08)"/>
+                <!-- Amazon A shape -->
+                <text x="22" y="28" font-size="20" font-weight="700" fill="#FF9900" text-anchor="middle" font-family="Arial, sans-serif">A</text>
+                <!-- Smile arc -->
+                <path d="M 14 31 Q 22 36 30 31" stroke="#FF9900" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <circle cx="30" cy="31" r="1.5" fill="#FF9900"/>
+              </svg>
+              <div class="badge-label">Shortlisted</div>
+              <div class="badge-year">2026</div>
+              <div class="badge-text">ML Summer School</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email mockup preview -->
+    <div class="achieve-tl-line"></div>
+    <div class="achieve-email reveal">
+      <div class="email-bar">
+        <span class="e-dot"></span><span class="e-dot"></span><span class="e-dot"></span>
+        <span class="e-title">Inbox — Amazon ML Summer School 2026</span>
+      </div>
+      <div class="email-body">
+        <div class="email-from">
+          <div class="email-avatar">A</div>
+          <div class="email-from-info">
+            <div class="ef-name">Amazon ML Summer School</div>
+            <div class="ef-addr">mlss-noreply@amazon.com</div>
+          </div>
+          <div style="margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--muted);">2026</div>
+        </div>
+        <div class="email-subject">
+          Congratulations! You have been <span class="es-hl">shortlisted</span> for the Selection Assessment — Amazon ML Summer School 2026
+        </div>
+        <div class="email-divider"></div>
+        <p class="email-para">Dear <strong>Ather Assadullah</strong>,</p>
+        <p class="email-para">
+          We are pleased to inform you that you have been shortlisted for the
+          <strong>Selection Assessment</strong> for Amazon ML Summer School 2026,
+          after a thorough evaluation of your Statement of Purpose.
+        </p>
+        <div class="email-highlight">
+          <p>
+            You were selected from approximately <strong>~30,000 shortlisted candidates</strong> out of
+            over <strong>134,000 applicants</strong> who applied for this program.
+            This is a significant achievement and reflects the quality of your application.
+          </p>
+        </div>
+        <p class="email-para">
+          The program is designed and delivered by Amazon scientists and covers topics including
+          Supervised Learning, Deep Neural Networks, Dimensionality Reduction, Probabilistic Graphical Models,
+          Sequential Learning, Causal Inference, and Reinforcement Learning.
+        </p>
+        <div class="email-tag-row">
+          <span class="email-tag orange">Shortlisted ✓</span>
+          <span class="email-tag green">SOP Evaluated</span>
+          <span class="email-tag">134,000+ Applicants</span>
+          <span class="email-tag">Amazon Scientists</span>
+          <span class="email-tag">ML Summer School</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- CERTIFICATES -->
 <section id="certs">
   <div class="container">
     <div class="section-title reveal">
-      <span><span class="num">05</span> — Credentials</span>
+      <span><span class="num">06</span> — Credentials</span>
       <span>Verified · 2024</span>
     </div>
     <div class="cert-wrap">
@@ -957,7 +1244,7 @@
 <section id="contact">
   <div class="container">
     <div class="section-title reveal">
-      <span><span class="num">06</span> — Contact</span>
+      <span><span class="num">07</span> — Contact</span>
       <span>Response within 24h</span>
     </div>
     <div class="contact-layout">
@@ -993,6 +1280,7 @@
   <div class="f-right">
     <a href="#work" data-hover>Work</a>
     <a href="#github" data-hover>GitHub</a>
+    <a href="#achievements" data-hover>Achievements</a>
     <a href="#certs" data-hover>Certs</a>
     <a href="#contact" data-hover>Contact</a>
   </div>
