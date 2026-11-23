@@ -15,31 +15,31 @@ export default function Recognition() {
   const steps = [
     {
       id: "01",
-      title: "Design in seconds, on your stack.",
-      desc: "Architect the pipeline flow. We combine LangGraph orchestrators, agentic reasoning, and semantic indices suited for any custom database.",
-      icon: <Layers className="text-[#5c85d6] dark:text-lime" size={24} />,
+      title: "Retrieve before you generate.",
+      desc: "Chunk on topic boundaries, embed at 384 dimensions, index in FAISS. The model only answers from what came back in the top-k.",
+      icon: <Layers className="text-[#5c85d6]" size={24} />,
     },
     {
       id: "02",
-      title: "Math it out from numpy scratch.",
-      desc: "No library shortcuts. We derive gradients, cost updates, and metric validations by hand to guarantee absolute control over matrices.",
-      icon: <Terminal className="text-[#5c85d6] dark:text-lime" size={24} />,
+      title: "Bound the agent.",
+      desc: "An allowlisted tool set, a capped number of rounds, retries and a hard timeout. Autonomy only inside a perimeter you can read in one screen.",
+      icon: <Terminal className="text-[#5c85d6]" size={24} />,
     },
     {
       id: "03",
-      title: "Deploy & scale - Streamlit/FastAPI.",
-      desc: "Expose clean APIs. We serve dense representations to live Streamlit Cloud frontends or lightweight async FastAPI routers on AWS.",
-      icon: <Server className="text-[#5c85d6] dark:text-lime" size={24} />,
+      title: "Deploy it, then say so.",
+      desc: "Streamlit Cloud, FastAPI, HuggingFace Spaces or Vercel. If it is not reachable by a link, it does not count as shipped.",
+      icon: <Server className="text-[#5c85d6]" size={24} />,
     },
   ];
 
   return (
-    <section id="recognition" ref={ref} className="bg-white dark:bg-[#07080a] px-5 py-24 sm:px-10 lg:py-32">
+    <section id="recognition" ref={ref} className="bg-white px-5 py-24 sm:px-10 lg:py-32">
       <div className="mx-auto max-w-6xl">
         <motion.p
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
-          className="text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-[#7ea6f2] dark:text-lime"
+          className="text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-[#7ea6f2]"
         >
           · THE PROCESS
         </motion.p>
@@ -48,10 +48,10 @@ export default function Recognition() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           className="mx-auto mt-4 max-w-3xl text-center text-3xl font-medium tracking-tight text-ink sm:text-5xl lg:text-6xl"
         >
-          Design it. Math it. Deployed.
+          Retrieve it. Bound it. Deploy it.
         </motion.h2>
         <p className="mx-auto mt-4 max-w-lg text-center text-sm leading-relaxed text-ink/60">
-          Everything happens through a clean pipeline loop — design, derivation, and deployment.
+          The same loop behind every project here — retrieval first, guardrails second, a live URL last.
         </p>
 
         {/* Steps Precisely Modeled After Rise Plasma Process Grid */}
@@ -67,7 +67,7 @@ export default function Recognition() {
               className="clay-card p-8 flex flex-col justify-between min-h-[300px]"
             >
               <div>
-                <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#f0f3f6] dark:bg-black/30 shadow-sm border border-line">
+                <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#f0f3f6] shadow-sm border border-line">
                   {st.icon}
                 </div>
                 <h3 className="mt-8 text-xl font-bold tracking-tight text-ink leading-tight">{st.title}</h3>
@@ -83,10 +83,10 @@ export default function Recognition() {
 
         {/* Credentials / Academic Journey */}
         <div className="mt-24">
-          <p className="text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-[#7ea6f2] dark:text-lime">
-            · ACADEMIC & CERTIFICATIONS
+          <p className="text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-[#7ea6f2]">
+            · COMPETITIONS, PROGRAMS & EDUCATION
           </p>
-          <h3 className="mt-3 text-center text-2xl font-semibold text-ink">Credentials & Journey Index</h3>
+          <h3 className="mt-3 text-center text-2xl font-semibold text-ink">Receipts & timeline</h3>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {certs.map((c, i) => (
@@ -113,7 +113,7 @@ export default function Recognition() {
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {journey.map((j, i) => (
               <motion.div
-                key={j.year}
+                key={`${j.year}-${j.tag}`}
                 initial={{ opacity: 0, y: 16 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.4 + i * 0.08, type: "spring" }}

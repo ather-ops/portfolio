@@ -1,22 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 import { profile } from "../data";
 
 const links = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#work", label: "Work" },
-  { href: "#expertise", label: "Expertise" },
-  { href: "#insights", label: "Insights" },
+  { href: "#live", label: "Live apps" },
+  { href: "#startup", label: "Startup" },
+  { href: "#expertise", label: "Skills" },
 ];
 
-interface NavbarProps {
-  isDark: boolean;
-  toggleDark: () => void;
-}
+export const openUri = () => window.dispatchEvent(new CustomEvent("uri:open"));
 
-export default function Navbar({ isDark, toggleDark }: NavbarProps) {
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("#home");
@@ -58,7 +56,6 @@ export default function Navbar({ isDark, toggleDark }: NavbarProps) {
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
             className="relative h-9 w-9 shrink-0"
           >
-            {/* Lime ring pulse */}
             <span className="absolute -inset-0.5 animate-ping rounded-full border border-lime opacity-40" />
             <span className="absolute -inset-0.5 rounded-full border-2 border-lime/60" />
             <img
@@ -78,7 +75,7 @@ export default function Navbar({ isDark, toggleDark }: NavbarProps) {
         </a>
 
         {/* Desktop nav */}
-        <ul className="hidden items-center gap-7 md:flex">
+        <ul className="hidden items-center gap-6 lg:flex">
           {links.map((l, i) => (
             <motion.li
               key={l.href}
@@ -88,7 +85,7 @@ export default function Navbar({ isDark, toggleDark }: NavbarProps) {
             >
               <a
                 href={l.href}
-                className={`relative text-[12px] font-semibold uppercase tracking-[0.16em] transition ${
+                className={`relative text-[11px] font-semibold uppercase tracking-[0.15em] transition ${
                   scrolled ? "text-ink/70 hover:text-ink" : "text-white/85 hover:text-white"
                 }`}
               >
@@ -105,31 +102,21 @@ export default function Navbar({ isDark, toggleDark }: NavbarProps) {
           ))}
         </ul>
 
-        {/* Theme Toggle + CTA + Hamburger */}
-        <div className="flex items-center gap-3">
-          {/* Light/Dark Toggle */}
+        {/* Ask URI + CTA + Hamburger */}
+        <div className="flex items-center gap-2.5">
           <motion.button
-            onClick={toggleDark}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className={`grid h-9 w-9 place-items-center rounded-full transition ${
+            type="button"
+            onClick={openUri}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+            className={`hidden items-center gap-1.5 rounded-full px-3.5 py-2 text-[11px] font-bold uppercase tracking-[0.14em] transition sm:inline-flex ${
               scrolled
-                ? "bg-ink/5 text-ink hover:bg-ink/10"
-                : "bg-white/10 text-white hover:bg-white/20 border border-white/10"
+                ? "border border-[#7ea6f2]/40 bg-white/70 text-[#3f6fc4] hover:border-[#7ea6f2]/70 hover:text-ink"
+                : "border border-white/30 bg-white/15 text-white hover:bg-white/25"
             }`}
-            title="Toggle theme"
           >
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.span
-                key={isDark ? "dark" : "light"}
-                initial={{ opacity: 0, rotate: -45 }}
-                animate={{ opacity: 1, rotate: 0 }}
-                exit={{ opacity: 0, rotate: 45 }}
-                transition={{ duration: 0.2 }}
-              >
-                {isDark ? <Sun size={16} /> : <Moon size={16} />}
-              </motion.span>
-            </AnimatePresence>
+            <Sparkles size={12} />
+            Ask URI
           </motion.button>
 
           <motion.a
@@ -146,7 +133,7 @@ export default function Navbar({ isDark, toggleDark }: NavbarProps) {
             type="button"
             aria-label="Menu"
             onClick={() => setOpen((v) => !v)}
-            className={`grid h-10 w-10 place-items-center rounded-full md:hidden ${
+            className={`grid h-10 w-10 place-items-center rounded-full lg:hidden ${
               scrolled ? "bg-ink/5 text-ink" : "bg-white/20 text-white"
             }`}
           >
@@ -173,7 +160,7 @@ export default function Navbar({ isDark, toggleDark }: NavbarProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -12, scale: 0.97 }}
             transition={{ type: "spring", stiffness: 380, damping: 28 }}
-            className="glass-white mx-auto mt-2 max-w-6xl overflow-hidden rounded-3xl p-4 md:hidden"
+            className="glass-white mx-auto mt-2 max-w-6xl overflow-hidden rounded-3xl p-4 lg:hidden"
           >
             <div className="flex flex-col gap-1">
               {links.map((l, i) => (
@@ -190,19 +177,17 @@ export default function Navbar({ isDark, toggleDark }: NavbarProps) {
                 </motion.a>
               ))}
 
-              <div className="border-t border-line my-2 pt-2 flex items-center justify-between px-4">
-                <span className="text-xs text-ink/50 font-medium">Theme selection</span>
-                <button
-                  onClick={() => {
-                    toggleDark();
-                    setOpen(false);
-                  }}
-                  className="flex items-center gap-2 rounded-full bg-ink/5 px-3 py-1.5 text-xs font-semibold text-ink"
-                >
-                  {isDark ? <Sun size={12} /> : <Moon size={12} />}
-                  {isDark ? "Light theme" : "Dark theme"}
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  openUri();
+                  setOpen(false);
+                }}
+                className="mt-1 flex items-center justify-center gap-2 rounded-full border border-[#7ea6f2]/40 bg-[#eef4ff] px-4 py-3 text-sm font-semibold text-[#3f6fc4]"
+              >
+                <Sparkles size={14} />
+                Ask URI about the résumé
+              </button>
 
               <a
                 href="#contact"
