@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Marquee from "./components/Marquee";
@@ -7,55 +6,36 @@ import Services from "./components/Services";
 import Expertise from "./components/Expertise";
 import RecruiterPortal from "./components/RecruiterPortal";
 import Projects from "./components/Projects";
+import LiveApps from "./components/LiveApps";
+import Startup from "./components/Startup";
 import Collaborate from "./components/Collaborate";
 import Recognition from "./components/Recognition";
 import Insights from "./components/Insights";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
+import Uri from "./components/Uri";
 
 export default function App() {
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("theme");
-      if (saved) return saved === "dark";
-      return window.matchMedia("(prefers-color-scheme: dark)").matches;
-    }
-    return false;
-  });
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (isDark) {
-      root.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      root.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [isDark]);
-
-  const toggleDark = () => setIsDark((v) => !v);
-
   return (
-    <div className="min-h-screen bg-[#f7f7f4] text-ink dark:bg-[#0a0a0c] dark:text-[#f8fafc] transition-colors duration-300">
-      <Navbar isDark={isDark} toggleDark={toggleDark} />
+    <div className="min-h-screen text-ink">
+      <Navbar />
       <main>
         <Hero />
         <Marquee />
         <About />
         <Services />
         <Expertise />
-        
-        {/* Recruiter & HR Immediate Interactive Actions */}
         <RecruiterPortal />
-
         <Projects />
+        <LiveApps />
+        <Startup />
         <Collaborate />
         <Recognition />
         <Insights />
         <CTA />
       </main>
       <Footer />
+      <Uri />
     </div>
   );
 }

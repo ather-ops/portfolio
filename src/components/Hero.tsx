@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
-import { Sparkles, Server, Terminal, Award, Play } from "lucide-react";
+import { Sparkles, Terminal, Play, ArrowUpRight } from "lucide-react";
 import { profile } from "../data";
 
 interface GravityBlock {
@@ -11,18 +11,19 @@ interface GravityBlock {
   x: number;
 }
 
+const askUri = (question?: string) => {
+  if (question) window.dispatchEvent(new CustomEvent("uri:ask", { detail: question }));
+  else window.dispatchEvent(new CustomEvent("uri:open"));
+};
+
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
-  const [waitlistStatus, setWaitlistStatus] = useState("Join Waitlist");
-  const [successPopup, setSuccessPopup] = useState(false);
-  
-  // Interactive Prompt states
-  const [promptText, setPromptText] = useState("Describe what you want to build...");
-  const [category, setPromptCategory] = useState("Web Design");
+  const [promptText, setPromptText] = useState("");
   const [blocks, setBlocks] = useState<GravityBlock[]>([
-    { id: "1", name: "Embedding Space", color: "bg-lime text-ink", x: 12 },
-    { id: "2", name: "ChromaDB Matrix", color: "bg-sky-400 text-white", x: 38 },
-    { id: "3", name: "Euclidean Nodes", color: "bg-purple-500 text-white", x: 62 },
+    { id: "1", name: "PayPal Copilot", color: "bg-lime text-ink", x: 8 },
+    { id: "2", name: "Amazn AI", color: "bg-sky-400 text-white", x: 32 },
+    { id: "3", name: "Xpect AI", color: "bg-purple-500 text-white", x: 56 },
+    { id: "4", name: "PulseMesh", color: "bg-indigo-950 text-white", x: 78 },
   ]);
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -34,32 +35,29 @@ export default function Hero() {
   const textYSpring = useSpring(textY, { stiffness: 70, damping: 25 });
   const cardsYSpring = useSpring(cardsY, { stiffness: 80, damping: 26 });
 
-  const handleJoin = () => {
-    if (waitlistStatus === "Join Waitlist") {
-      setWaitlistStatus("Offer Extended! ✓");
-      setSuccessPopup(true);
-      setTimeout(() => setSuccessPopup(false), 5000);
-    }
-  };
-
   const spawnGravityBlock = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!promptText.trim()) return;
+    const question = promptText.trim();
+    if (!question) return;
 
-    const randomX = Math.floor(Math.random() * 70) + 10;
     const newBlock: GravityBlock = {
       id: Date.now().toString(),
-      name: promptText.length > 20 ? promptText.slice(0, 18) + "..." : promptText,
-      color: category === "Web Design" ? "bg-lime text-ink" : "bg-purple-500 text-white",
-      x: randomX,
+      name: question.length > 20 ? question.slice(0, 18) + "..." : question,
+      color: "bg-indigo-950 text-white",
+      x: Math.floor(Math.random() * 62) + 12,
     };
 
-    setBlocks((prev) => [...prev, newBlock]);
+    setBlocks((prev) => [...prev.slice(-5), newBlock]);
     setPromptText("");
+    askUri(question);
   };
 
   return (
-    <section ref={ref} id="home" className="relative isolate overflow-hidden sky-bg min-h-screen pt-32 pb-24 px-5 sm:px-10 lg:pt-40 lg:pb-32">
+    <section
+      ref={ref}
+      id="home"
+      className="relative isolate overflow-hidden sky-bg min-h-screen pt-32 pb-24 px-5 sm:px-10 lg:pt-40 lg:pb-32"
+    >
       {/* Dynamic Grid Overlay */}
       <div className="hero-grid absolute inset-0 opacity-40 pointer-events-none" />
       <div className="hero-grid-fine absolute inset-0 opacity-20 pointer-events-none" />
@@ -98,10 +96,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md shadow-sm border border-white/35"
+          className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/20 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md shadow-sm border border-white/35 sm:px-4 sm:text-[11px] sm:tracking-[0.2em]"
         >
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-lime" />
-          SEE YOU FALL 2026
+          <span className="sm:hidden">FOUNDER · ATHERVA · 2026</span>
+          <span className="hidden sm:inline">FOUNDER · ATHERVA AUTOMATIONS · EST. 2026</span>
         </motion.p>
 
         <motion.h1
@@ -111,9 +110,9 @@ export default function Hero() {
           transition={{ type: "spring", stiffness: 200, damping: 22, delay: 0.1 }}
           className="mx-auto max-w-4xl text-[44px] font-medium leading-[1.02] tracking-tight text-white drop-shadow-[0_4px_30px_rgba(30,60,110,0.18)] sm:text-6xl lg:text-[88px]"
         >
-          Build intelligence, get
+          Retrieval, agents, and
           <br />
-          <span className="font-serif italic font-normal text-white">deployed, and do good.</span>
+          <span className="font-serif italic font-normal text-white">the math underneath.</span>
         </motion.h1>
 
         <motion.p
@@ -122,10 +121,12 @@ export default function Hero() {
           transition={{ type: "spring", stiffness: 220, damping: 24, delay: 0.2 }}
           className="mx-auto mt-6 max-w-xl text-[15px] leading-relaxed text-white/90 sm:text-base"
         >
-          Turn your data corpora into production-ready RAG pipelines, autonomous agents, and mathematically derived ML algorithms. Pure numpy, zero shortcuts.
+          Ather Assadullah Peer — ML/AI engineer and founder of Atherva Automations. I build live
+          RAG systems, multi-tool agents, automations businesses actually use, and the ML underneath
+          them from first principles.
         </motion.p>
 
-        {/* Dynamic waitlist call action + LeetCode Direct Button */}
+        {/* Calls to action */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -135,19 +136,22 @@ export default function Hero() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.96 }}
-            onClick={handleJoin}
-            className="rounded-full bg-white px-7 py-3 text-[13px] font-bold uppercase tracking-widest text-ink shadow-[0_12px_36px_rgba(20,50,90,0.15)] hover:bg-[#fafafc] transition"
+            onClick={() => askUri()}
+            className="flex items-center gap-2 rounded-full bg-white px-7 py-3 text-[13px] font-bold uppercase tracking-widest text-ink shadow-[0_12px_36px_rgba(20,50,90,0.15)] hover:bg-[#fafafc] transition"
           >
-            {waitlistStatus}
+            <Sparkles size={14} className="text-[#5c85d6]" />
+            Ask URI
           </motion.button>
-          
+
           <a
-            href={profile.leetcode}
+            href={profile.companyUrl}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-lime px-6 py-3 text-[13px] font-bold uppercase tracking-widest text-ink shadow-[0_12px_36px_rgba(20,50,90,0.15)] flex items-center gap-2 hover:bg-lime-deep transition animate-bounce"
+            className="rounded-full bg-lime px-6 py-3 text-[13px] font-bold uppercase tracking-widest text-ink shadow-[0_12px_36px_rgba(20,50,90,0.15)] flex items-center gap-2 hover:bg-lime-deep transition"
           >
-            <Award size={14} /> Verify LeetCode Profile
+            <Sparkles size={14} />
+            Atherva Automations
+            <ArrowUpRight size={14} />
           </a>
 
           <a
@@ -158,12 +162,12 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        {/* ── Floating Claymorphic Assets (Old what we had) ── */}
+        {/* ── Floating claymorphic proof cards ── */}
         <motion.div
           style={{ y: cardsYSpring }}
-          className="relative mt-16 w-full max-w-5xl mx-auto lg:mt-24 min-h-[420px]"
+          className="relative mt-16 hidden w-full max-w-5xl mx-auto lg:mt-24 lg:block min-h-[420px]"
         >
-          {/* Card 1: Ather's Dev Cash Card */}
+          {/* Card 1: contributions */}
           <GravityCard
             className="absolute left-[3%] top-12 w-[220px] rotate-[-12deg] bg-gradient-to-tr from-[#7ea6f2] to-[#b3cdef] border-white/40 shadow-2xl"
             delay={0.4}
@@ -173,39 +177,46 @@ export default function Hero() {
               <span className="text-[10px] font-bold uppercase tracking-wider opacity-60">Ather Dev Card</span>
               <Terminal size={14} className="opacity-80" />
             </div>
-            <p className="mt-8 text-2xl font-bold font-mono tracking-wider text-white">99.7%</p>
-            <p className="text-[10px] uppercase font-bold tracking-widest text-white/70 mt-1">Accuracy Score</p>
+            <p className="mt-8 text-2xl font-bold font-mono tracking-wider text-white">917</p>
+            <p className="text-[10px] uppercase font-bold tracking-widest text-white/70 mt-1">
+              GitHub contributions
+            </p>
             <div className="mt-8 flex justify-between items-end">
-              <span className="text-[10px] font-medium text-white/50">LLM REASONING</span>
+              <span className="text-[10px] font-medium text-white/50">14 REPOSITORIES</span>
               <span className="h-4 w-7 bg-white/20 rounded-md border border-white/10" />
             </div>
           </GravityCard>
 
-          {/* Card 2: Clustered Datacenter / Ather's ML Lab */}
+          {/* Card 2: the lab */}
           <GravityCard
             className="absolute left-[24%] top-0 w-[210px] rotate-[-4deg] bg-white/95"
             delay={0.5}
             floatDelay={1.2}
           >
-            <div className="flex items-center gap-1.5 text-lime-deep">
-              <Server size={14} />
-              <span className="text-[9px] font-bold uppercase tracking-wider text-ink/40">Lab Module</span>
+            <div className="flex items-center gap-1.5 text-[#5c85d6]">
+              <Sparkles size={14} />
+              <span className="text-[9px] font-bold uppercase tracking-wider text-ink/40">
+                Founder · 2026
+              </span>
             </div>
-            <p className="mt-3 text-lg font-semibold tracking-tight text-ink">Ather's ML Lab</p>
+            <p className="mt-3 text-lg font-semibold tracking-tight text-ink">Atherva Automations</p>
+            <p className="mt-1 text-[11px] leading-relaxed text-ink/55">
+              AI agents, automation and data intelligence for businesses.
+            </p>
             <div className="mt-4 space-y-2">
-              {["Agentic Loop", "Vector Search", "Gradient Descent"].map((tag) => (
+              {["Alerti Intelligence", "Marketify", "Client systems"].map((tag) => (
                 <div key={tag} className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-lime" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-lime-deep" />
                   <span className="text-[11px] font-medium text-ink/60">{tag}</span>
                 </div>
               ))}
             </div>
-            <span className="absolute -top-3 -right-3 rounded-full bg-lime px-2.5 py-1 text-[8px] font-bold uppercase tracking-widest text-ink shadow-md">
-              ACTIVE
+            <span className="absolute -top-3 -right-3 rounded-full bg-indigo-950 px-2.5 py-1 text-[8px] font-bold uppercase tracking-widest text-lime shadow-md">
+              My company
             </span>
           </GravityCard>
 
-          {/* Card 3: Live Avatar Shower Card */}
+          {/* Card 3: live apps */}
           <GravityCard
             className="absolute left-1/2 top-4 w-[230px] -translate-x-1/2 bg-white text-ink border-white/60"
             delay={0.55}
@@ -220,7 +231,7 @@ export default function Hero() {
                   className="absolute text-lime font-mono text-[9px] font-bold"
                   style={{ left: `${15 + i * 16}%`, top: 4 }}
                 >
-                  {"{"}0.97{"}"}
+                  {"{"}live{"}"}
                 </motion.span>
               ))}
               <img
@@ -231,8 +242,8 @@ export default function Hero() {
             </div>
             <div className="mt-4 flex items-center justify-between">
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-wider text-ink/40">Tokens Completed</p>
-                <p className="text-sm font-bold text-ink">You just got deployed!</p>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-ink/40">Deployed</p>
+                <p className="text-sm font-bold text-ink">9 deployments</p>
               </div>
               <span className="grid h-7 w-7 place-items-center rounded-full bg-lime text-ink">
                 <Sparkles size={12} />
@@ -240,16 +251,16 @@ export default function Hero() {
             </div>
           </GravityCard>
 
-          {/* Card 4: Amazon MLSS Shortlist Success */}
+          {/* Card 4: Amazon MLSS */}
           <GravityCard
             className="absolute right-[22%] top-8 w-[210px] rotate-[6deg] bg-indigo-950 text-white border-white/10"
             delay={0.6}
             floatDelay={1.8}
-            darkBg
+            deepBg
           >
             <p className="text-[9px] font-bold uppercase tracking-wider text-lime">Amazon 2026</p>
             <p className="mt-2 text-md font-semibold leading-snug">ML Summer School Shortlist</p>
-            <p className="text-[11px] text-white/50 mt-1">SOP shortlists out of 134k+ applicants</p>
+            <p className="text-[11px] text-white/50 mt-1">Top 23% of 1,34,421 applicants</p>
             <div className="mt-4 h-1.5 rounded-full bg-white/10 overflow-hidden">
               <motion.div
                 initial={{ width: 0 }}
@@ -258,22 +269,27 @@ export default function Hero() {
                 className="h-full bg-lime rounded-full"
               />
             </div>
-            <p className="mt-2 text-[9px] font-bold text-lime">CONGRATULATIONS ✓</p>
+            <p className="mt-2 text-[9px] font-bold text-lime">SELECTION TEST INVITED ✓</p>
           </GravityCard>
 
-          {/* Card 5: Hospital SQL Visualizer */}
+          {/* Card 5: Hospital SQL */}
           <GravityCard
             className="absolute right-[2%] top-16 w-[210px] rotate-[10deg] bg-white text-ink border-white/60"
             delay={0.65}
             floatDelay={2.4}
           >
             <div className="flex items-center justify-between text-ink/40">
-              <span className="text-[10px] font-bold uppercase tracking-wider">Hospital Management SQL</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider">Atherva product</span>
               <Terminal size={12} />
             </div>
-            <p className="mt-3 text-[11px] text-ink/60">Fully normalized relational database query latency:</p>
+            <p className="mt-2 text-[15px] font-semibold tracking-tight text-ink">
+              Alerti Intelligence
+            </p>
+            <p className="mt-1 text-[11px] text-ink/60">
+              Shopify catalog monitoring — price, stock and new-product changes:
+            </p>
             <div className="mt-4 flex h-16 items-end gap-1.5 border-b border-line pb-1">
-              {[45, 62, 33, 85, 48, 92].map((h, i) => (
+              {[35, 55, 42, 70, 58, 88].map((h, i) => (
                 <motion.div
                   key={i}
                   initial={{ height: 0 }}
@@ -284,32 +300,30 @@ export default function Hero() {
               ))}
             </div>
             <div className="flex justify-between text-[10px] text-ink/40 mt-2 font-mono">
-              <span>q01</span><span>q06</span>
+              <span>IN DEVELOPMENT</span>
+              <span>2026</span>
             </div>
           </GravityCard>
         </motion.div>
 
-        {/* ── Make.Design Interactive Gravity Sandbox Mockup Screen ── */}
+        {/* ── Interactive URI prompt sandbox ── */}
         <motion.div
           style={{ y: cardsYSpring }}
           className="relative mt-20 w-full max-w-4xl mx-auto rounded-[32px] overflow-hidden p-8 flex flex-col justify-between min-h-[520px] shadow-2xl border border-white/40"
         >
-          {/* Real world sky, clouds, and green wildflower plants background overlay */}
           <div className="absolute inset-0 z-0">
             <img
               src="https://images.pexels.com/photos/37891511/pexels-photo-37891511.jpeg?auto=compress&cs=tinysrgb&w=1200"
-              alt="Real sky and wildflower plants"
+              alt="Sky and wildflower meadow"
               className="w-full h-full object-cover select-none"
             />
-            {/* Real sky / glass overlay */}
             <div className="absolute inset-0 bg-sky-900/10 backdrop-blur-[1px]" />
           </div>
 
-          <div className="absolute inset-0 bg-[#f7f9fc]/10 dark:bg-black/10 pointer-events-none z-0" />
-          
-          {/* Mockup Header tab */}
+          <div className="absolute inset-0 bg-[#f7f9fc]/10 pointer-events-none z-0" />
+
           <div className="relative z-10 flex justify-between items-center border-b border-white/20 pb-4 mb-6">
-            <span className="text-xs font-bold text-white tracking-wide">make.design / make.ml</span>
+            <span className="text-xs font-bold text-white tracking-wide">uri.resume / answer.engine</span>
             <div className="flex gap-1.5">
               <span className="h-3 w-3 rounded-full bg-red-400" />
               <span className="h-3 w-3 rounded-full bg-yellow-400" />
@@ -318,41 +332,40 @@ export default function Hero() {
           </div>
 
           <div className="relative z-10 text-center max-w-xl mx-auto my-4">
-            <h2 className="text-4xl font-extrabold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]">Make Design</h2>
+            <h2 className="text-4xl font-extrabold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]">
+              Ask URI
+            </h2>
             <p className="text-xs text-white/90 font-medium mt-2 drop-shadow-[0_1px_8px_rgba(0,0,0,0.3)]">
-              Describe what you want to build, and we handle the rest. From idea to stunning design in seconds.
+              A résumé assistant that runs in your browser. Ask about the startup, the live apps,
+              the stack or the availability — URI answers from facts only.
             </p>
           </div>
 
-          {/* Prompt Form & Selector */}
-          <form onSubmit={spawnGravityBlock} className="relative max-w-xl w-full mx-auto bg-white/70 dark:bg-black/40 p-4 rounded-2xl border border-line shadow-lg mt-4 z-20">
+          <form
+            onSubmit={spawnGravityBlock}
+            className="relative max-w-xl w-full mx-auto bg-white/70 p-4 rounded-2xl border border-line shadow-lg mt-4 z-20"
+          >
             <input
               required
               value={promptText}
               onChange={(e) => setPromptText(e.target.value)}
-              placeholder="Describe what you want to build..."
+              placeholder="e.g. What is Atherva? Which apps are live?"
               className="w-full text-sm bg-transparent border-none text-ink placeholder:text-ink/40 p-2"
             />
             <div className="flex items-center justify-between border-t border-line pt-3 mt-3">
-              <select
-                value={category}
-                onChange={(e) => setPromptCategory(e.target.value)}
-                className="text-xs font-bold uppercase tracking-wider text-ink/60 bg-transparent border-none focus:outline-none cursor-pointer"
-              >
-                <option value="Web Design">Web Design</option>
-                <option value="ML Pipeline">ML Pipeline</option>
-              </select>
-
+              <span className="text-[10px] font-bold uppercase tracking-wider text-ink/50">
+                Résumé grounded · no API key
+              </span>
               <button
                 type="submit"
-                className="grid h-8 w-8 place-items-center rounded-full bg-ink dark:bg-white text-white dark:text-ink hover:scale-115 transition"
+                className="grid h-8 w-8 place-items-center rounded-full bg-ink text-white hover:scale-110 transition"
+                aria-label="Ask URI"
               >
                 <Play size={12} className="ml-0.5" />
               </button>
             </div>
           </form>
 
-          {/* ── GRAVITY COLLISION CONTAINER ── */}
           <div className="relative flex-1 w-full min-h-[220px] overflow-hidden mt-8 border-t border-dashed border-line">
             <AnimatePresence>
               {blocks.map((b) => (
@@ -363,12 +376,7 @@ export default function Hero() {
                     y: 140,
                     opacity: 1,
                     rotate: 0,
-                    transition: {
-                      type: "spring",
-                      stiffness: 120,
-                      damping: 10,
-                      mass: 1.4,
-                    }
+                    transition: { type: "spring", stiffness: 120, damping: 10, mass: 1.4 },
                   }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   className={`absolute rounded-xl px-4 py-2 text-xs font-bold shadow-lg border border-white/20 cursor-pointer ${b.color}`}
@@ -381,31 +389,11 @@ export default function Hero() {
 
             <div className="absolute bottom-0 inset-x-0 h-4 border-t-2 border-dashed border-line bg-gradient-to-b from-[#fcdcd3]/5 to-transparent flex justify-between px-6 text-[9px] text-ink/30 font-mono">
               <span>GROUND PLANE (y = 140px)</span>
-              <span>GRAVITY: 9.81 m/s²</span>
+              <span>SOURCES: THE CV · LIVE APPS · ATHERVA</span>
             </div>
           </div>
         </motion.div>
       </div>
-
-      {/* Notification animation */}
-      <AnimatePresence>
-        {successPopup && (
-          <motion.div
-            initial={{ opacity: 0, y: 32, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-6 right-6 z-50 rounded-2xl bg-white p-4 shadow-2xl border border-line flex items-center gap-3"
-          >
-            <div className="grid h-10 w-10 place-items-center rounded-full bg-lime text-ink">
-              <Sparkles size={18} />
-            </div>
-            <div>
-              <p className="text-sm font-bold text-ink">Offer Extended!</p>
-              <p className="text-xs text-ink/60">Thank you for visiting Ather's dynamic hub.</p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }
@@ -417,14 +405,14 @@ function GravityCard({
   delay = 0,
   floatDelay = 0,
   rotateInit = 0,
-  darkBg = false,
+  deepBg = false,
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
   floatDelay?: number;
   rotateInit?: number;
-  darkBg?: boolean;
+  deepBg?: boolean;
 }) {
   return (
     <motion.div
@@ -449,7 +437,7 @@ function GravityCard({
         transition: { type: "spring", stiffness: 360, damping: 20 },
       }}
       className={`rounded-3xl border p-5 text-left shadow-[0_22px_52px_rgba(20,50,90,0.12)] backdrop-blur-xl ${
-        darkBg ? "bg-[#0b0c10]/85 text-white" : "bg-white/65"
+        deepBg ? "bg-[#0b0c10]/85 text-white" : "bg-white/65"
       } ${className}`}
     >
       <motion.div

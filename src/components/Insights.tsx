@@ -15,38 +15,38 @@ export default function Insights() {
   ];
 
   return (
-    <section id="insights" ref={ref} className="bg-[#f0f3f6] dark:bg-[#0b0c10] px-5 py-24 sm:px-10 lg:py-32">
+    <section id="insights" ref={ref} className="bg-[#f0f3f6] px-5 py-24 sm:px-10 lg:py-32">
       <div className="mx-auto max-w-6xl">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <motion.p
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
-            className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#7ea6f2] dark:text-lime"
+            className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#7ea6f2]"
           >
-            · VECTOR MAP LOCATIONS
+            · INSIDE THE INDEX
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             className="mt-4 text-3xl font-medium tracking-tight text-ink sm:text-5xl lg:text-6xl"
           >
-            Vector Space Map near you
+            The space Xpect AI searches.
           </motion.h2>
           <p className="mt-4 text-sm text-ink/60">
-            A beautiful 2D projection (UMAP 2D mapping) of 8,800 movie titles indexed inside ChromaDB. Select clusters below to see Euclidean distances.
+            8,807 Netflix titles embedded at 384 dimensions with all-MiniLM-L6-v2 and indexed in FAISS. Select a cluster to inspect the nearest neighbours returned by top-5 search.
           </p>
         </div>
 
         {/* 3D Clustered Map Area precisely styled like Rise Plasma Island map */}
         <div className="grid gap-12 lg:grid-cols-12 items-center">
-          
+
           {/* 3D projection space box */}
           <div className="lg:col-span-8 relative">
             <div className="absolute -inset-4 bg-gradient-to-tr from-[#7ea6f2]/10 to-[#e8cef2]/10 blur-3xl rounded-full" />
-            
+
             {/* Visualizer Island Box */}
-            <div className="clay-card relative h-[440px] w-full overflow-hidden bg-gradient-to-b from-[#7ea6f2]/20 via-[#f7f9fc] to-[#fcdcd3]/10 dark:from-black/40 dark:via-[#12141c] dark:to-black/30 p-8 flex items-center justify-center">
-              
+            <div className="clay-card relative h-[440px] w-full overflow-hidden bg-gradient-to-b from-[#7ea6f2]/20 via-[#f7f9fc] to-[#fcdcd3]/10 p-8 flex items-center justify-center">
+
               {/* Grid backdrop */}
               <div className="absolute inset-0 hero-grid opacity-30 pointer-events-none" />
               <div className="absolute inset-0 hero-grid-fine opacity-10 pointer-events-none" />
@@ -75,7 +75,7 @@ export default function Insights() {
                   <MapPin size={14} />
                   <span className="text-[10px] font-bold">Sci-Fi (0.97)</span>
                 </div>
-                <div className="h-4 w-[1px] bg-ink/10 dark:bg-white/10" />
+                <div className="h-4 w-[1px] bg-ink/10" />
                 <div className="h-1.5 w-1.5 rounded-full bg-lime animate-pulse" />
               </motion.div>
 
@@ -91,7 +91,7 @@ export default function Insights() {
                   <MapPin size={14} />
                   <span className="text-[10px] font-bold">Action (0.91)</span>
                 </div>
-                <div className="h-4 w-[1px] bg-ink/10 dark:bg-white/10" />
+                <div className="h-4 w-[1px] bg-ink/10" />
                 <div className="h-1.5 w-1.5 rounded-full bg-lime animate-pulse" />
               </motion.div>
 
@@ -107,7 +107,7 @@ export default function Insights() {
                   <MapPin size={14} />
                   <span className="text-[10px] font-bold">Drama (0.85)</span>
                 </div>
-                <div className="h-4 w-[1px] bg-ink/10 dark:bg-white/10" />
+                <div className="h-4 w-[1px] bg-ink/10" />
                 <div className="h-1.5 w-1.5 rounded-full bg-lime animate-pulse" />
               </motion.div>
 
@@ -123,7 +123,7 @@ export default function Insights() {
                   <MapPin size={14} />
                   <span className="text-[10px] font-bold">Thriller (0.81)</span>
                 </div>
-                <div className="h-4 w-[1px] bg-ink/10 dark:bg-white/10" />
+                <div className="h-4 w-[1px] bg-ink/10" />
                 <div className="h-1.5 w-1.5 rounded-full bg-lime animate-pulse" />
               </motion.div>
 
@@ -137,7 +137,7 @@ export default function Insights() {
                 <div className="flex justify-between items-start text-ink/40">
                   <div className="flex items-center gap-2">
                     <Database size={16} className="text-[#5c85d6]" />
-                    <span className="text-xs font-bold uppercase tracking-wider">ChromaDB index</span>
+                    <span className="text-xs font-bold uppercase tracking-wider">FAISS index</span>
                   </div>
                   <span className="rounded bg-lime/10 px-2 py-0.5 text-[9px] font-bold text-lime-deep">Active</span>
                 </div>
@@ -149,14 +149,14 @@ export default function Insights() {
                       {clusters.find(c => c.id === selectedCluster)?.name}
                     </h3>
                     <p className="text-xs text-ink/40 mt-1 font-mono">
-                      Coordinates: {clusters.find(c => c.id === selectedCluster)?.coords}
+                      Cosine similarity: {clusters.find(c => c.id === selectedCluster)?.distance} · {clusters.find(c => c.id === selectedCluster)?.coords}
                     </p>
 
                     <div className="mt-6">
-                      <p className="text-xs font-bold text-ink/50 uppercase tracking-wider">Nearest Neighbors</p>
+                      <p className="text-xs font-bold text-ink/50 uppercase tracking-wider">Nearest neighbours</p>
                       <ul className="mt-3 space-y-2">
                         {clusters.find(c => c.id === selectedCluster)?.films.map((f, i) => (
-                          <li key={f} className="flex justify-between items-center bg-[#f7f9fc] dark:bg-black/30 p-2.5 rounded-xl border border-line text-xs font-semibold text-ink">
+                          <li key={f} className="flex justify-between items-center bg-[#f7f9fc] p-2.5 rounded-xl border border-line text-xs font-semibold text-ink">
                             <span>{f}</span>
                             <span className="text-lime-deep font-mono">0.9{9 - i}</span>
                           </li>
@@ -173,7 +173,7 @@ export default function Insights() {
 
               <div className="mt-auto pt-6 border-t border-line flex items-center gap-1.5 text-xs text-ink/40">
                 <Globe size={14} />
-                <span>Global Vector coordinate space projections</span>
+                <span>IndexFlatL2 · 8,807 vectors · 384 dims</span>
               </div>
             </div>
           </div>
