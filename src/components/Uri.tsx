@@ -14,7 +14,11 @@ type Message = {
  scope?: string;
  chips?: string[];
  link?: { label: string; href: string };
+ links?: { label: string; href: string }[];
 };
+
+const linksFor = (m: Message) =>
+ m.links?.length ? m.links : m.link ? [m.link] : [];
 
 const newId = () =>
  typeof crypto !== "undefined" && "randomUUID" in crypto
@@ -22,10 +26,10 @@ const newId = () =>
  : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
 
 const CHIP_SEEDS = [
+ "What is his best project?",
+ "Send me the app links",
  "What is Atherva Automations?",
  "Which apps are live?",
- "Tell me about PayPal Copilot",
- "Is he available for internships?",
 ];
 
 export default function Uri() {
@@ -78,6 +82,7 @@ export default function Uri() {
  scope: reply.scope,
  chips: reply.chips,
  link: reply.link,
+ links: reply.links,
  },
  ]);
  busyRef.current = true;
@@ -234,7 +239,7 @@ export default function Uri() {
  <span className="mb-1 flex items-center gap-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[#5c85d6]">
  <Sparkles size={10} /> URI
  </span>
- Hi — I'm URI. Ask me anything about Ather's résumé.
+ Hi — I'm URI. Ask me anything about Ather Sama.
  </motion.button>
  )}
  </AnimatePresence>
@@ -244,7 +249,7 @@ export default function Uri() {
  type="button"
  onClick={() => (open ? setOpen(false) : openPanel())}
  aria-expanded={open}
- aria-label={open ? "Close URI, the résumé assistant" : "Open URI, the résumé assistant"}
+ aria-label={open ? "Close URI, the assistant for Ather Sama" : "Open URI, the assistant for Ather Sama"}
  data-state={ringState}
  className="uri-orb group grid h-16 w-16 place-items-center rounded-full bg-white/60 p-1 shadow-[0_18px_40px_rgba(31,45,71,0.22)] backdrop-blur-md transition-transform duration-300 hover:scale-105 active:scale-95"
  >
@@ -254,7 +259,7 @@ export default function Uri() {
  <span className="uri-orb__ring" aria-hidden />
  <img
  src={uriAvatar}
- alt="URI, the résumé assistant"
+ alt="URI, the assistant for Ather Sama"
  className="relative h-full w-full rounded-full object-cover"
  draggable={false}
  />
@@ -291,7 +296,7 @@ export default function Uri() {
  className="uri-frame"
  data-state={ringState}
  role="dialog"
- aria-label="URI résumé assistant"
+ aria-label="URI, the assistant for Ather Sama"
  >
  <span className="uri-frame__glow" aria-hidden />
  <span className="uri-frame__ring" aria-hidden />
@@ -325,15 +330,15 @@ export default function Uri() {
  <p className="flex items-center gap-1.5 text-sm font-bold tracking-tight text-ink">
  URI
  <span className="rounded-full bg-ink/5 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.14em] text-ink/45">
- résumé bot
+ Ather Sama
  </span>
  </p>
  <p className="truncate text-[11px] font-medium text-ink/50">
  {phase === "thinking"
- ? "Searching Ather's résumé…"
+ ? "Searching the knowledge base…"
  : phase === "speaking"
- ? "Answering from the résumé…"
- : "Ask about skills, projects, availability"}
+ ? "Answering from the knowledge base…"
+ : "Ask about Ather Sama"}
  </p>
  </div>
  <button
@@ -379,17 +384,22 @@ export default function Uri() {
  <span className="ml-0.5 inline-block h-3.5 w-[2px] translate-y-0.5 animate-pulse bg-[#5c85d6]" />
  )}
  </p>
- {m.link && m.shown >= m.text.length && (
+ {m.shown >= m.text.length && linksFor(m).length > 0 && (
+ <div className="mt-2 flex flex-wrap gap-1.5">
+ {linksFor(m).slice(0, 4).map((l) => (
  <a
- href={m.link.href}
- target={m.link.href.startsWith("#") ? undefined : "_blank"}
- rel={m.link.href.startsWith("#") ? undefined : "noreferrer"}
- onClick={() => m.link?.href.startsWith("#") && setOpen(false)}
- className="mt-2 inline-flex items-center gap-1 rounded-full bg-[#eef4ff] px-2.5 py-1 text-[11px] font-semibold text-[#3f6fc4] transition hover:bg-[#e2ecff]"
+ key={l.href + l.label}
+ href={l.href}
+ target={l.href.startsWith("#") || l.href.startsWith("mailto:") ? undefined : "_blank"}
+ rel={l.href.startsWith("#") || l.href.startsWith("mailto:") ? undefined : "noreferrer"}
+ onClick={() => l.href.startsWith("#") && setOpen(false)}
+ className="inline-flex items-center gap-1 rounded-full bg-[#eef4ff] px-2.5 py-1 text-[11px] font-semibold text-[#3f6fc4] transition hover:bg-[#e2ecff]"
  >
- {m.link.label}
+ {l.label}
  <ArrowUpRight size={11} />
  </a>
+ ))}
+ </div>
  )}
  </div>
  </div>
@@ -435,8 +445,8 @@ export default function Uri() {
  ref={inputRef}
  value={input}
  onChange={(e) => setInput(e.target.value)}
- placeholder={busy ? "URI is answering…" : "Ask about Ather's résumé…"}
- aria-label="Ask URI a question about Ather's résumé"
+ placeholder={busy ? "URI is answering…" : "Ask about Ather Sama…"}
+ aria-label="Ask URI about Ather Sama"
  className="w-full bg-transparent text-[13px] text-ink placeholder:text-ink/35"
  />
  </div>
@@ -462,7 +472,7 @@ export default function Uri() {
  )}
  </form>
  <p className="mt-1.5 text-center text-[9px] font-medium uppercase tracking-[0.14em] text-ink/30">
- Answers from the résumé only · runs locally
+ Answers about Ather Sama · runs locally
  </p>
  </div>
  </div>

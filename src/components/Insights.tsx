@@ -48,8 +48,6 @@ export default function Insights() {
             <div className="clay-card relative h-[440px] w-full overflow-hidden bg-gradient-to-b from-[#7ea6f2]/20 via-[#f7f9fc] to-[#fcdcd3]/10 p-8 flex items-center justify-center">
 
               {/* Grid backdrop */}
-              <div className="absolute inset-0 hero-grid opacity-30 pointer-events-none" />
-              <div className="absolute inset-0 hero-grid-fine opacity-10 pointer-events-none" />
 
               {/* Central Globe Core */}
               <motion.div

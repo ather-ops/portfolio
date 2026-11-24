@@ -8,6 +8,7 @@ import RecruiterPortal from "./components/RecruiterPortal";
 import Projects from "./components/Projects";
 import LiveApps from "./components/LiveApps";
 import Startup from "./components/Startup";
+import Playbook from "./components/Playbook";
 import Collaborate from "./components/Collaborate";
 import Recognition from "./components/Recognition";
 import Insights from "./components/Insights";
@@ -29,6 +30,7 @@ export default function App() {
         <Projects />
         <LiveApps />
         <Startup />
+        <Playbook />
         <Collaborate />
         <Recognition />
         <Insights />

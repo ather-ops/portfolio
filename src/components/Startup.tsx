@@ -26,8 +26,6 @@ export default function Startup() {
           <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[36px]">
             <div className="absolute -left-24 top-0 h-80 w-80 rounded-full bg-[#7ea6f2]/25 blur-3xl" />
             <div className="absolute -bottom-28 right-0 h-96 w-96 rounded-full bg-[#d4f562]/15 blur-3xl" />
-            <div className="hero-grid absolute inset-0 opacity-20" />
-            <div className="hero-grid-fine absolute inset-0 opacity-15" />
           </div>
 
           <div className="relative z-10 p-7 sm:p-10 lg:p-12">

@@ -47,7 +47,7 @@ export default function CTA() {
               <span className="font-serif italic font-normal text-[#5c85d6]">Or just ask URI.</span>
             </h2>
             <p className="mt-4 text-sm text-ink/60">
-              Straight answers about the systems, the guardrails and the availability. The floating bot can answer the rest from the résumé.
+              Straight answers about the systems, the guardrails and the availability. The floating bot can answer the rest about Ather Sama.
             </p>
             <div className="mt-8">
               <a
@@ -90,8 +90,6 @@ export default function CTA() {
 
         {/* Big Bottom CTA Panel strictly modeled after "Get paid for doing good." */}
         <div className="mt-28 relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[#7ea6f2] via-[#b3cdef] to-[#fcdcd3] p-8 text-center text-white shadow-2xl">
-          <div className="absolute inset-0 hero-grid opacity-30" />
-          <div className="absolute inset-0 hero-grid-fine opacity-20" />
 
           <div className="relative z-10 max-w-xl mx-auto py-12">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/80">OPEN TO AI / ML INTERNSHIPS</p>

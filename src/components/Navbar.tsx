@@ -9,6 +9,7 @@ const links = [
   { href: "#work", label: "Work" },
   { href: "#live", label: "Live apps" },
   { href: "#startup", label: "Startup" },
+  { href: "#playbook", label: "Playbook" },
   { href: "#expertise", label: "Skills" },
 ];
 
@@ -75,7 +76,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop nav */}
-        <ul className="hidden items-center gap-6 lg:flex">
+        <ul className="hidden items-center gap-5 lg:flex">
           {links.map((l, i) => (
             <motion.li
               key={l.href}
