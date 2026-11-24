@@ -106,7 +106,7 @@ export default function Footer() {
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/35">Navigate</p>
               <ul className="mt-4 space-y-2.5 text-sm text-white/70">
-                {["#home|Home", "#about|About", "#work|Work", "#live|Live apps", "#startup|Startup", "#expertise|Skills", "#insights|Insights"].map((l) => {
+                {["#home|Home", "#about|About", "#work|Work", "#live|Live apps", "#startup|Startup", "#playbook|Playbook", "#expertise|Skills", "#insights|Insights"].map((l) => {
                   const [href, label] = l.split("|");
                   return (
                     <motion.li key={href} whileHover={{ x: 4 }} transition={{ type: "spring", stiffness: 400 }}>
@@ -163,7 +163,7 @@ export default function Footer() {
         <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 px-8 py-5 text-[10px] text-white/35 lg:px-12">
           <p>
             © {new Date().getFullYear()} {profile.name}. All rights reserved. · URI answers from the
-            résumé, in your browser.
+            Ather Sama, in your browser.
           </p>
           <div className="flex gap-4">
             <a href={profile.github} target="_blank" rel="noreferrer" className="hover:text-white">GitHub</a>

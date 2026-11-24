@@ -494,7 +494,7 @@ export const allRepos = [
   },
   {
     name: "portfolio",
-    desc: "This portfolio — React, Vite, Tailwind and URI, the résumé assistant.",
+    desc: "This portfolio — React, Vite, Tailwind and URI, the assistant for Ather Sama.",
     lang: "TypeScript",
     stars: 2,
     url: "https://github.com/ather-ops/portfolio",

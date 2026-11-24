@@ -336,8 +336,8 @@ export default function Hero() {
               Ask URI
             </h2>
             <p className="text-xs text-white/90 font-medium mt-2 drop-shadow-[0_1px_8px_rgba(0,0,0,0.3)]">
-              A résumé assistant that runs in your browser. Ask about the startup, the live apps,
-              the stack or the availability — URI answers from facts only.
+              An assistant for Ather Sama that runs in your browser. Ask about the startup, the
+              live apps, the stack or the availability — URI answers from facts only.
             </p>
           </div>
 

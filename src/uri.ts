@@ -1,11 +1,14 @@
 import { uriFallbackChips, uriIntro, uriKnowledge, type UriEntry } from "./uriKnowledge";
 
+export type UriLink = { label: string; href: string };
+
 export type UriReply = {
   id: string;
   scope: string;
   text: string;
   chips: string[];
-  link?: { label: string; href: string };
+  link?: UriLink;
+  links?: UriLink[];
 };
 
 const STOPWORDS = new Set([
@@ -182,38 +185,48 @@ function scoreEntry(entry: UriEntry, query: string, tokens: Tokenized): number {
 function introReply(): UriReply {
   return {
     id: "intro",
-    scope: "Résumé assistant",
+    scope: "Ather Sama's assistant",
     text:
-      "I'm URI — this portfolio's résumé assistant. I run entirely in your browser, and I only answer from Ather's CV, GitHub and Atherva facts: projects, live apps, the startup, stack, achievements, contact and availability.\n\nAsk me anything, or start with one of the suggestions below.",
-    chips: ["What is Atherva?", "Which apps are live?", "Tell me about PayPal Copilot", "Is he available?"],
+      "Hi — I'm URI, Ather Sama's assistant. I run entirely in your browser, and I only answer from his CV, GitHub and Atherva facts: projects, live app links, the startup, stack, achievements, education, contact and availability.\n\nAsk me anything — including \"show me the best project\" or \"give me the app links\" — or start with a suggestion below.",
+    chips: ["What is Atherva?", "Which apps are live?", "What is his best project?", "Is he available?"],
   };
 }
 
 function helpReply(): UriReply {
   return {
     id: "help",
-    scope: "Résumé assistant",
+    scope: "Ather Sama's assistant",
     text:
-      "I can dig into:\n\n• Projects — PayPal Copilot, Amazn AI, Xpect AI, PulseMesh, Atlas Agent, ML from scratch, SQL and analytics work\n• Live apps — all nine deployments, with links and which ones are asleep or under maintenance\n• Startup — Atherva Automations, its services, and the products Alerti and Marketify\n• Skills — languages, ML, RAG, agents, APIs and tooling\n• Proof — Amazon ML Summer School, Since AI Hackathon, Tata/Forage, GitHub contributions, LeetCode\n• Education, courses, availability, location and contact details\n\nNo API key, no network call — just structured answers from the CV, GitHub and Atherva.",
+      "I can answer almost anything about Ather, with links where they exist:\n\n• Projects — PayPal Copilot, Amazn AI, Xpect AI, PulseMesh, Atlas Agent, ML from scratch, SQL and analytics\n• Live apps — all nine deployments, with direct demo links and which ones are asleep or under maintenance\n• Best project — ask \"which project should I open first?\" and I'll pick one and justify it\n• Startup — Atherva Automations, its services, and the products Alerti and Marketify\n• Skills — languages, ML, RAG, agents, APIs and tooling\n• Proof — Amazon ML Summer School, Since AI Hackathon, Tata/Forage, GitHub contributions, LeetCode\n• Education, courses, availability, location and contact details\n\nNo API key, no network call — just structured answers from the CV, GitHub and Atherva.",
     chips: uriFallbackChips,
+  };
+}
+
+function nudgeReply(): UriReply {
+  return {
+    id: "smalltalk-nudge",
+    scope: "Ather Sama's assistant",
+    text:
+      "I'm here — just say what you need.\n\nI can answer anything about Ather: the best project to open first, live app links, Atherva Automations, his stack, achievements, education, availability and contact details.",
+    chips: ["What is his best project?", "Send me the app links", "What is Atherva?", "Is he available?"],
   };
 }
 
 function thanksReply(): UriReply {
   return {
     id: "thanks",
-    scope: "Résumé assistant",
-    text: "Anytime. If you're hiring, the fastest route is peerather07@gmail.com or WhatsApp +91 91031-07882 — he usually replies within 24 hours.",
-    chips: ["Is he available?", "Contact details", "Show the projects"],
+    scope: "Ather Sama's assistant",
+    text: "Anytime. If you're hiring, the fastest route is peerather07@gmail.com or WhatsApp +91 91031-07882 — he usually replies within 24 hours.\n\nWant the short version? Ask \"what is his best project\" or \"send me the app links\".",
+    chips: ["What is his best project?", "Send me the app links", "Is he available?"],
   };
 }
 
 function fallbackReply(): UriReply {
   return {
     id: "fallback",
-    scope: "Résumé assistant",
+    scope: "Ather Sama's assistant",
     text:
-      "That one isn't on the résumé, so I won't guess.\n\nI can answer questions about his projects (PayPal Copilot, Amazn AI, Xpect AI, PulseMesh, Atlas Agent), the live apps, his startup Atherva Automations and its products Alerti and Marketify, his stack (Python, FAISS, SentenceTransformers, Groq, smolagents, scikit-learn), his achievements (Amazon ML Summer School, Since AI Hackathon), education, GitHub numbers, availability and contact details.\n\nTry naming a project, the startup or a skill.",
+      "That one isn't in the Ather Sama knowledge base — CV, GitHub and Atherva facts — so I won't guess.\n\nI can answer questions about his projects (PayPal Copilot, Amazn AI, Xpect AI, PulseMesh, Atlas Agent), live app links, his startup Atherva Automations and its products Alerti and Marketify, his stack (Python, FAISS, SentenceTransformers, Groq, smolagents, scikit-learn), his achievements (Amazon ML Summer School, Since AI Hackathon), education, GitHub numbers, availability and contact details.\n\nTry naming a project, the startup, a skill, or ask for the best project or the app links.",
     chips: uriFallbackChips,
   };
 }
@@ -221,35 +234,104 @@ function fallbackReply(): UriReply {
 export function generateIntro(): UriReply {
   return {
     id: "welcome",
-    scope: "Résumé assistant",
+    scope: "Ather Sama's assistant",
     text: uriIntro,
-    chips: ["What is Atherva?", "Which apps are live?", "Tell me about PayPal Copilot", "Is he available?"],
+    chips: ["What is Atherva?", "Which apps are live?", "What is his best project?", "Is he available?"],
+  };
+}
+
+function howAreYouReply(): UriReply {
+  return {
+    id: "smalltalk-how-are-you",
+    scope: "URI",
+    text:
+      "Doing well — I'm a local assistant, so no bad days and no API bills.\n\nI'm here to answer anything about Ather: projects, live app links, Atherva Automations, the stack, achievements, availability or contact details. What do you want to know?",
+    chips: ["What is his best project?", "Which apps are live?", "What is Atherva?", "Is he available?"],
+  };
+}
+
+function byeReply(): UriReply {
+  return {
+    id: "smalltalk-bye",
+    scope: "URI",
+    text:
+      "Goodbye — thanks for reading. If you want the fastest route back: the live apps and Atherva links are in the Live apps section, and email is peerather07@gmail.com.\n\nI'll be floating in the corner if you think of another question.",
+    chips: ["Send me the app links", "Contact details", "What is his best project?"],
+  };
+}
+
+function identityReply(): UriReply {
+  return {
+    id: "smalltalk-identity",
+    scope: "URI",
+    text:
+      "I'm URI — a deterministic, in-browser assistant built by Ather for this portfolio. No LLM API, no network call: I match your question against a structured knowledge base and stream the answer back.\n\nThat means I'm honest about limits: I only know the CV, GitHub and Atherva facts. Ask me about a project, the startup or the app links.",
+    chips: ["What can you answer?", "What is Atherva?", "Which apps are live?"],
+  };
+}
+
+function jokeReply(): UriReply {
+  return {
+    id: "smalltalk-joke",
+    scope: "URI",
+    text:
+      "I'm built for facts, not punchlines — but here's a true one: a 384-dimension embedding of 8,807 film titles can find your next watch without knowing a single genre label.\n\nIf you want the actually impressive version, ask me for the best project or the live links.",
+    chips: ["What is his best project?", "Send me the app links", "Tell me about Xpect AI"],
   };
 }
 
 /** Local, deterministic retrieval over the résumé knowledge base. */
 export function askUri(rawQuery: string): UriReply {
   const query = normalize(rawQuery);
-  if (!query) return helpReply();
+  if (!query) return nudgeReply();
+
+  // Bare ellipses, punctuation or "hmm"-style filler still get a friendly prompt.
+  if (/^[.\-–—'\/+#]+$/.test(query)) return nudgeReply();
+  if (/^h+m+$/.test(query)) return nudgeReply();
 
   const rawTokens = query.split(" ").filter(Boolean);
+  const short = rawTokens.length <= 8;
   const isGreeting =
     rawTokens.length <= 4 &&
-    /^(hi|hey|hello|yo|hola|namaste|good (morning|evening|afternoon)|salaam|assalam)/.test(query);
+    /^(h+i+y*a*|h+ey+a+|h+y+|hey+|heyy+|h+e+l+o+|h+l+o+|hallo|h+o+|y+o+|hola|howdy|sup|wassup|namaste|namaskar|namastey|good (morning|afternoon|evening)|salaam|assalam|greetings)\b/.test(
+      query
+    );
 
   if (isGreeting) return introReply();
+  if (/^(how are you|how're you|how are things|how is it going|how's it going|how you doing|you good|how do you do|whats up|what's up|wassup)\b/.test(query)) {
+    return howAreYouReply();
+  }
+  if (/^(bye|byee|goodbye|good bye|see ya|see you|later|good ?night|gn)\b/.test(query) && rawTokens.length <= 5) {
+    return byeReply();
+  }
+  if (/(are you (a |an )?(real|human|ai|bot|robot)|who (made|built|created) you|are you (chatgpt|gpt|claude)|what model)/.test(query) && short) {
+    return identityReply();
+  }
+  if (/(tell me a joke|joke|make me laugh|something funny)/.test(query) && short) {
+    return jokeReply();
+  }
   if (/^(thanks|thank you|thx|cheers|great|nice|awesome|perfect|cool)\b/.test(query) && rawTokens.length <= 5) {
     return thanksReply();
   }
   if (
-    /(what can you (do|answer)|how can you help|what do you know|help|topics|who are you|what are you|your name|uri)/.test(
+    /(what can you (do|answer)|what can uri (do|answer)|how can you help|what do you know|help|topics|who are you|your name)/.test(
       query
     ) &&
     rawTokens.length <= 8
   ) {
     return helpReply();
   }
-  if (/^(what is|whats) (this|uri)\b/.test(query)) return introReply();
+  if (/^(what is|whats) (this|uri)$/.test(query)) return introReply();
+  if (/^what are you$/.test(query)) return helpReply();
+  if (/^uri$/.test(query)) return helpReply();
+  if (/^(ok|okay|k|cool|nice|got it|i see)\b/.test(query) && rawTokens.length <= 2) {
+    return {
+      id: "smalltalk-ack",
+      scope: "URI",
+      text: "Got it. Ask me anything else — or jump straight to the strongest project, the live links or Atherva.",
+      chips: ["What is his best project?", "Send me the app links", "What is Atherva?"],
+    };
+  }
 
   const tokens = tokenize(rawQuery);
   let best: UriEntry | null = null;
@@ -271,6 +353,7 @@ export function askUri(rawQuery: string): UriReply {
     text: best.answer,
     chips: best.chips ?? uriFallbackChips,
     link: best.link,
+    links: best.links,
   };
 }
 

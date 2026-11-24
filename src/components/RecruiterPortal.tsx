@@ -50,8 +50,6 @@ export default function RecruiterPortal() {
         {/* Portal Header */}
         <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-indigo-950 via-slate-900 to-black p-8 text-white shadow-[0_24px_56px_rgba(0,0,0,0.12)] md:p-12">
           {/* Glassic Background Grid */}
-          <div className="hero-grid absolute inset-0 opacity-20 pointer-events-none" />
-          <div className="hero-grid-fine absolute inset-0 opacity-25 pointer-events-none" />
 
           <div className="relative z-10 grid gap-10 lg:grid-cols-12">
             {/* Checklist & Profile */}
