@@ -150,7 +150,7 @@ export default function Live() {
           <p className="text-[10.5px] text-[#9a958a]">
             Streamlit Community Cloud apps sleep after inactivity. Atlas Agent is paused while it is rebuilt.
           </p>
-          <button type="button" onClick={openUri} className="btn-outline">
+          <button type="button" onClick={openUri} className="uri-trigger btn-outline">
             <Sparkles size={13} /> Ask URI for the links
           </button>
         </div>

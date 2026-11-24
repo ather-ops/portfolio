@@ -85,7 +85,7 @@ export default function Hiring() {
               <a href={profile.resume} download className="btn-outline">
                 Download résumé
               </a>
-              <button type="button" onClick={openUri} className="btn-outline">
+              <button type="button" onClick={openUri} className="uri-trigger btn-outline">
                 <Sparkles size={13} /> Ask URI
               </button>
             </div>
