@@ -234,7 +234,7 @@ export default function Uri() {
  initial={{ opacity: 0, y: 8, scale: 0.95 }}
  animate={{ opacity: 1, y: 0, scale: 1 }}
  exit={{ opacity: 0, y: 6, scale: 0.96 }}
- className="mr-1 max-w-[230px] rounded-2xl rounded-br-md border border-white/70 bg-white/90 px-4 py-3 text-left text-xs font-medium leading-snug text-ink shadow-[0_16px_40px_rgba(31,45,71,0.16)] backdrop-blur-xl"
+ className="uri-trigger mr-1 max-w-[230px] rounded-2xl rounded-br-md border border-white/70 bg-white/90 px-4 py-3 text-left text-xs font-medium leading-snug text-ink shadow-[0_16px_40px_rgba(31,45,71,0.16)] backdrop-blur-xl"
  >
  <span className="mb-1 flex items-center gap-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[#5c85d6]">
  <Sparkles size={10} /> URI
@@ -251,7 +251,7 @@ export default function Uri() {
  aria-expanded={open}
  aria-label={open ? "Close URI, the assistant for Ather Sama" : "Open URI, the assistant for Ather Sama"}
  data-state={ringState}
- className="uri-orb group grid h-16 w-16 place-items-center rounded-full bg-white/60 p-1 shadow-[0_18px_40px_rgba(31,45,71,0.22)] backdrop-blur-md transition-transform duration-300 hover:scale-105 active:scale-95"
+ className="uri-orb uri-trigger group grid h-16 w-16 place-items-center rounded-full bg-white/60 p-1 shadow-[0_18px_40px_rgba(31,45,71,0.22)] backdrop-blur-md transition-transform duration-300 hover:scale-105 active:scale-95"
  >
  <span className="uri-ping" aria-hidden />
  <span className="uri-ping uri-ping--late" aria-hidden />

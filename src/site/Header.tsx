@@ -69,7 +69,7 @@ export default function Header() {
           <button
             type="button"
             onClick={openUri}
-            className={`hidden items-center gap-1.5 rounded-full px-3 py-2 text-[10.5px] font-semibold transition sm:inline-flex ${
+            className={`uri-trigger hidden items-center gap-1.5 rounded-full px-3 py-2 text-[10.5px] font-semibold transition sm:inline-flex ${
               scrolled
                 ? "text-ink/60 hover:bg-ink/5 hover:text-ink"
                 : "text-white/80 hover:bg-white/10 hover:text-white"
@@ -91,7 +91,7 @@ export default function Header() {
           <button
             type="button"
             onClick={openUri}
-            className={`grid h-9 w-9 place-items-center rounded-full transition sm:hidden ${
+            className={`uri-trigger grid h-9 w-9 place-items-center rounded-full transition sm:hidden ${
               scrolled ? "text-ink hover:bg-ink/5" : "text-white hover:bg-white/10"
             }`}
             aria-label="Ask URI"
@@ -150,7 +150,7 @@ export default function Header() {
                 setOpen(false);
                 openUri();
               }}
-              className="btn-dark w-full"
+              className="uri-trigger btn-dark w-full"
             >
               <Sparkles size={14} /> Ask URI
             </button>

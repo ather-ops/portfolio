@@ -35,7 +35,7 @@ export default function Cta() {
             <a href={`mailto:${profile.email}`} className="btn-dark">
               <Mail size={14} /> Email Ather
             </a>
-            <button type="button" onClick={openUri} className="btn-outline">
+            <button type="button" onClick={openUri} className="uri-trigger btn-outline">
               <Sparkles size={13} /> Ask URI
             </button>
           </div>

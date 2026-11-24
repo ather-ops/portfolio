@@ -65,7 +65,7 @@ export default function Hero() {
           <button
             type="button"
             onClick={openUri}
-            className="inline-flex items-center gap-1.5 rounded-full border border-white/35 bg-white/10 px-4 py-3 text-[12px] font-semibold text-white backdrop-blur-md transition hover:bg-white/20"
+            className="uri-trigger inline-flex items-center gap-1.5 rounded-full border border-white/35 bg-white/10 px-4 py-3 text-[12px] font-semibold text-white backdrop-blur-md transition hover:bg-white/20"
           >
             <Sparkles size={13} /> Ask URI
           </button>
