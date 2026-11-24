@@ -104,7 +104,7 @@ export const startup = {
 };
 
 export const stats = [
-  { value: "9", label: "Deployed apps", hint: "8 live now · Atlas under maintenance" },
+  { value: "9", label: "Deployments", hint: "8 live now · Atlas under maintenance" },
   { value: "917", label: "GitHub contributions", hint: "Last 12 months · 14 public repositories" },
   { value: "150+", label: "LeetCode problems", hint: "50 & 100-day badges 2026" },
   { value: "Top 23%", label: "Amazon MLSS 2026", hint: "Of 1,34,421 applicants screened" },

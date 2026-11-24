@@ -1,40 +1,42 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Marquee from "./components/Marquee";
-import About from "./components/About";
-import Services from "./components/Services";
-import Expertise from "./components/Expertise";
-import RecruiterPortal from "./components/RecruiterPortal";
-import Projects from "./components/Projects";
-import LiveApps from "./components/LiveApps";
-import Startup from "./components/Startup";
-import Playbook from "./components/Playbook";
-import Collaborate from "./components/Collaborate";
-import Recognition from "./components/Recognition";
-import Insights from "./components/Insights";
-import CTA from "./components/CTA";
-import Footer from "./components/Footer";
+import Header from "./site/Header";
+import Hero from "./site/Hero";
+import { StartHere, Stats, Why } from "./site/Start";
+import Process from "./site/Process";
+import Services from "./site/Services";
+import Systems from "./site/Systems";
+import Features from "./site/Features";
+import Projects from "./site/Projects";
+import Live from "./site/Live";
+import Startup from "./site/Startup";
+import Plans from "./site/Plans";
+import Hiring from "./site/Hiring";
+import Faq from "./site/Faq";
+import Journal from "./site/Journal";
+import Cta from "./site/Cta";
+import Footer from "./site/Footer";
 import Uri from "./components/Uri";
 
 export default function App() {
   return (
-    <div className="min-h-screen text-ink">
-      <Navbar />
+    <div className="min-h-screen bg-[#fbfaf7] text-ink">
+      <Header />
       <main>
         <Hero />
-        <Marquee />
-        <About />
+        <StartHere />
+        <Why />
+        <Stats />
+        <Process />
         <Services />
-        <Expertise />
-        <RecruiterPortal />
+        <Systems />
+        <Features />
         <Projects />
-        <LiveApps />
+        <Live />
         <Startup />
-        <Playbook />
-        <Collaborate />
-        <Recognition />
-        <Insights />
-        <CTA />
+        <Plans />
+        <Hiring />
+        <Faq />
+        <Journal />
+        <Cta />
       </main>
       <Footer />
       <Uri />
