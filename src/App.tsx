@@ -1,20 +1,16 @@
 import { useEffect } from "react";
-import Header from "./site/Header";
-import Hero from "./site/Hero";
-import { StartHere, Stats, Why } from "./site/Start";
-import Process from "./site/Process";
-import Services from "./site/Services";
-import Systems from "./site/Systems";
-import Features from "./site/Features";
-import Projects from "./site/Projects";
-import Live from "./site/Live";
-import Startup from "./site/Startup";
-import Plans from "./site/Plans";
-import Hiring from "./site/Hiring";
-import Faq from "./site/Faq";
-import Journal from "./site/Journal";
-import Cta from "./site/Cta";
-import Footer from "./site/Footer";
+import Header from "./traj/Header";
+import Hero from "./traj/Hero";
+import LogoStrip from "./traj/LogoStrip";
+import Featured from "./traj/Featured";
+import Vision from "./traj/Vision";
+import Platform from "./traj/Platform";
+import Trust from "./traj/Trust";
+import Team from "./traj/Team";
+import Recognition from "./traj/Recognition";
+import Notes from "./traj/Notes";
+import Cta from "./traj/Cta";
+import Footer from "./traj/Footer";
 import Uri from "./components/Uri";
 
 export default function App() {
@@ -46,24 +42,26 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#fbfaf7] text-ink">
+    <div className="tj-site">
+      <a
+        href="#work"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:rounded-md focus:bg-[var(--tj-navy)] focus:px-3 focus:py-2 focus:text-[13px] focus:text-[var(--tj-cream)]"
+      >
+        Skip to the work
+      </a>
       <Header />
       <main>
         <Hero />
-        <StartHere />
-        <Why />
-        <Stats />
-        <Process />
-        <Services />
-        <Systems />
-        <Features />
-        <Projects />
-        <Live />
-        <Startup />
-        <Plans />
-        <Hiring />
-        <Faq />
-        <Journal />
+        <LogoStrip />
+        <Featured />
+        <Vision />
+        <Platform />
+        <Trust />
+        <div className="tj-dark-band tj-dark-band--full">
+          <Team />
+          <Notes />
+        </div>
+        <Recognition />
         <Cta />
       </main>
       <Footer />
