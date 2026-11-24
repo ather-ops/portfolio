@@ -187,7 +187,7 @@ export default function Uri() {
  // First-visit nudge, only for visitors who never opened URI.
  useEffect(() => {
  if (visited) return;
- const t = window.setTimeout(() => setHint(true), 5200);
+ const t = window.setTimeout(() => setHint(true), 14000);
  return () => window.clearTimeout(t);
  }, [visited]);
 
