@@ -225,7 +225,7 @@ export default function Uri() {
  return (
  <>
  {/* ── Launcher ─────────────────────────────────────────────── */}
- <div className="fixed bottom-5 right-4 z-[70] flex flex-col items-end gap-2 sm:bottom-6 sm:right-6">
+ <div className="fixed bottom-5 right-4 z-[70] hidden flex-col items-end gap-2 min-[1360px]:flex sm:bottom-6 sm:right-6">
  <AnimatePresence>
  {hint && !open && (
  <motion.button
@@ -425,7 +425,7 @@ export default function Uri() {
 
  {/* suggestions */}
  <div className="border-t border-ink/5 px-3 pb-2 pt-2.5">
- <div className="hide-scrollbar flex gap-1.5 overflow-x-auto pb-1">
+ <div className="flex flex-wrap gap-1.5 pb-1">
  {chips.slice(0, 4).map((chip) => (
  <button
  key={chip}
@@ -447,7 +447,7 @@ export default function Uri() {
  onChange={(e) => setInput(e.target.value)}
  placeholder={busy ? "URI is answering…" : "Ask about Ather Sama…"}
  aria-label="Ask URI about Ather Sama"
- className="w-full bg-transparent text-[13px] text-ink placeholder:text-ink/35"
+ className="uri-input w-full bg-transparent text-[13px] text-ink placeholder:text-ink/35"
  />
  </div>
  {busy ? (
