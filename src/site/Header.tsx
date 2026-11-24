@@ -90,6 +90,16 @@ export default function Header() {
           </a>
           <button
             type="button"
+            onClick={openUri}
+            className={`grid h-9 w-9 place-items-center rounded-full transition sm:hidden ${
+              scrolled ? "text-ink hover:bg-ink/5" : "text-white hover:bg-white/10"
+            }`}
+            aria-label="Ask URI"
+          >
+            <Sparkles size={17} />
+          </button>
+          <button
+            type="button"
             onClick={() => setOpen(true)}
             className={`grid h-9 w-9 place-items-center rounded-full transition md:hidden ${
               scrolled ? "text-ink hover:bg-ink/5" : "text-white hover:bg-white/10"

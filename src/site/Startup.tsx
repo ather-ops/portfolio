@@ -2,7 +2,16 @@ import { ArrowUpRight, Check } from "lucide-react";
 import { profile, startup } from "../data";
 import { ArtTile, Reveal, SectionHead } from "./ui";
 
-const art = ["/img/pearl.jpg", "/img/bloom.jpg"];
+const art = [
+  {
+    src: "/img/logos/alerti.webp",
+    alt: "Alerti Intelligence mark: a translucent blue glass circular arrow",
+  },
+  {
+    src: "/img/logos/marketify.webp",
+    alt: "Marketify mark: a translucent blue glass letter M",
+  },
+];
 
 export default function Startup() {
   return (
@@ -21,15 +30,16 @@ export default function Startup() {
       <div className="mx-auto mt-9 grid max-w-4xl gap-4 sm:grid-cols-2">
         {startup.products.map((product, index) => (
           <Reveal key={product.name} delay={index * 0.06}>
-            <article className="surface flex h-full flex-col p-2.5">
+            <article className="surface edge-lit flex h-full flex-col p-2.5">
               <ArtTile
-                tone={index === 0 ? "cream" : "pink"}
+                tone="plain"
                 className="h-40 rounded-[20px] sm:h-44"
               >
+                <div className="absolute inset-0 bg-[radial-gradient(58%_58%_at_50%_52%,rgba(255,255,255,0.85),rgba(255,255,255,0)_72%)]" />
                 <img
-                  src={art[index % art.length]}
-                  alt={index === 0 ? "Pearl sculpture" : "Pink flower on a blue sky"}
-                  className="h-full w-full object-cover"
+                  src={art[index % art.length].src}
+                  alt={art[index % art.length].alt}
+                  className="relative h-full w-full object-contain p-4 drop-shadow-[0_18px_26px_rgba(20,64,150,0.28)] sm:p-5"
                   loading="lazy"
                 />
                 <span className="pill absolute right-3 top-3 bg-white/90 backdrop-blur">
