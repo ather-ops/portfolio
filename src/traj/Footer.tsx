@@ -119,7 +119,7 @@ export default function Footer() {
       <div className="border-t border-[var(--tj-line)]">
         <div className="mx-auto flex max-w-[1280px] flex-col gap-2 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p className="tj-label text-[9px] text-[rgba(38,50,66,0.5)]">
-            © 2026 Ather Sama · All systems documented
+            © 2026 Ather Sama · All rights reserved
           </p>
           <p className="tj-label text-[9px] text-[rgba(38,50,66,0.5)]">
             React · Vite · Tailwind · Deployed on Vercel
