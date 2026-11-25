@@ -1,0 +1,564 @@
+/* Trajectory-inspired direction — cream sky, navy ink, peach accents. */
+:root {
+  --tj-cream: #f8f9e9;
+  --tj-paper: #fffef9;
+  --tj-navy: #263242;
+  --tj-navy-2: #344861;
+  --tj-ink: #1f2a38;
+  --tj-peach: #f3d0b4;
+  --tj-peach-strong: #f0a67e;
+  --tj-mint: #dfece2;
+  --tj-lavender: #ddd8ec;
+  --tj-sky: #dbe7f1;
+  --tj-line: rgba(38, 50, 66, 0.16);
+  --tj-line-strong: rgba(38, 50, 66, 0.28);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--tj-cream);
+}
+
+body {
+  background: var(--tj-cream);
+}
+
+.tj-site {
+  position: relative;
+  overflow-x: clip;
+  background: var(--tj-cream);
+  color: var(--tj-navy);
+  font-family: "Instrument Serif", ui-serif, Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tj-site::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+.tj-display {
+  font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+}
+
+.tj-ui {
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+.tj-serif {
+  font-family: "Instrument Serif", ui-serif, Georgia, serif;
+}
+
+.tj-label {
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(38, 50, 66, 0.6);
+}
+
+.tj-label--light {
+  color: rgba(248, 249, 233, 0.58);
+}
+
+.tj-eyebrow {
+  font-family: "Instrument Serif", ui-serif, Georgia, serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 1.1;
+  color: rgba(38, 50, 66, 0.55);
+}
+
+.tj-eyebrow--light {
+  color: rgba(248, 249, 233, 0.56);
+}
+
+/* Buttons */
+.tj-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border-radius: 8px;
+  padding: 0.72rem 1.05rem;
+  font-family: "Instrument Serif", ui-serif, Georgia, serif;
+  font-size: 17px;
+  line-height: 1;
+  letter-spacing: 0.005em;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  white-space: nowrap;
+}
+
+.tj-btn:hover {
+  transform: translateY(-1px);
+}
+
+.tj-btn--navy {
+  background: var(--tj-navy);
+  color: var(--tj-cream);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 8px 18px rgba(31, 42, 56, 0.14);
+}
+
+.tj-btn--navy:hover {
+  background: #1d2836;
+}
+
+.tj-btn--peach {
+  background: var(--tj-peach);
+  color: var(--tj-navy);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.tj-btn--ghost {
+  background: transparent;
+  color: var(--tj-navy);
+  border: 1px solid var(--tj-line-strong);
+}
+
+.tj-btn--light {
+  background: rgba(255, 254, 249, 0.86);
+  color: var(--tj-navy);
+  border: 1px solid rgba(38, 50, 66, 0.12);
+}
+
+.tj-btn--sm {
+  padding: 0.55rem 0.85rem;
+  font-size: 15px;
+}
+
+.tj-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid var(--tj-line-strong);
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(38, 50, 66, 0.75);
+}
+
+.tj-pill--mint {
+  background: #e7f1e5;
+  border-color: #c6d8c6;
+  color: #4a6b52;
+}
+
+.tj-pill--peach {
+  background: rgba(255, 254, 249, 0.6);
+  border-color: rgba(38, 50, 66, 0.22);
+}
+
+/* Header */
+.tj-header {
+  transition: background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.tj-header--scrolled {
+  background: rgba(248, 249, 233, 0.9);
+  border-bottom-color: var(--tj-line);
+  backdrop-filter: blur(14px);
+}
+
+.tj-nav-link {
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(38, 50, 66, 0.78);
+  transition: color 0.2s ease;
+}
+
+.tj-nav-link:hover {
+  color: var(--tj-navy);
+}
+
+/* Hero */
+.tj-hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #efe4d2;
+}
+
+.tj-hero-img {
+  object-fit: cover;
+  object-position: 72% 50%;
+}
+
+.tj-hero-wash {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(248, 249, 233, 0.92) 0%, rgba(248, 249, 233, 0.78) 26%, rgba(248, 249, 233, 0.26) 54%, rgba(248, 249, 233, 0) 78%),
+    linear-gradient(180deg, rgba(248, 249, 233, 0.34) 0%, rgba(248, 249, 233, 0) 30%, rgba(248, 249, 233, 0.02) 68%, var(--tj-cream) 100%);
+}
+
+.tj-hero-title {
+  font-size: clamp(66px, 11.2vw, 162px);
+  font-weight: 500;
+  letter-spacing: -0.062em;
+  line-height: 0.84;
+  color: var(--tj-ink);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.tj-hero-line2 {
+  display: block;
+  margin-left: 16%;
+}
+
+.tj-hero-copy {
+  font-size: 20px;
+  line-height: 1.22;
+  color: rgba(31, 42, 56, 0.86);
+}
+
+/* Logo strip */
+.tj-logo-mark {
+  font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: rgba(38, 50, 66, 0.72);
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.tj-logo-mark:hover {
+  color: var(--tj-navy);
+}
+
+.tj-logo-serif {
+  font-family: "Instrument Serif", ui-serif, Georgia, serif;
+  font-size: 25px;
+  letter-spacing: -0.01em;
+  color: rgba(38, 50, 66, 0.74);
+}
+
+.tj-logo-serif:hover {
+  color: var(--tj-navy);
+}
+
+/* Cards */
+.tj-card {
+  position: relative;
+  border: 1px solid var(--tj-line);
+  border-radius: 5px;
+  background: var(--tj-paper);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.tj-card:hover {
+  box-shadow: 0 18px 40px -28px rgba(31, 42, 56, 0.35);
+}
+
+.tj-card.is-click-glowing {
+  animation: card-click-glow 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tj-rail {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-padding-left: 2rem;
+}
+
+.tj-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.tj-rail-card {
+  scroll-snap-align: none;
+}
+
+.tj-feature-rail {
+  padding-left: calc(max(0px, (100vw - 1280px) / 2) + 1.25rem);
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .tj-feature-rail {
+    padding-left: calc(max(0px, (100vw - 1280px) / 2) + 2rem);
+    padding-right: 2rem;
+  }
+}
+
+.tj-feature-cover {
+  border: 1px solid rgba(38, 50, 66, 0.14);
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+/* Vision */
+.tj-vision-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  background:
+    radial-gradient(80% 70% at 52% 42%, rgba(96, 132, 160, 0.24), transparent 62%),
+    linear-gradient(180deg, #283545 0%, #223040 100%);
+}
+
+.tj-vision-grid {
+  stroke: rgba(199, 220, 239, 0.11);
+  stroke-width: 1;
+  fill: none;
+}
+
+.tj-vision-orbit {
+  stroke: rgba(214, 234, 242, 0.4);
+  stroke-width: 1;
+  fill: none;
+  stroke-dasharray: 2 5;
+}
+
+.tj-vision-node {
+  fill: #e9f5f6;
+}
+
+/* Steps + platform cards */
+.tj-step-card {
+  border: 1px solid var(--tj-line);
+  border-radius: 5px;
+  background: rgba(255, 254, 249, 0.55);
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.3s ease;
+}
+
+.tj-step-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--tj-line-strong);
+}
+
+.tj-step-card--active {
+  background: #f5d8bf;
+  border-color: rgba(38, 50, 66, 0.22);
+}
+
+/* Trust */
+.tj-trust-image {
+  background-image: url("/img/traj-clouds.jpg");
+  background-size: cover;
+  background-position: 48% 58%;
+}
+
+.tj-trust-row {
+  border-top: 1px solid var(--tj-line);
+}
+
+/* Dark band */
+.tj-dark {
+  background: var(--tj-navy);
+  color: var(--tj-cream);
+}
+
+.tj-dark-label {
+  color: rgba(248, 249, 233, 0.5);
+}
+
+.tj-dark-line {
+  border-top: 1px solid rgba(248, 249, 233, 0.16);
+}
+
+.tj-metric {
+  font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(112px, 19vw, 270px);
+  font-weight: 400;
+  letter-spacing: -0.075em;
+  line-height: 0.78;
+  background: linear-gradient(180deg, #c8c3e8 2%, #f4f0dd 48%, #fffef9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tj-metric-tile {
+  background: rgba(20, 29, 42, 0.3);
+  border-radius: 8px;
+}
+
+.tj-field-row {
+  transition: background 0.25s ease, padding 0.25s ease;
+}
+
+.tj-field-row:hover {
+  background: rgba(248, 249, 233, 0.045);
+}
+
+/* Footer */
+.tj-footer-word {
+  font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(112px, 25.5vw, 390px);
+  font-weight: 500;
+  letter-spacing: -0.075em;
+  line-height: 0.7;
+  color: var(--tj-ink);
+}
+
+.tj-cloud-band {
+  position: relative;
+  overflow: hidden;
+  background: #f3d8c0;
+}
+
+.tj-cloud-band img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 62%;
+}
+
+.tj-cloud-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(248, 249, 233, 0.92) 0%, rgba(248, 249, 233, 0.12) 28%, rgba(243, 208, 180, 0.18) 72%, rgba(243, 208, 180, 0.42) 100%);
+}
+
+/* Form + misc */
+.tj-input {
+  border: 1px solid var(--tj-line);
+  border-radius: 5px;
+  background: rgba(255, 254, 249, 0.72);
+  padding: 0.7rem 0.8rem;
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  color: var(--tj-navy);
+  outline: none;
+}
+
+.tj-input:focus {
+  border-color: rgba(38, 50, 66, 0.5);
+}
+
+/* Keep the assistant UI in its sans system while the site is serif-led. */
+.uri-frame,
+.uri-orb,
+.uri-trigger {
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+@media (max-width: 767px) {
+  .tj-hero-img {
+    object-position: 66% 50%;
+  }
+
+  .tj-hero-wash {
+    background:
+      linear-gradient(180deg, rgba(248, 249, 233, 0.55) 0%, rgba(248, 249, 233, 0.18) 30%, rgba(248, 249, 233, 0.28) 64%, var(--tj-cream) 100%),
+      linear-gradient(90deg, rgba(248, 249, 233, 0.62) 0%, rgba(248, 249, 233, 0.08) 70%);
+  }
+
+  .tj-hero-title {
+    font-size: clamp(54px, 17vw, 82px);
+    line-height: 0.9;
+  }
+
+  .tj-hero-line2 {
+    margin-left: 8%;
+  }
+
+  .tj-hero-copy {
+    font-size: 18px;
+  }
+
+  .tj-footer-word {
+    font-size: 27vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tj-card,
+  .tj-btn,
+  .tj-step-card {
+    transition: none !important;
+  }
+}
+
+/* Section rhythm + dark / CTA panels */
+section[id] {
+  scroll-margin-top: 84px;
+}
+
+.tj-dark-band {
+  position: relative;
+  overflow: hidden;
+  border-radius: 7px;
+  color: var(--tj-cream);
+  background:
+    radial-gradient(70% 85% at 82% 0%, rgba(126, 166, 242, 0.18), transparent 58%),
+    radial-gradient(50% 60% at 4% 100%, rgba(243, 208, 180, 0.1), transparent 60%),
+    linear-gradient(180deg, #2b394b 0%, #212e3e 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.tj-dark-band--full {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.tj-metric--band {
+  font-size: clamp(96px, 15vw, 216px);
+}
+
+.tj-cta-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--tj-line);
+  border-radius: 7px;
+  background:
+    radial-gradient(60% 90% at 50% 0%, rgba(255, 254, 249, 0.9), transparent 62%),
+    radial-gradient(50% 70% at 90% 100%, rgba(243, 208, 180, 0.55), transparent 60%),
+    radial-gradient(40% 60% at 8% 88%, rgba(223, 236, 226, 0.65), transparent 62%),
+    linear-gradient(180deg, #f6f3e1 0%, #f1ead6 100%);
+}
+
+.tj-cta-panel::before,
+.tj-cta-panel::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border: 1px solid rgba(38, 50, 66, 0.12);
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.tj-cta-panel::before {
+  left: -140px;
+  top: -120px;
+}
+
+.tj-cta-panel::after {
+  right: -120px;
+  bottom: -150px;
+}
+
+.tj-footer-word {
+  font-size: clamp(88px, 21.5vw, 306px);
+  line-height: 0.8;
+  color: rgba(31, 42, 56, 0.9);
+  text-shadow: 0 1px 0 rgba(255, 254, 249, 0.35);
+}
+
+@media (max-width: 767px) {
+  .tj-footer-word {
+    font-size: 24vw;
+  }
+}
