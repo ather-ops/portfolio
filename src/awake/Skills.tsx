@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Kicker, Reveal } from "./ui";
 import Learning from "./Learning";
 
+const LANG_CIRC = 2 * Math.PI * 35;
+
 const languages = [
   { name: "Python", level: 90, note: "Core, OOP, libraries, FastAPI", tone: "python" },
   { name: "SQL", level: 80, note: "Joins, aggregation, schema design", tone: "sql" },
@@ -77,27 +79,75 @@ export default function Skills() {
             <div className="aw-lang-list">
               {languages.map((lang, index) => (
                 <div key={lang.name} className={`aw-lang-row aw-lang-row--${lang.tone}`}>
-                  <div className="aw-lang-top">
-                    <span className="aw-lang-name">{lang.name}</span>
-                    <span className="aw-lang-pct">{lang.level}%</span>
-                  </div>
                   <div
-                    className="aw-lang-track"
+                    className="aw-lang-gauge"
                     role="progressbar"
                     aria-label={`${lang.name} comfort level`}
                     aria-valuenow={lang.level}
                     aria-valuemin={0}
                     aria-valuemax={100}
                   >
-                    <motion.span
-                      className="aw-lang-fill"
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${lang.level}%` }}
-                      viewport={{ once: true, margin: "-8% 0px" }}
-                      transition={{ duration: 1.1, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                    />
+                    <svg viewBox="0 0 96 96" aria-hidden="true">
+                      <defs>
+                        <linearGradient id={`aw-lang-grad-${lang.tone}`} x1="0" y1="0" x2="1" y2="1">
+                          {lang.tone === "python" && (
+                            <>
+                              <stop offset="0%" stopColor="#2f6bff" />
+                              <stop offset="55%" stopColor="#7c5cff" />
+                              <stop offset="100%" stopColor="#b18cff" />
+                            </>
+                          )}
+                          {lang.tone === "sql" && (
+                            <>
+                              <stop offset="0%" stopColor="#0f9e8a" />
+                              <stop offset="55%" stopColor="#45c98b" />
+                              <stop offset="100%" stopColor="#a4e66f" />
+                            </>
+                          )}
+                          {lang.tone === "c" && (
+                            <>
+                              <stop offset="0%" stopColor="#ff8a3d" />
+                              <stop offset="60%" stopColor="#ff6b6b" />
+                              <stop offset="100%" stopColor="#ff9f9f" />
+                            </>
+                          )}
+                        </linearGradient>
+                      </defs>
+                      <circle
+                        className="aw-lang-gauge-dots"
+                        cx="48"
+                        cy="48"
+                        r="42"
+                        strokeDasharray="0.5 8.5"
+                        strokeLinecap="round"
+                      />
+                      <circle className="aw-lang-gauge-track" cx="48" cy="48" r="35" strokeWidth="9" />
+                      <motion.circle
+                        className="aw-lang-gauge-arc"
+                        cx="48"
+                        cy="48"
+                        r="35"
+                        strokeWidth="9"
+                        strokeLinecap="round"
+                        stroke={`url(#aw-lang-grad-${lang.tone})`}
+                        strokeDasharray={LANG_CIRC}
+                        initial={{ strokeDashoffset: LANG_CIRC }}
+                        whileInView={{ strokeDashoffset: LANG_CIRC * (1 - lang.level / 100) }}
+                        viewport={{ once: true, margin: "-8% 0px" }}
+                        transition={{ duration: 1.2, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                        transform="rotate(-90 48 48)"
+                      />
+                    </svg>
+                    <span className="aw-lang-gauge-value">
+                      {lang.level}
+                      <i>%</i>
+                    </span>
                   </div>
-                  <p className="aw-lang-note">{lang.note}</p>
+
+                  <div className="aw-lang-copy">
+                    <span className="aw-lang-name">{lang.name}</span>
+                    <p className="aw-lang-note">{lang.note}</p>
+                  </div>
                 </div>
               ))}
             </div>

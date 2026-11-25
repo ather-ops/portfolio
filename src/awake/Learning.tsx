@@ -226,7 +226,6 @@ function LearningCard({ card, wide = false }: { card: Card; wide?: boolean }) {
       </div>
 
       <div className={`aw-lcard-art aw-lcard-art--${card.tone}`} aria-hidden="true">
-        <span className="aw-lcard-grid" />
         <span className="aw-lcard-orb" />
         <span className="aw-lcard-word">{card.word}</span>
         <span className="aw-lcard-art-meta">{done ? "done" : `${card.progress}%`}</span>
