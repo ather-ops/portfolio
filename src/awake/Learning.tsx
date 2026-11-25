@@ -204,31 +204,67 @@ function Gauge({ value, caption, tone }: { value: number; caption: string; tone:
   );
 }
 
+const CARD_RING = { r: 26, stroke: 5 };
+const CARD_CIRC = 2 * Math.PI * CARD_RING.r;
+
+function CardRing({ value, tone, done }: { value: number; tone: Card["tone"]; done: boolean }) {
+  return (
+    <div className={`aw-lcard-ring aw-lcard-ring--${tone}`} aria-hidden="true">
+      <svg viewBox="0 0 64 64">
+        <circle className="aw-lcard-ring-track" cx="32" cy="32" r={CARD_RING.r} strokeWidth={CARD_RING.stroke} />
+        <motion.circle
+          className="aw-lcard-ring-arc"
+          cx="32"
+          cy="32"
+          r={CARD_RING.r}
+          strokeWidth={CARD_RING.stroke}
+          strokeLinecap="round"
+          stroke="currentColor"
+          strokeDasharray={CARD_CIRC}
+          initial={{ strokeDashoffset: CARD_CIRC }}
+          whileInView={{ strokeDashoffset: CARD_CIRC * (1 - value / 100) }}
+          viewport={{ once: true, margin: "-8% 0px" }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          transform="rotate(-90 32 32)"
+        />
+      </svg>
+      <span className="aw-lcard-ring-label">
+        {done ? <Check size={15} strokeWidth={2.8} /> : <>{value}<i>%</i></>}
+      </span>
+    </div>
+  );
+}
+
 function LearningCard({ card, wide = false }: { card: Card; wide?: boolean }) {
   const done = card.progress >= 100;
 
   return (
-    <article className={`aw-lcard${wide ? " aw-lcard--wide" : ""}`}>
-      <div className="aw-lcard-copy">
+    <article
+      className={`aw-lcard aw-lcard--${card.tone}${done ? " is-done" : ""}${
+        wide ? " aw-lcard--wide" : ""
+      }`}
+    >
+      <span className="aw-lcard-glow" aria-hidden="true" />
+      <span className="aw-lcard-word" aria-hidden="true">
+        {card.word}
+      </span>
+
+      <div className="aw-lcard-top">
         <span className="aw-lcard-index">{card.index}</span>
-        <h4 className="aw-lcard-title">{card.title}</h4>
-        <p className="aw-lcard-body">{card.body}</p>
-        <div className="aw-lcard-foot">
-          <div>
-            <strong>{card.provider}</strong>
-            <span>{card.meta}</span>
-          </div>
-          <span className={`aw-lcard-state${done ? " is-done" : ""}`}>
-            {done ? <Check size={10} strokeWidth={2.6} /> : <span className="aw-lcard-dot" />}
-            {done ? "Completed" : `${card.progress}%`}
-          </span>
-        </div>
+        <span className="aw-lcard-state">{done ? "Completed" : "In progress"}</span>
       </div>
 
-      <div className={`aw-lcard-art aw-lcard-art--${card.tone}`} aria-hidden="true">
-        <span className="aw-lcard-orb" />
-        <span className="aw-lcard-word">{card.word}</span>
-        <span className="aw-lcard-art-meta">{done ? "done" : `${card.progress}%`}</span>
+      <div className="aw-lcard-main">
+        <div className="aw-lcard-text">
+          <h4 className="aw-lcard-title">{card.title}</h4>
+          <p className="aw-lcard-body">{card.body}</p>
+        </div>
+        <CardRing value={card.progress} tone={card.tone} done={done} />
+      </div>
+
+      <div className="aw-lcard-foot">
+        <strong>{card.provider}</strong>
+        <span>{card.meta}</span>
       </div>
     </article>
   );
