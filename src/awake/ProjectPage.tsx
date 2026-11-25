@@ -1,7 +1,7 @@
 import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
 import { caseStudies, getCase } from "./projectData";
 import Header from "./Header";
-import { AwButton, CircleArrow, Kicker, Reveal } from "./ui";
+import { AwButton, CircleArrow, Kicker, Reveal, StarMark } from "./ui";
 import Cta from "./Cta";
 
 function statusClass(status: string) {
@@ -76,7 +76,18 @@ export default function ProjectPage({ slug }: { slug: string }) {
               </div>
             </div>
 
-            <aside className="aw-case-facts" aria-label="Project at a glance">
+            <aside className="aw-case-aside">
+              <div className={`aw-case-art aw-case-art--${project.tint}`} aria-hidden="true">
+                <span className="aw-case-art-grid" />
+                <span className="aw-case-art-orb aw-case-art-orb--one" />
+                <span className="aw-case-art-orb aw-case-art-orb--two" />
+                <span className="aw-case-art-index">{project.index}</span>
+                <span className="aw-case-art-meta">
+                  <StarMark size={9} /> {project.name}
+                </span>
+              </div>
+
+              <div className="aw-case-facts" aria-label="Project at a glance">
               <div className="aw-case-facts-top">
                 <span className={statusClass(project.status)}>{project.status}</span>
                 <span className="aw-case-facts-year">{project.year}</span>
@@ -111,6 +122,7 @@ export default function ProjectPage({ slug }: { slug: string }) {
                   </div>
                 </>
               )}
+              </div>
             </aside>
           </div>
         </div>

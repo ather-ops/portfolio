@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { AwButton } from "./ui";
 import Header from "./Header";
 import LogoStrip from "./LogoStrip";
+import { profile } from "../data";
 
 const proof = [
   { src: "/img/projects/icon-xpect.webp", alt: "Xpect AI", bg: "#efe5ff" },
@@ -15,6 +16,18 @@ export default function Hero() {
       <Header />
 
       <div className="aw-container aw-hero-body">
+        <motion.span
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.02, ease: [0.16, 1, 0.3, 1] }}
+          className="aw-availability"
+        >
+          <span className="aw-availability-dot" />
+          <strong>Open to AI/ML engineer roles</strong>
+          <span className="aw-availability-sep" />
+          Remote / Srinagar
+        </motion.span>
+
         <motion.h1
           initial={{ opacity: 0, y: 26 }}
           animate={{ opacity: 1, y: 0 }}
@@ -33,8 +46,8 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="aw-hero-sub"
         >
-          Ather Sama builds production RAG, multi-agent tools and applied ML — with 10+ public
-          demos and a full write-up for every build.
+          ML/AI engineer and founder of Atherva Automations. I build production RAG, multi-agent
+          tools and applied ML — with 10+ public demos and a full case study for every build.
         </motion.p>
 
         <motion.div
@@ -45,6 +58,10 @@ export default function Hero() {
         >
           <AwButton href="#work" variant="purple">
             Explore the work
+          </AwButton>
+
+          <AwButton href={profile.resume} variant="light" external>
+            Download résumé
           </AwButton>
 
           <div className="aw-hero-proof">

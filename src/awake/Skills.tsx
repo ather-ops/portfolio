@@ -1,10 +1,11 @@
 import { Check, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 import { Kicker, Reveal } from "./ui";
 
 const languages = [
-  { name: "Python", level: 90, note: "Core, OOP, libraries, FastAPI" },
-  { name: "SQL", level: 80, note: "Joins, aggregation, schema design" },
-  { name: "C", level: 50, note: "Fundamentals, memory, pointers" },
+  { name: "Python", level: 90, note: "Core, OOP, libraries, FastAPI", tone: "python" },
+  { name: "SQL", level: 80, note: "Joins, aggregation, schema design", tone: "sql" },
+  { name: "C", level: 50, note: "Fundamentals, memory, pointers", tone: "c" },
 ];
 
 const groups = [
@@ -88,8 +89,8 @@ export default function Skills() {
               <span className="aw-lang-badge">Self-assessed</span>
             </div>
             <div className="aw-lang-list">
-              {languages.map((lang) => (
-                <div key={lang.name} className="aw-lang-row">
+              {languages.map((lang, index) => (
+                <div key={lang.name} className={`aw-lang-row aw-lang-row--${lang.tone}`}>
                   <div className="aw-lang-top">
                     <span className="aw-lang-name">{lang.name}</span>
                     <span className="aw-lang-pct">{lang.level}%</span>
@@ -102,7 +103,13 @@ export default function Skills() {
                     aria-valuemin={0}
                     aria-valuemax={100}
                   >
-                    <span className="aw-lang-fill" style={{ width: `${lang.level}%` }} />
+                    <motion.span
+                      className="aw-lang-fill"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${lang.level}%` }}
+                      viewport={{ once: true, margin: "-8% 0px" }}
+                      transition={{ duration: 1.1, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    />
                   </div>
                   <p className="aw-lang-note">{lang.note}</p>
                 </div>
@@ -151,9 +158,17 @@ export default function Skills() {
                   to <em className="aw-italic">building my own.</em>
                 </h3>
               </div>
-              <span className="aw-learning-chip">
-                <Sparkles size={11} /> LLM track
-              </span>
+              <div className="aw-learning-side">
+                <div className="aw-learning-art" aria-hidden="true">
+                  <span className="aw-learning-art-grid" />
+                  <span className="aw-learning-art-orb" />
+                  <span className="aw-learning-art-word">LLM</span>
+                  <span className="aw-learning-art-caption">from scratch</span>
+                </div>
+                <span className="aw-learning-chip">
+                  <Sparkles size={11} /> LLM track
+                </span>
+              </div>
             </div>
 
             <div className="aw-learning-cols">

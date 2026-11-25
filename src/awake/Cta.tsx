@@ -30,6 +30,10 @@ export default function Cta() {
             <a href="mailto:peerather07@gmail.com">peerather07@gmail.com</a> ·{" "}
             <a href="https://wa.me/919103107882" target="_blank" rel="noreferrer">
               WhatsApp
+            </a>{" "}
+            ·{" "}
+            <a href="/ather-assadullah-peer-resume.pdf" target="_blank" rel="noreferrer">
+              Download résumé
             </a>
           </p>
         </Reveal>

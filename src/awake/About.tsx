@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { AwButton, Kicker, Reveal, StarMark } from "./ui";
+import { profile } from "../data";
 
 const steps = [
   {
@@ -36,16 +37,22 @@ export default function About() {
           <p>
             I&apos;m Ather Sama, an ML / AI engineer in Srinagar and the founder of Atherva
             Automations. I build the retrieval, the interface, the deployment and the docs — then
-            keep the system running in public.
+            keep the system running in public. I&apos;m open to AI/ML roles where the job is to own
+            a system end to end, not just a notebook.
           </p>
           <div className="aw-facts">
             <span className="aw-fact">Srinagar, India</span>
             <span className="aw-fact">Remote-first</span>
             <span className="aw-fact">Open to AI/ML roles</span>
           </div>
-          <AwButton href="mailto:peerather07@gmail.com" variant="dark">
-            Work with Ather
-          </AwButton>
+          <div className="aw-about-actions">
+            <AwButton href={profile.resume} variant="dark" external>
+              Download résumé
+            </AwButton>
+            <AwButton href="#contact" variant="light">
+              Work with Ather
+            </AwButton>
+          </div>
         </Reveal>
 
         <Reveal delay={0.1}>
