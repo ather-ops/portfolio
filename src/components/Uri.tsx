@@ -234,9 +234,9 @@ export default function Uri() {
  initial={{ opacity: 0, y: 8, scale: 0.95 }}
  animate={{ opacity: 1, y: 0, scale: 1 }}
  exit={{ opacity: 0, y: 6, scale: 0.96 }}
- className="uri-trigger mr-1 max-w-[230px] rounded-2xl rounded-br-md border border-white/70 bg-white/90 px-4 py-3 text-left text-xs font-medium leading-snug text-ink shadow-[0_16px_40px_rgba(31,45,71,0.16)] backdrop-blur-xl"
+ className="uri-trigger mr-1 max-w-[230px] rounded-2xl rounded-br-md border border-black/10 bg-white/95 px-4 py-3 text-left text-[11px] font-medium leading-snug text-[var(--aw-ink)] shadow-[0_16px_40px_rgba(16,17,18,0.14)] backdrop-blur-xl"
  >
- <span className="mb-1 flex items-center gap-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[#5c85d6]">
+ <span className="mb-1 flex items-center gap-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-[#6b4eff]">
  <Sparkles size={10} /> URI
  </span>
  Hi — I'm URI. Ask me anything about Ather Sama.
@@ -246,38 +246,20 @@ export default function Uri() {
 
  <div className="relative">
  <button
- type="button"
- onClick={() => (open ? setOpen(false) : openPanel())}
- aria-expanded={open}
- aria-label={open ? "Close URI, the assistant for Ather Sama" : "Open URI, the assistant for Ather Sama"}
- data-state={ringState}
- className="uri-orb uri-trigger group grid h-16 w-16 place-items-center rounded-full bg-white/60 p-1 shadow-[0_18px_40px_rgba(31,45,71,0.22)] backdrop-blur-md transition-transform duration-300 hover:scale-105 active:scale-95"
+  type="button"
+  onClick={() => (open ? setOpen(false) : openPanel())}
+  aria-expanded={open}
+  aria-label={open ? "Close URI, the assistant for Ather Sama" : "Open URI, the assistant for Ather Sama"}
+  data-state={ringState}
+  className="uri-trigger group flex items-center gap-2 rounded-full border border-black/10 bg-white/92 py-1.5 pl-4 pr-1.5 text-[11.5px] font-medium text-[var(--aw-ink)] shadow-[0_10px_30px_rgba(16,17,18,0.14)] backdrop-blur-md transition hover:bg-white active:scale-[0.98]"
  >
- <span className="uri-ping" aria-hidden />
- <span className="uri-ping uri-ping--late" aria-hidden />
- <span className="uri-orb__halo" aria-hidden />
- <span className="uri-orb__ring" aria-hidden />
- <img
- src={uriAvatar}
- alt="URI, the assistant for Ather Sama"
- className="relative h-full w-full rounded-full object-cover"
- draggable={false}
- />
- <AnimatePresence mode="wait" initial={false}>
- <motion.span
- key={open ? "close" : "spark"}
- initial={{ scale: 0.6, opacity: 0 }}
- animate={{ scale: 1, opacity: 1 }}
- exit={{ scale: 0.6, opacity: 0 }}
- transition={{ duration: 0.15 }}
- className="absolute -bottom-0.5 -right-0.5 grid h-6 w-6 place-items-center rounded-full border border-white/70 bg-ink text-lime shadow-md"
- >
- {open ? <X size={12} /> : <Sparkles size={11} />}
- </motion.span>
- </AnimatePresence>
- {busy && (
- <span className="absolute -left-0.5 -top-0.5 h-3 w-3 animate-ping rounded-full bg-lime" />
- )}
+  <span>Ask URI</span>
+  <span className="relative grid h-8 w-8 place-items-center rounded-full bg-[#101112] text-white">
+   {open ? <X size={12} /> : <Sparkles size={12} />}
+   {busy && (
+    <span className="absolute -right-0.5 -top-0.5 h-2 w-2 animate-ping rounded-full bg-[#6b4eff]" />
+   )}
+  </span>
  </button>
  </div>
  </div>

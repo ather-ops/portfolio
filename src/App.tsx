@@ -1,16 +1,14 @@
 import { useEffect } from "react";
-import Header from "./traj/Header";
-import Hero from "./traj/Hero";
-import LogoStrip from "./traj/LogoStrip";
-import Featured from "./traj/Featured";
-import Vision from "./traj/Vision";
-import Platform from "./traj/Platform";
-import Trust from "./traj/Trust";
-import Team from "./traj/Team";
-import Recognition from "./traj/Recognition";
-import Notes from "./traj/Notes";
-import Cta from "./traj/Cta";
-import Footer from "./traj/Footer";
+import Hero from "./awake/Hero";
+import Intro from "./awake/Intro";
+import Work from "./awake/Work";
+import Services from "./awake/Services";
+import About from "./awake/About";
+import Trust from "./awake/Trust";
+import Team from "./awake/Team";
+import Notes from "./awake/Notes";
+import Cta from "./awake/Cta";
+import Footer from "./awake/Footer";
 import Uri from "./components/Uri";
 
 export default function App() {
@@ -42,29 +40,27 @@ export default function App() {
   }, []);
 
   return (
-    <div className="tj-site">
-      <a
-        href="#work"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:rounded-md focus:bg-[var(--tj-navy)] focus:px-3 focus:py-2 focus:text-[13px] focus:text-[var(--tj-cream)]"
-      >
-        Skip to the work
-      </a>
-      <Header />
-      <main>
-        <Hero />
-        <LogoStrip />
-        <Featured />
-        <Vision />
-        <Platform />
-        <Trust />
-        <div className="tj-dark-band tj-dark-band--full">
+    <div className="aw-site">
+      <div className="aw-page">
+        <a
+          href="#work"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:rounded-md focus:bg-[var(--aw-ink)] focus:px-3 focus:py-2 focus:text-[13px] focus:text-white"
+        >
+          Skip to the work
+        </a>
+        <main>
+          <Hero />
+          <Intro />
+          <Work />
+          <Services />
+          <About />
+          <Trust />
           <Team />
           <Notes />
-        </div>
-        <Recognition />
-        <Cta />
-      </main>
-      <Footer />
+          <Cta />
+        </main>
+        <Footer />
+      </div>
       <Uri />
     </div>
   );
