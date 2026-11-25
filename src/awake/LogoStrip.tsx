@@ -12,10 +12,10 @@ const logos = [
 
 export default function LogoStrip() {
   return (
-    <section id="live" className="aw-logos">
+    <section id="demos" className="aw-logos">
       <div className="aw-container">
         <Reveal>
-          <p className="aw-logos-label">Nine deployments, from semantic search to agentic tools.</p>
+          <p className="aw-logos-label">10+ public demos, 15 case studies, one builder.</p>
           <div className="aw-logo-row">
             {logos.map((logo) => {
               const content = (
@@ -41,7 +41,7 @@ export default function LogoStrip() {
               );
             })}
           </div>
-          <p className="aw-logo-caption">Eight live systems. Every link goes somewhere.</p>
+          <p className="aw-logo-caption">Live apps, from-scratch ML and analytics — every link goes somewhere.</p>
         </Reveal>
       </div>
     </section>

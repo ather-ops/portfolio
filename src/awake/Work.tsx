@@ -1,83 +1,17 @@
-import { ArrowUpRight, Lock } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { CircleArrow, Kicker, Reveal } from "./ui";
-
-const projects = [
-  {
-    name: "Xpect AI",
-    meta: "Product · RAG",
-    status: "Live",
-    tint: "lav",
-    image: "/img/projects/xpect.jpg",
-    title: "Semantic search over 8,807 titles.",
-    body: "Ask for a film in plain English. Get five grounded matches from a FAISS index, ranked by meaning.",
-    tags: ["FAISS", "MiniLM", "Groq"],
-    href: "https://x-ai-test.streamlit.app",
-  },
-  {
-    name: "PayPal Copilot",
-    meta: "Agentic RAG",
-    status: "Live",
-    tint: "blue",
-    image: "/img/projects/paypal.jpg",
-    title: "Dispute recommendations a human can defend.",
-    body: "A three-agent copilot that retrieves policy, checks evidence and drafts the next best action.",
-    tags: ["Agents", "RAG", "Streamlit"],
-    href: "https://paypal-copilot-agenta.streamlit.app",
-  },
-  {
-    name: "AMAZN AI",
-    meta: "Multi-agent",
-    status: "Live",
-    tint: "green",
-    image: "/img/projects/amazn.jpg",
-    title: "Three tools, one routed answer.",
-    body: "A router agent over product search, reviews and price tools, with memory held across turns.",
-    tags: ["Router", "Tools", "Memory"],
-    href: "https://amazn-agentic-ai.streamlit.app",
-  },
-];
-
-const more = [
-  {
-    name: "PulseMesh",
-    note: "Real-time signal intelligence",
-    status: "Live",
-    href: "https://pulsh-mesh.streamlit.app",
-  },
-  {
-    name: "Hospital SQL",
-    note: "Natural-language analytics",
-    status: "Live",
-    href: "https://hospital-management--agent.streamlit.app",
-  },
-  {
-    name: "Atlas Agent",
-    note: "Research agent · code only",
-    status: "Paused",
-  },
-  {
-    name: "Alerti Intelligence",
-    note: "Alert triage for ops teams",
-    status: "In development",
-    href: "https://atherva-automations.vercel.app/alerti",
-  },
-  {
-    name: "Marketify",
-    note: "Go-to-market workspace",
-    status: "In development",
-    href: "https://atherva-automations.vercel.app/marketify",
-  },
-];
+import { caseStudies, featuredCases, otherCases } from "./projectData";
 
 function statusClass(status: string) {
   if (status === "Paused") return "aw-status aw-status--paused";
-  if (status === "In development") return "aw-status aw-status--dev";
+  if (status === "Code" || status === "Case study" || status === "Ongoing")
+    return "aw-status aw-status--dev";
   return "aw-status";
 }
 
 export default function Work() {
   return (
-    <section id="work" className="aw-section">
+    <section id="work" className="aw-section aw-work">
       <div className="aw-container">
         <Reveal>
           <div className="aw-section-head">
@@ -85,86 +19,110 @@ export default function Work() {
             <h2 className="aw-h2">
               Systems shipped,
               <br />
-              <em className="aw-italic">still running.</em>
+              <em className="aw-italic">explained properly.</em>
             </h2>
             <p className="aw-lead">
-              Three live builds below, plus the rest of the stack — every link goes somewhere real.
+              Three flagship systems below, then twelve more case studies. Every card opens a
+              write-up: the problem, the build, what shipped and what comes next.
             </p>
           </div>
         </Reveal>
 
-        <div className="aw-work-grid">
-          {projects.map((project, i) => (
-            <Reveal key={project.name} delay={i * 0.08}>
-              <article className={`aw-work-card aw-work-card--${project.tint}`}>
-                <div className="aw-work-top">
-                  <div>
-                    <h3 className="aw-work-name">{project.name}</h3>
-                    <p className="aw-work-meta">{project.meta}</p>
-                  </div>
-                  <span className="aw-status">Live</span>
+        <div className="aw-feature-grid">
+          {featuredCases.map((project, i) => (
+            <Reveal
+              key={project.slug}
+              delay={i * 0.07}
+              className={project.tint === "dark" ? "aw-feature-span" : ""}
+            >
+              <a
+                href={`#/work/${project.slug}`}
+                className={`aw-feature-card aw-feature-card--${project.tint}`}
+              >
+                <div className="aw-feature-top">
+                  <span className="aw-feature-index">{project.index}</span>
+                  <span className={statusClass(project.status)}>{project.status}</span>
                 </div>
 
-                <div className="aw-work-cover">
-                  <img src={project.image} alt={`${project.name} project preview`} loading="lazy" />
+                <div className="aw-feature-main">
+                  <p className="aw-feature-category">{project.category}</p>
+                  <h3 className="aw-feature-title">
+                    {project.title} <em className="aw-italic">{project.accent}</em>
+                  </h3>
+                  <p className="aw-feature-summary">{project.summary}</p>
                 </div>
 
-                <h4 className="aw-work-title">{project.title}</h4>
-                <p className="aw-work-body">{project.body}</p>
+                <div className="aw-feature-metrics">
+                  {project.metrics.map((metric) => (
+                    <div key={metric.label}>
+                      <strong>{metric.value}</strong>
+                      <span>{metric.label}</span>
+                    </div>
+                  ))}
+                </div>
 
-                <div className="aw-work-bottom">
+                <div className="aw-feature-bottom">
+                  <span className="aw-feature-read">
+                    Read case study <CircleArrow tone={project.tint === "dark" ? "light" : "dark"} size={22} />
+                  </span>
                   <div className="aw-tags">
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="aw-tag">
-                        {tag}
+                    {project.stack.slice(0, 3).map((tech) => (
+                      <span key={tech} className="aw-tag">
+                        {tech}
                       </span>
                     ))}
                   </div>
-                  <a href={project.href} target="_blank" rel="noreferrer" className="aw-work-link">
-                    Open live <CircleArrow tone="light" size={20} />
-                  </a>
                 </div>
-              </article>
+              </a>
             </Reveal>
           ))}
         </div>
 
-        <div className="aw-more">
-          {more.map((item, i) => {
-            const content = (
-              <>
-                <span className="aw-more-index">{String(i + 1).padStart(2, "0")}</span>
-                <span className="aw-more-name">
-                  {item.name}
-                  <span className="aw-more-note">{item.note}</span>
-                </span>
-                <span className={statusClass(item.status)}>{item.status}</span>
-                <span className="aw-more-arrow">
-                  {item.href ? (
-                    <ArrowUpRight size={13} strokeWidth={1.7} />
-                  ) : (
-                    <Lock size={11} strokeWidth={1.7} />
-                  )}
-                </span>
-              </>
-            );
+        <Reveal>
+          <div className="aw-index-head">
+            <div>
+              <Kicker>All case studies</Kicker>
+              <h3 className="aw-index-title">
+                Twelve more, <em className="aw-italic">all documented.</em>
+              </h3>
+            </div>
+            <p className="aw-index-count">
+              {caseStudies.length} projects · every one documented
+            </p>
+          </div>
+        </Reveal>
 
-            return item.href ? (
+        <div className="aw-project-grid">
+          {otherCases.map((project, i) => (
+            <Reveal key={project.slug} delay={Math.min(i * 0.03, 0.2)}>
               <a
-                key={item.name}
-                href={item.href}
-                target="_blank"
-                rel="noreferrer"
-                className="aw-more-row"
+                href={`#/work/${project.slug}`}
+                className={`aw-project-card aw-project-card--${project.tint}`}
               >
-                {content}
+                <div className="aw-project-top">
+                  <span className="aw-project-index">{project.index}</span>
+                  <span className={statusClass(project.status)}>{project.status}</span>
+                </div>
+                <p className="aw-project-category">{project.category}</p>
+                <h3 className="aw-project-title">
+                  {project.title} <em className="aw-italic">{project.accent}</em>
+                </h3>
+                <p className="aw-project-summary">{project.summary}</p>
+                <div className="aw-project-foot">
+                  <div className="aw-tags">
+                    {project.stack.slice(0, 2).map((tech) => (
+                      <span key={tech} className="aw-tag">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="aw-project-arrow">
+                    <ArrowUpRight size={13} strokeWidth={1.7} />
+                  </span>
+                </div>
               </a>
-            ) : (
-              <div key={item.name} className="aw-more-row">
-                {content}
-              </div>
-            );
-          })}
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

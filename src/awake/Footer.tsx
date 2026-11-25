@@ -4,7 +4,9 @@ import { StarMark } from "./ui";
 
 const index = [
   { label: "Work", href: "#work" },
-  { label: "Live apps", href: "#live" },
+  { label: "Skills", href: "#skills" },
+  { label: "Achievements", href: "#awards" },
+  { label: "Live apps", href: "#demos" },
   { label: "Services", href: "#services" },
   { label: "Field notes", href: "#notes" },
   { label: "About", href: "#about" },

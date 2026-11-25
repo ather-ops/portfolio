@@ -1,9 +1,9 @@
 import { Reveal, StarMark } from "./ui";
 
 const stats = [
-  { value: "09", label: "Deployments, 8 live" },
-  { value: "07", label: "Public demos" },
-  { value: "917", label: "Contributions, 12 months" },
+  { value: "10", label: "Public demos" },
+  { value: "1K", label: "GitHub contributions" },
+  { value: "15", label: "Project write-ups" },
 ];
 
 export default function Intro() {
@@ -24,6 +24,9 @@ export default function Intro() {
             </span>
             <span className="aw-soft-pill aw-soft-pill--peach">
               <StarMark size={10} /> Applied ML
+            </span>
+            <span className="aw-soft-pill aw-soft-pill--green">
+              <StarMark size={10} /> ML from scratch
             </span>
           </div>
         </Reveal>

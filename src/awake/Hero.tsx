@@ -33,8 +33,8 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="aw-hero-sub"
         >
-          Ather Sama builds production RAG, multi-agent tools and applied ML — then keeps the
-          systems running in public.
+          Ather Sama builds production RAG, multi-agent tools and applied ML — with 10+ public
+          demos and a full write-up for every build.
         </motion.p>
 
         <motion.div
@@ -56,8 +56,8 @@ export default function Hero() {
               ))}
             </div>
             <div className="aw-proof-text">
-              <strong>9 deployments</strong>
-              <span>8 live systems · 7 public demos</span>
+              <strong>10+ public demos</strong>
+              <span>1,000+ contributions · 15 case studies</span>
             </div>
           </div>
         </motion.div>

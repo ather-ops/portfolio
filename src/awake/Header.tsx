@@ -5,17 +5,30 @@ import { AwButton, StarMark, openUri } from "./ui";
 const links = [
   { href: "#home", label: "Home" },
   { href: "#work", label: "Work" },
-  { href: "#live", label: "Live apps" },
-  { href: "#services", label: "Services" },
+  { href: "#skills", label: "Skills" },
+  { href: "#awards", label: "Achievements" },
+  { href: "#demos", label: "Live apps" },
   { href: "#notes", label: "Notes" },
   { href: "#about", label: "About" },
 ];
 
-export default function Header() {
+export default function Header({ initialActive = "#home" }: { initialActive?: string }) {
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("#home");
+  const [active, setActive] = useState(() => {
+    const hash = typeof window === "undefined" ? "" : window.location.hash;
+    return links.some((link) => link.href === hash) ? hash : initialActive;
+  });
 
   const close = () => setOpen(false);
+
+  useEffect(() => {
+    const onHash = () => {
+      const hash = window.location.hash;
+      if (links.some((link) => link.href === hash)) setActive(hash);
+    };
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
 
   useEffect(() => {
     if (!open) return;

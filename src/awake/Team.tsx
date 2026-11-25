@@ -12,7 +12,7 @@ export default function Team() {
                 <h2 className="aw-h2">
                   One builder.
                   <br />
-                  <em className="aw-italic">Nine systems.</em>
+                  <em className="aw-italic">Ten-plus systems.</em>
                 </h2>
                 <p className="aw-team-copy">
                   Atherva Automations is a one-person studio: strategy, retrieval, interface and
@@ -27,29 +27,29 @@ export default function Team() {
                 <div className="aw-metric">
                   <div className="aw-metric-value">
                     <span className="aw-metric-plus">+</span>
-                    09
+                    10
                   </div>
-                  <p className="aw-metric-label">deployments<br />shipped</p>
+                  <p className="aw-metric-label">public demos<br />and counting</p>
                 </div>
 
                 <div className="aw-team-mini">
                   <div>
-                    <strong>08</strong>
-                    <span>Live</span>
+                    <strong>1,000+</strong>
+                    <span>Contributions</span>
                   </div>
                   <div>
-                    <strong>07</strong>
-                    <span>Public demos</span>
+                    <strong>15</strong>
+                    <span>Case studies</span>
                   </div>
                   <div>
-                    <strong>01</strong>
-                    <span>Paused</span>
+                    <strong>09</strong>
+                    <span>Live apps</span>
                   </div>
                 </div>
 
                 <p className="aw-team-recognition">
                   Top 23% screened · Amazon ML Summer School 2026&nbsp;&nbsp;/&nbsp;&nbsp;150+ LeetCode
-                  &nbsp;&nbsp;/&nbsp;&nbsp;917 contributions in the last year
+                  &nbsp;&nbsp;/&nbsp;&nbsp;HF Agents, FastAPI + Docker complete
                 </p>
               </div>
             </div>
