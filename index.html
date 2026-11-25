@@ -4,7 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#ffffff" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      // Theme is applied before first paint so nothing flashes.
+      (function () {
+        var theme = "light";
+        try {
+          var saved = localStorage.getItem("aw-theme");
+          if (saved === "dark" || saved === "light") {
+            theme = saved;
+          } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            theme = "dark";
+          }
+        } catch (e) {
+          /* storage blocked — stay light */
+        }
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", theme === "dark" ? "#0b0c0e" : "#ffffff");
+      })();
+    </script>
     <meta
       name="description"
       content="Ather Assadullah Peer — ML/AI engineer and founder of Atherva Automations. 10+ public demos across RAG, agents and machine learning from first principles, with 15 in-depth case studies."

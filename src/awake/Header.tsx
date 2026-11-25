@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Menu, Sparkles, X } from "lucide-react";
 import { AwButton, StarMark, openUri } from "./ui";
+import ThemeToggle from "./ThemeToggle";
 
 const links = [
   { href: "#home", label: "Home" },
@@ -78,6 +79,7 @@ export default function Header({ initialActive = "#home" }: { initialActive?: st
             >
               <Sparkles size={14} />
             </button>
+            <ThemeToggle />
             <AwButton href="#contact" variant="dark" className="aw-header-cta">
               Let&apos;s collaborate
             </AwButton>
@@ -127,6 +129,10 @@ export default function Header({ initialActive = "#home" }: { initialActive?: st
           </nav>
 
           <div className="aw-mobile-bottom">
+            <div className="aw-mobile-theme">
+              <span>Appearance</span>
+              <ThemeToggle />
+            </div>
             <button
               type="button"
               onClick={() => {
