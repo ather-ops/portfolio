@@ -1,14 +1,9 @@
 import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
 import { caseStudies, getCase } from "./projectData";
 import Header from "./Header";
-import { AwButton, CircleArrow, Kicker, Reveal, StarMark } from "./ui";
+import { AwButton, CircleArrow, Kicker, Reveal } from "./ui";
 import Cta from "./Cta";
-
-function statusClass(status: string) {
-  if (status === "Paused") return "aw-status aw-status--paused";
-  if (status === "Code" || status === "Case study") return "aw-status aw-status--dev";
-  return "aw-status";
-}
+import { CaseTicket } from "./ticket";
 
 export default function ProjectPage({ slug }: { slug: string }) {
   const project = getCase(slug);
@@ -77,52 +72,7 @@ export default function ProjectPage({ slug }: { slug: string }) {
             </div>
 
             <aside className="aw-case-aside">
-              <div className={`aw-case-art aw-case-art--${project.tint}`} aria-hidden="true">
-                <span className="aw-case-art-grid" />
-                <span className="aw-case-art-orb aw-case-art-orb--one" />
-                <span className="aw-case-art-orb aw-case-art-orb--two" />
-                <span className="aw-case-art-index">{project.index}</span>
-                <span className="aw-case-art-meta">
-                  <StarMark size={9} /> {project.name}
-                </span>
-              </div>
-
-              <div className="aw-case-facts" aria-label="Project at a glance">
-              <div className="aw-case-facts-top">
-                <span className={statusClass(project.status)}>{project.status}</span>
-                <span className="aw-case-facts-year">{project.year}</span>
-              </div>
-              <dl>
-                <div>
-                  <dt>Role</dt>
-                  <dd>{project.role}</dd>
-                </div>
-                <div>
-                  <dt>Timeline</dt>
-                  <dd>{project.timeline}</dd>
-                </div>
-              </dl>
-              <p className="aw-case-facts-label">Stack</p>
-              <div className="aw-tags aw-case-facts-tags">
-                {project.stack.map((tech) => (
-                  <span key={tech} className="aw-tag">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              {extra.length > 0 && (
-                <>
-                  <p className="aw-case-facts-label">Also</p>
-                  <div className="aw-case-extra">
-                    {extra.map((link) => (
-                      <a key={link.label} href={link.href} target="_blank" rel="noreferrer">
-                        {link.label} <ArrowUpRight size={10} />
-                      </a>
-                    ))}
-                  </div>
-                </>
-              )}
-              </div>
+              <CaseTicket project={project} total={String(caseStudies.length).padStart(2, "0")} />
             </aside>
           </div>
         </div>
