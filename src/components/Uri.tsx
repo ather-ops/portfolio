@@ -234,9 +234,9 @@ export default function Uri() {
  initial={{ opacity: 0, y: 8, scale: 0.95 }}
  animate={{ opacity: 1, y: 0, scale: 1 }}
  exit={{ opacity: 0, y: 6, scale: 0.96 }}
- className="uri-trigger mr-1 max-w-[230px] rounded-2xl rounded-br-md border border-black/10 bg-white/95 px-4 py-3 text-left text-[11px] font-medium leading-snug text-[var(--aw-ink)] shadow-[0_16px_40px_rgba(16,17,18,0.14)] backdrop-blur-xl"
+ className="uri-hint uri-trigger mr-1 max-w-[230px] rounded-2xl rounded-br-md px-4 py-3 text-left text-[11px] font-medium leading-snug"
  >
- <span className="mb-1 flex items-center gap-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-[#6b4eff]">
+ <span className="uri-hint-kicker mb-1 flex items-center gap-1 text-[9px] font-semibold uppercase tracking-[0.16em]">
  <Sparkles size={10} /> URI
  </span>
  Hi — I'm URI. Ask me anything about Ather Sama.
@@ -251,10 +251,10 @@ export default function Uri() {
   aria-expanded={open}
   aria-label={open ? "Close URI, the assistant for Ather Sama" : "Open URI, the assistant for Ather Sama"}
   data-state={ringState}
-  className="uri-trigger group flex items-center gap-2 rounded-full border border-black/10 bg-white/92 py-1.5 pl-4 pr-1.5 text-[11.5px] font-medium text-[var(--aw-ink)] shadow-[0_10px_30px_rgba(16,17,18,0.14)] backdrop-blur-md transition hover:bg-white active:scale-[0.98]"
+  className="uri-pill uri-trigger group flex items-center gap-2 rounded-full py-1.5 pl-4 pr-1.5 text-[11.5px] font-medium transition active:scale-[0.98]"
  >
   <span>Ask URI</span>
-  <span className="relative grid h-8 w-8 place-items-center rounded-full bg-[#101112] text-white">
+  <span className="uri-pill-orb relative grid h-8 w-8 place-items-center rounded-full">
    {open ? <X size={12} /> : <Sparkles size={12} />}
    {busy && (
     <span className="absolute -right-0.5 -top-0.5 h-2 w-2 animate-ping rounded-full bg-[#6b4eff]" />
@@ -291,31 +291,31 @@ export default function Uri() {
  <span />
  </span>
 
- <div className="relative z-10 overflow-hidden rounded-[28px] border border-white/70 bg-white/85 shadow-[0_28px_70px_rgba(23,42,74,0.24)] backdrop-blur-2xl">
+ <div className="uri-shell relative z-10 overflow-hidden rounded-[28px] backdrop-blur-2xl">
  {/* header */}
- <div className="relative flex items-center gap-3 border-b border-ink/5 bg-gradient-to-r from-[#eef4ff] via-white to-[#f3fbe9] px-4 py-3.5">
+ <div className="uri-head relative flex items-center gap-3 px-4 py-3.5">
  <div className="relative h-11 w-11 shrink-0">
  <span className="uri-orb__halo" aria-hidden />
  <img
  src={uriAvatar}
  alt=""
- className="relative h-11 w-11 rounded-full object-cover ring-2 ring-white"
+ className="uri-avatar relative h-11 w-11 rounded-full object-cover"
  draggable={false}
  />
  <span
- className={`absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full border-2 border-white ${
+ className={`uri-avatar-badge absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full ${
  phase === "idle" ? "bg-emerald-400" : "bg-lime"
  }`}
  />
  </div>
  <div className="min-w-0 flex-1">
- <p className="flex items-center gap-1.5 text-sm font-bold tracking-tight text-ink">
+ <p className="uri-title flex items-center gap-1.5 text-sm font-bold tracking-tight">
  URI
- <span className="rounded-full bg-ink/5 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.14em] text-ink/45">
+ <span className="uri-chip rounded-full px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.14em]">
  Ather Sama
  </span>
  </p>
- <p className="truncate text-[11px] font-medium text-ink/50">
+ <p className="uri-sub truncate text-[11px] font-medium">
  {phase === "thinking"
  ? "Searching the knowledge base…"
  : phase === "speaking"
@@ -327,7 +327,7 @@ export default function Uri() {
  type="button"
  onClick={() => setOpen(false)}
  aria-label="Close URI"
- className="grid h-8 w-8 place-items-center rounded-full bg-white/70 text-ink/60 transition hover:bg-white hover:text-ink"
+ className="uri-icon-btn grid h-8 w-8 place-items-center rounded-full transition"
  >
  <X size={15} />
  </button>
@@ -342,7 +342,7 @@ export default function Uri() {
  {messages.map((m) =>
  m.role === "user" ? (
  <div key={m.id} className="flex justify-end">
- <p className="max-w-[85%] rounded-2xl rounded-br-md bg-ink px-3.5 py-2.5 text-[13px] font-medium leading-relaxed text-white shadow-sm">
+ <p className="uri-bubble-user max-w-[85%] rounded-2xl rounded-br-md px-3.5 py-2.5 text-[13px] font-medium leading-relaxed">
  {m.text}
  </p>
  </div>
@@ -351,19 +351,19 @@ export default function Uri() {
  <img
  src={uriAvatar}
  alt=""
- className="mt-0.5 h-7 w-7 shrink-0 rounded-full object-cover ring-1 ring-white"
+ className="uri-avatar-ring mt-0.5 h-7 w-7 shrink-0 rounded-full object-cover"
  draggable={false}
  />
- <div className="max-w-[88%] rounded-2xl rounded-tl-md border border-ink/5 bg-white px-3.5 py-2.5 shadow-[0_6px_18px_rgba(31,45,71,0.06)]">
+ <div className="uri-bubble uri-bot max-w-[88%] rounded-2xl rounded-tl-md px-3.5 py-2.5">
  {m.scope && (
- <p className="mb-1.5 text-[9px] font-bold uppercase tracking-[0.16em] text-[#5c85d6]">
+ <p className="uri-scope mb-1.5 text-[9px] font-bold uppercase tracking-[0.16em]">
  {m.scope}
  </p>
  )}
- <p className="whitespace-pre-line text-[13px] leading-relaxed text-ink/80">
+ <p className="uri-text whitespace-pre-line text-[13px] leading-relaxed">
  {m.text.slice(0, m.shown)}
  {m.shown < m.text.length && (
- <span className="ml-0.5 inline-block h-3.5 w-[2px] translate-y-0.5 animate-pulse bg-[#5c85d6]" />
+ <span className="uri-caret ml-0.5 inline-block h-3.5 w-[2px] translate-y-0.5 animate-pulse" />
  )}
  </p>
  {m.shown >= m.text.length && linksFor(m).length > 0 && (
@@ -375,7 +375,7 @@ export default function Uri() {
  target={l.href.startsWith("#") || l.href.startsWith("mailto:") ? undefined : "_blank"}
  rel={l.href.startsWith("#") || l.href.startsWith("mailto:") ? undefined : "noreferrer"}
  onClick={() => l.href.startsWith("#") && setOpen(false)}
- className="inline-flex items-center gap-1 rounded-full bg-[#eef4ff] px-2.5 py-1 text-[11px] font-semibold text-[#3f6fc4] transition hover:bg-[#e2ecff]"
+ className="uri-link inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold transition"
  >
  {l.label}
  <ArrowUpRight size={11} />
@@ -393,10 +393,10 @@ export default function Uri() {
  <img
  src={uriAvatar}
  alt=""
- className="h-7 w-7 shrink-0 rounded-full object-cover ring-1 ring-white"
+ className="uri-avatar-ring h-7 w-7 shrink-0 rounded-full object-cover"
  draggable={false}
  />
- <div className="flex items-center gap-1 rounded-2xl rounded-tl-md border border-ink/5 bg-white px-3.5 py-3 shadow-sm">
+ <div className="uri-bubble uri-bot flex items-center gap-1 rounded-2xl rounded-tl-md px-3.5 py-3">
  <span className="uri-dot h-1.5 w-1.5 rounded-full bg-[#5c85d6]" />
  <span className="uri-dot h-1.5 w-1.5 rounded-full bg-[#7ea6f2]" />
  <span className="uri-dot h-1.5 w-1.5 rounded-full bg-lime-deep" />
@@ -406,7 +406,7 @@ export default function Uri() {
  </div>
 
  {/* suggestions */}
- <div className="border-t border-ink/5 px-3 pb-2 pt-2.5">
+ <div className="uri-composer px-3 pb-2 pt-2.5">
  <div className="flex flex-wrap gap-1.5 pb-1">
  {chips.slice(0, 4).map((chip) => (
  <button
@@ -414,7 +414,7 @@ export default function Uri() {
  type="button"
  onClick={() => ask(chip)}
  disabled={phase === "thinking"}
- className="shrink-0 rounded-full border border-ink/8 bg-white/80 px-2.5 py-1.5 text-[11px] font-semibold text-ink/65 transition hover:border-[#7ea6f2]/50 hover:bg-[#eef4ff] hover:text-ink disabled:opacity-40"
+ className="uri-suggest shrink-0 rounded-full px-2.5 py-1.5 text-[11px] font-semibold transition disabled:opacity-40"
  >
  {chip}
  </button>
@@ -422,21 +422,21 @@ export default function Uri() {
  </div>
 
  <form onSubmit={onSubmit} className="mt-1.5 flex items-center gap-2">
- <div className="flex flex-1 items-center gap-2 rounded-full border border-ink/10 bg-white px-3.5 py-2 transition focus-within:border-[#7ea6f2]/60 focus-within:shadow-[0_0_0_3px_rgba(126,166,242,0.14)]">
+ <div className="uri-field flex flex-1 items-center gap-2 rounded-full px-3.5 py-2 transition">
  <input
  ref={inputRef}
  value={input}
  onChange={(e) => setInput(e.target.value)}
  placeholder={busy ? "URI is answering…" : "Ask about Ather Sama…"}
  aria-label="Ask URI about Ather Sama"
- className="uri-input w-full bg-transparent text-[13px] text-ink placeholder:text-ink/35"
+ className="uri-input w-full bg-transparent text-[13px]"
  />
  </div>
  {busy ? (
  <button
  type="button"
  onClick={finishStream}
- className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-ink/10 bg-white text-[10px] font-bold uppercase tracking-wider text-ink/50 transition hover:text-ink"
+ className="uri-skip grid h-9 w-9 shrink-0 place-items-center rounded-full text-[10px] font-bold uppercase tracking-wider transition"
  title="Skip typing"
  aria-label="Skip typing"
  >
@@ -447,13 +447,13 @@ export default function Uri() {
  type="submit"
  disabled={!input.trim()}
  aria-label="Send question"
- className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ink text-lime transition hover:scale-105 disabled:scale-100 disabled:bg-ink/15 disabled:text-white/60"
+ className="uri-send grid h-9 w-9 shrink-0 place-items-center rounded-full transition hover:scale-105 disabled:scale-100"
  >
  <Send size={14} />
  </button>
  )}
  </form>
- <p className="mt-1.5 text-center text-[9px] font-medium uppercase tracking-[0.14em] text-ink/30">
+ <p className="uri-note mt-1.5 text-center text-[9px] font-medium uppercase tracking-[0.14em]">
  Answers about Ather Sama · runs locally
  </p>
  </div>

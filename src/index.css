@@ -22,7 +22,7 @@
   --color-mute: var(--color-mute);
 }
 
-/* One theme, done properly. The site is light-only by design. */
+/* One theme system, two skins — every token is remapped under [data-theme="dark"]. */
 :root {
   --color-ink: #0c0e12;
   --color-ink-soft: #1e222b;
@@ -33,6 +33,18 @@
   --glass-white-bg: rgba(255, 255, 255, 0.72);
   --glass-white-border: rgba(255, 255, 255, 0.7);
   color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --color-ink: #f3f4f6;
+  --color-ink-soft: #d5d8de;
+  --color-mist: #1b1d22;
+  --color-line: rgba(255, 255, 255, 0.12);
+  --color-mute: #a4a9b4;
+  --bg-primary: #0b0c0e;
+  --glass-white-bg: rgba(28, 30, 36, 0.72);
+  --glass-white-border: rgba(255, 255, 255, 0.1);
+  color-scheme: dark;
 }
 
 * {
@@ -977,4 +989,216 @@ textarea:focus-visible {
     animation: none !important;
     content: none;
   }
+}
+
+/* ------------------------------------------------------------------
+   URI chrome — semantic hooks so the assistant follows the theme.
+   Colours live here instead of in Tailwind literals inside Uri.tsx.
+   ------------------------------------------------------------------ */
+.uri-hint {
+  border: 1px solid var(--color-line);
+  background: var(--glass-white-bg);
+  color: var(--color-ink);
+  box-shadow: 0 16px 40px rgba(16, 17, 18, 0.14);
+  backdrop-filter: blur(20px);
+}
+
+.uri-hint-kicker {
+  color: #6b4eff;
+}
+
+.uri-pill {
+  border: 1px solid var(--color-line);
+  background: var(--glass-white-bg);
+  color: var(--color-ink);
+  box-shadow: 0 10px 30px rgba(16, 17, 18, 0.14);
+  backdrop-filter: blur(14px);
+}
+
+.uri-pill:hover {
+  background: var(--aw-solid, #fff);
+}
+
+.uri-pill-orb {
+  background: var(--aw-ink, #101112);
+  color: var(--aw-paper, #fff);
+}
+
+.uri-shell {
+  border: 1px solid var(--glass-white-border);
+  background: var(--glass-white-bg);
+  box-shadow: 0 28px 70px rgba(23, 42, 74, 0.24);
+}
+
+.uri-head {
+  border-bottom: 1px solid var(--color-line);
+  background: linear-gradient(
+    90deg,
+    var(--uri-head-a, #eef4ff),
+    var(--uri-head-b, #ffffff) 52%,
+    var(--uri-head-c, #f3fbe9)
+  );
+}
+
+.uri-avatar {
+  box-shadow: 0 0 0 2px var(--uri-ring, #fff);
+}
+
+.uri-avatar-ring {
+  box-shadow: 0 0 0 1px var(--uri-ring, #fff);
+}
+
+.uri-avatar-badge {
+  border: 2px solid var(--uri-ring, #fff);
+}
+
+.uri-title {
+  color: var(--color-ink);
+}
+
+.uri-chip {
+  background: var(--color-line);
+  color: var(--color-mute);
+}
+
+.uri-sub {
+  color: var(--color-mute);
+}
+
+.uri-icon-btn {
+  background: var(--uri-soft, rgba(255, 255, 255, 0.7));
+  color: var(--color-mute);
+}
+
+.uri-icon-btn:hover {
+  background: var(--aw-solid, #fff);
+  color: var(--color-ink);
+}
+
+.uri-bubble-user {
+  background: var(--color-ink);
+  color: var(--aw-paper, #fff);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.uri-bubble {
+  border: 1px solid var(--color-line);
+  background: var(--uri-card, #fff);
+  box-shadow: 0 6px 18px rgba(31, 45, 71, 0.06);
+}
+
+.uri-scope {
+  color: #5c85d6;
+}
+
+.uri-text {
+  color: var(--color-ink-soft);
+}
+
+.uri-caret {
+  background: #5c85d6;
+}
+
+.uri-link {
+  background: var(--uri-link-bg, #eef4ff);
+  color: var(--uri-link-ink, #3f6fc4);
+}
+
+.uri-link:hover {
+  filter: brightness(0.96);
+}
+
+.uri-composer {
+  border-top: 1px solid var(--color-line);
+}
+
+.uri-suggest {
+  border: 1px solid var(--color-line);
+  background: var(--uri-soft, rgba(255, 255, 255, 0.8));
+  color: var(--color-mute);
+}
+
+.uri-suggest:hover {
+  border-color: rgba(126, 166, 242, 0.5);
+  background: var(--uri-link-bg, #eef4ff);
+  color: var(--color-ink);
+}
+
+.uri-field {
+  border: 1px solid var(--color-line);
+  background: var(--uri-card, #fff);
+}
+
+.uri-field:focus-within {
+  border-color: rgba(126, 166, 242, 0.6);
+  box-shadow: 0 0 0 3px rgba(126, 166, 242, 0.14);
+}
+
+.uri-input {
+  color: var(--color-ink);
+  color-scheme: inherit;
+}
+
+.uri-input::placeholder {
+  color: var(--color-mute);
+  opacity: 0.62;
+}
+
+.uri-skip {
+  border: 1px solid var(--color-line);
+  background: var(--uri-card, #fff);
+  color: var(--color-mute);
+}
+
+.uri-skip:hover {
+  color: var(--color-ink);
+}
+
+.uri-send {
+  background: var(--color-ink);
+  color: var(--color-lime);
+}
+
+.uri-send:disabled {
+  background: var(--color-line);
+  color: var(--color-mute);
+}
+
+.uri-note {
+  color: var(--color-mute);
+  opacity: 0.7;
+}
+
+:root[data-theme="dark"] {
+  --uri-head-a: #1a2338;
+  --uri-head-b: #16181d;
+  --uri-head-c: #1a2418;
+  --uri-ring: #1b1d23;
+  --uri-soft: rgba(255, 255, 255, 0.06);
+  --uri-card: #191b21;
+  --uri-link-bg: rgba(126, 166, 242, 0.16);
+  --uri-link-ink: #96b6f0;
+}
+
+:root[data-theme="dark"] .uri-shell {
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.7);
+}
+
+:root[data-theme="dark"] .uri-hint,
+:root[data-theme="dark"] .uri-pill {
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.6);
+}
+
+:root[data-theme="dark"] .uri-hint-kicker {
+  color: #a894ff;
+}
+
+:root[data-theme="dark"] .uri-scope,
+:root[data-theme="dark"] .uri-caret {
+  color: #96b6f0;
+  background-color: #96b6f0;
+}
+
+:root[data-theme="dark"] .uri-scope {
+  background: none;
 }

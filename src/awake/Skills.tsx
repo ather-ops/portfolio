@@ -1,6 +1,7 @@
-import { Check, Sparkles } from "lucide-react";
+import { Check } from "lucide-react";
 import { motion } from "framer-motion";
 import { Kicker, Reveal } from "./ui";
+import Learning from "./Learning";
 
 const languages = [
   { name: "Python", level: 90, note: "Core, OOP, libraries, FastAPI", tone: "python" },
@@ -46,21 +47,6 @@ const groups = [
       "FastAPI, Uvicorn, asyncio + aiohttp, Pydantic, REST APIs and OAuth, Docker, pytest, Git/GitHub, Streamlit Cloud, Hugging Face Spaces, Render and Vercel.",
     badge: "Done",
   },
-];
-
-const completed = [
-  "Hugging Face AI Agents course — completed, all units",
-  "FastAPI — APIs, validation and deployment",
-  "Docker — images, containers and compose",
-  "Python fundamentals + core libraries",
-];
-
-const learning = [
-  "Building LLMs from scratch — architecture, tokenisation, training",
-  "PyTorch for deep learning",
-  "AWS — EC2, S3 and Lambda",
-  "Google ML Crash Course — embeddings, LLMs, RAG",
-  "LangGraph for stateful agent workflows",
 ];
 
 export default function Skills() {
@@ -147,54 +133,7 @@ export default function Skills() {
           </div>
         </div>
 
-        <Reveal>
-          <div className="aw-learning-panel">
-            <div className="aw-learning-head">
-              <div>
-                <Kicker>Currently learning</Kicker>
-                <h3>
-                  From LLM APIs
-                  <br />
-                  to <em className="aw-italic">building my own.</em>
-                </h3>
-              </div>
-              <div className="aw-learning-side">
-                <div className="aw-learning-art" aria-hidden="true">
-                  <span className="aw-learning-art-grid" />
-                  <span className="aw-learning-art-orb" />
-                  <span className="aw-learning-art-word">LLM</span>
-                  <span className="aw-learning-art-caption">from scratch</span>
-                </div>
-                <span className="aw-learning-chip">
-                  <Sparkles size={11} /> LLM track
-                </span>
-              </div>
-            </div>
-
-            <div className="aw-learning-cols">
-              <div>
-                <p className="aw-learning-label">Completed</p>
-                <ul className="aw-learning-list aw-learning-list--done">
-                  {completed.map((item) => (
-                    <li key={item}>
-                      <Check size={11} strokeWidth={2.4} /> {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <p className="aw-learning-label">In progress</p>
-                <ul className="aw-learning-list">
-                  {learning.map((item) => (
-                    <li key={item}>
-                      <span className="aw-learning-dot" /> {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </Reveal>
+        <Learning />
       </div>
     </section>
   );

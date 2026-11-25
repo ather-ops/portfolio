@@ -15,12 +15,16 @@ import ProjectPage from "./awake/ProjectPage";
 import { useRoute } from "./awake/router";
 import { getCase } from "./awake/projectData";
 import Uri from "./components/Uri";
+import DynamicIsland from "./awake/DynamicIsland";
+import { initTheme } from "./theme";
 
 const BASE_TITLE = "Ather Assadullah Peer — ML/AI Engineer & Founder, Atherva Automations";
 
 export default function App() {
   const route = useRoute();
   const routeKey = route.page === "project" ? route.slug : "home";
+
+  useEffect(initTheme, []);
 
   useEffect(() => {
     const timers = new WeakMap<HTMLElement, number>();
@@ -131,6 +135,7 @@ export default function App() {
 
         <Footer />
       </div>
+      <DynamicIsland routeKey={routeKey} />
       <Uri />
     </div>
   );
