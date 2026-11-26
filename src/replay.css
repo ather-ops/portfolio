@@ -1,0 +1,270 @@
+/* Film mode — a scroll-driven replay of the site, used for the motion piece.
+   The page is rendered as if it were being scrolled by hand, without the
+   browser's own scroll happening, so the recording gets real layout motion. */
+
+.aw-replay {
+  --replay-y: 0px;
+  color: var(--aw-ink);
+}
+
+/* the whole page is pushed up by the replay offset while the shell stays still */
+.aw-replay .aw-page {
+  transform: translate3d(0, calc(-1 * var(--replay-y)), 0);
+  will-change: transform;
+}
+
+/* the footer must not paint over the page while it slides */
+.aw-replay,
+.aw-replay .aw-page {
+  overflow: clip;
+}
+
+/* a paper-coloured backdrop keeps the page from showing through at the edges */
+.aw-replay .aw-site {
+  background: var(--aw-paper-2);
+}
+
+/* reveal() components have already resolved; keep them visible during replay */
+.aw-replay [style*="opacity"] {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aw-replay .aw-page {
+    transform: none;
+  }
+}
+
+/* ── macOS-style pointer, drawn in the page so it is in the capture ──── */
+.aw-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2147483000;
+  pointer-events: none;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.26));
+  transform: translate3d(-100px, -100px, 0);
+  transition: transform 0.42s cubic-bezier(0.22, 0.68, 0.35, 1);
+  will-change: transform;
+}
+
+.aw-cursor svg {
+  display: block;
+  transform-origin: 4px 2px;
+  transition: scale 0.12s ease;
+}
+
+.aw-cursor.is-press svg {
+  scale: 0.9;
+}
+
+.aw-cursor-ripple {
+  position: fixed;
+  z-index: 2147482999;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border-radius: 999px;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 68%);
+  box-shadow: 0 0 0 1px rgba(16, 17, 18, 0.14);
+  animation: aw-ripple 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes aw-ripple {
+  from {
+    opacity: 0.9;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+
+/* during capture the OS cursor must never appear in frame */
+.aw-replay,
+.aw-replay * {
+  cursor: none !important;
+}
+
+/* ── the windowed take ────────────────────────────────────────────────────
+   ?stage=1 renders the site inside a fixed browser frame on a dark stage,
+   so the recording reads as a screen rather than a document. */
+body.aw-film-stage {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  padding: 30px 0;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  background:
+    radial-gradient(58% 62% at 50% -6%, #2b2444 0%, transparent 62%),
+    radial-gradient(46% 54% at 86% 104%, #1c2a46 0%, transparent 60%),
+    #0a0a0f;
+}
+
+/* the frame + its chrome move together */
+.aw-stage-bar {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 1490px;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 14px 14px 0 0;
+  background: #16161d;
+  color: rgba(255, 255, 255, 0.62);
+  font-family: var(--aw-sans);
+}
+
+.aw-stage-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.aw-stage-dots i {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.aw-stage-dots i:first-child {
+  background: #ff5f57;
+}
+
+.aw-stage-dots i:nth-child(2) {
+  background: #febc2e;
+}
+
+.aw-stage-dots i:nth-child(3) {
+  background: #28c840;
+}
+
+.aw-stage-url {
+  flex: 1;
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 4px 12px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.07);
+  font-size: 10.5px;
+  letter-spacing: 0.01em;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.aw-stage-tools {
+  display: flex;
+  gap: 6px;
+}
+
+.aw-stage-btn {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 11px;
+  line-height: 1;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.aw-stage-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+body.aw-film-stage .aw-site {
+  position: relative;
+  width: 1490px;
+  height: 800px;
+  flex: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 0 0 14px 14px;
+  background: var(--aw-paper);
+  box-shadow:
+    0 0 0 10px #16161d,
+    0 0 0 11px rgba(255, 255, 255, 0.1),
+    0 60px 130px -40px rgba(0, 0, 0, 0.92);
+  scrollbar-width: none;
+}
+
+body.aw-film-stage .aw-site::-webkit-scrollbar {
+  display: none;
+}
+
+body.aw-film-stage .aw-page {
+  transform: none;
+}
+
+/* the frame carries its own chrome; the site's island would double it */
+body.aw-film-stage .aw-island {
+  display: none;
+}
+
+/* the film section is the thing being recorded — keep it out of its own take */
+body.aw-film-stage .aw-film {
+  display: none;
+}
+
+.aw-cursor--real {
+  transition: none !important;
+  pointer-events: none !important;
+}
+
+.aw-cursor svg,
+.aw-cursor-ripple {
+  pointer-events: none !important;
+}
+
+/* the stage owns its own pointer: no fake cursor, the OS one is hidden */
+body.aw-film-stage .aw-cursor {
+  display: none;
+}
+
+body.aw-film-stage .aw-site,
+body.aw-film-stage .aw-site * {
+  cursor: auto !important;
+}
+
+/* chrome bar sits above the frame, in normal flow */
+.aw-stage-bar {
+  flex: none;
+  order: -1;
+}
+
+/* the site's floating assistant belongs to a live page, not to the frame */
+body.aw-film-stage .uri-pill,
+body.aw-film-stage .aw-ask-btn {
+  display: none;
+}
+
+.aw-stage-pointer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2147483000;
+  pointer-events: none;
+  filter: drop-shadow(0 3px 7px rgba(0, 0, 0, 0.35));
+  transform: translate3d(-100px, -100px, 0);
+  transition: transform 0.06s linear;
+  will-change: transform;
+}
+
+.aw-stage-pointer svg {
+  display: block;
+  transition: scale 0.1s ease;
+}

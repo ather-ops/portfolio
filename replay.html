@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta
+      name="description"
+      content="Ather Assadullah — ML/AI engineer building production RAG, multi-agent systems and applied ML. Fifteen case studies, every build documented."
+    />
+    <meta property="og:title" content="Ather Assadullah — AI/ML engineer" />
+    <meta
+      property="og:description"
+      content="Building AI systems with thoughtful design. Production RAG, multi-agent tools and applied ML — with a full case study for every build."
+    />
+    <meta property="og:type" content="website" />
+    <title>Ather Assadullah — AI/ML engineer</title>
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("aw-theme");
+          var theme =
+            saved === "dark" || saved === "light"
+              ? saved
+              : window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.style.colorScheme = theme;
+        } catch (e) {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/replay.tsx"></script>
+  </body>
+</html>

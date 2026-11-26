@@ -15,3 +15,5 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+# Source media handed over in chat, not part of the build
+google_drive/
