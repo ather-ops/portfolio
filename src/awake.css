@@ -2222,6 +2222,365 @@ section[id] {
   white-space: nowrap;
 }
 
+
+/* ── Film: the recorded take, held in the same ticket grammar ─────────── */
+.aw-film {
+  padding: clamp(64px, 7vw, 100px) 0 clamp(40px, 5vw, 64px);
+  border-top: 1px solid var(--aw-line);
+}
+
+.aw-film-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.86fr);
+  align-items: end;
+  gap: clamp(20px, 4vw, 56px);
+  margin-bottom: clamp(24px, 3vw, 34px);
+}
+
+.aw-film-lead {
+  max-width: 420px;
+  margin: 0 0 4px;
+}
+
+.aw-film-frame {
+  --tk-notch: 11px;
+  --tk-stub: 150px;
+  margin: 0;
+}
+
+.aw-film-screen {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #14131a;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 30px 60px -42px rgba(16, 17, 18, 0.7);
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.aw-film-video {
+  display: block;
+  width: calc(100% - var(--tk-stub));
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #14131a;
+}
+
+/* the poster and the take are both dark; the frame keeps its own edges */
+.aw-film-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(10, 10, 14, 0.16), transparent 16%, transparent 78%, rgba(10, 10, 14, 0.22));
+}
+
+.aw-film-screen.is-started::after {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+/* play affordance sits over the poster, never over the video once running */
+.aw-film-bigplay {
+  position: absolute;
+  z-index: 2;
+  left: 22px;
+  bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 11px 20px 11px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(14, 14, 20, 0.62);
+  color: #fff;
+  text-align: left;
+  backdrop-filter: blur(14px);
+  transition: transform 0.24s ease, background 0.24s ease;
+}
+
+.aw-film-bigplay:hover {
+  transform: translateY(-2px);
+  background: rgba(14, 14, 20, 0.78);
+}
+
+.aw-film-bigplay-ring {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: #fff;
+  color: #14131a;
+}
+
+.aw-film-bigplay strong {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.aw-film-bigplay em {
+  display: block;
+  margin-top: 2px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 9.5px;
+  font-style: normal;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* perforated stub, as on the project tickets */
+.aw-film-stub {
+  position: relative;
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: var(--tk-stub);
+  padding: 18px 15px 16px;
+  border-left: 1px dashed rgba(255, 255, 255, 0.24);
+  background:
+    radial-gradient(90% 110% at 100% 0%, rgba(158, 128, 255, 0.34), transparent 58%),
+    linear-gradient(160deg, #1d1b2c 0%, #221c38 52%, #101016 100%);
+  color: #f6f5fb;
+}
+
+/* punched notches at the seam, cut out of the frame itself */
+.aw-film-stub::before,
+.aw-film-stub::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  width: calc(var(--tk-notch) * 2);
+  height: calc(var(--tk-notch) * 2);
+  border-radius: 999px;
+  background: var(--aw-paper);
+}
+
+.aw-film-stub::before {
+  top: calc(var(--tk-notch) * -1);
+  transform: translateX(-50%);
+}
+
+.aw-film-stub::after {
+  bottom: calc(var(--tk-notch) * -1);
+  transform: translateX(-50%);
+}
+
+.aw-film-stub-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: rgba(246, 245, 251, 0.66);
+  font-size: 6.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.aw-film-stub-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.aw-film-stub-label {
+  display: block;
+  color: rgba(246, 245, 251, 0.6);
+  font-size: 6.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.aw-film-stub-value {
+  display: block;
+  margin-top: 3px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.aw-film-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 22px;
+  margin-top: 18px;
+  opacity: 0.5;
+}
+
+.aw-film-bars i {
+  flex: 1;
+  background: #f6f5fb;
+  border-radius: 1px;
+}
+
+/* progress hairline across the bottom of the whole frame */
+.aw-film-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  max-width: calc(100% - var(--tk-stub));
+  background: linear-gradient(90deg, #b79bff, #7cf0a8);
+  transition: width 0.25s linear;
+}
+
+.aw-film-caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 18px;
+  margin-top: 12px;
+}
+
+.aw-film-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.aw-film-btn {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--aw-line);
+  border-radius: 999px;
+  color: var(--aw-ink);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.aw-film-btn:hover:not(:disabled) {
+  border-color: var(--aw-line-strong);
+  background: var(--aw-solid-2);
+}
+
+.aw-film-btn--static {
+  opacity: 1;
+  border-style: dashed;
+  color: var(--aw-faint);
+}
+
+.aw-film-btn--static:hover {
+  background: transparent;
+  border-color: var(--aw-line);
+}
+
+.aw-film-time {
+  margin-left: 4px;
+  color: var(--aw-faint);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+}
+
+.aw-film-note {
+  color: var(--aw-faint);
+  font-size: 9.5px;
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 1100px) {
+  .aw-film-head {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .aw-film-lead {
+    max-width: 520px;
+  }
+
+  .aw-film-frame {
+    --tk-stub: 120px;
+  }
+}
+
+@media (max-width: 700px) {
+  /* the stub turns into a footer strip, exactly like the project tickets */
+  .aw-film-screen {
+    flex-direction: column;
+  }
+
+  .aw-film-video {
+    width: 100%;
+  }
+
+  .aw-film-stub {
+    width: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 18px;
+    padding: 12px 16px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.24);
+    border-left: 0;
+  }
+
+  .aw-film-stub::before,
+  .aw-film-stub::after {
+    display: none;
+  }
+
+  .aw-film-stub-brand {
+    flex: 1 0 100%;
+  }
+
+  .aw-film-stub-meta {
+    flex-direction: row;
+    gap: 18px;
+    margin-top: 0;
+  }
+
+  .aw-film-bars {
+    flex: 1;
+    min-width: 54px;
+    height: 13px;
+    margin: 0;
+  }
+
+  .aw-film-progress {
+    max-width: 100%;
+  }
+
+  /* keep the pill on the video, clear of the footer strip */
+  .aw-film-bigplay {
+    left: 14px;
+    bottom: auto;
+    top: 14px;
+    padding: 8px 14px 8px 8px;
+    gap: 9px;
+  }
+
+  .aw-film-bigplay-ring {
+    width: 34px;
+    height: 34px;
+  }
+
+  .aw-film-bigplay strong {
+    font-size: 11px;
+  }
+
+  .aw-film-bigplay em {
+    font-size: 8px;
+  }
+
+  .aw-film-note {
+    display: none;
+  }
+}
+
 /* ── Skills ─────────────────────────────────────────────────────────── */
 .aw-skills {
   padding: clamp(72px, 8vw, 112px) 0;
