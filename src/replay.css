@@ -215,11 +215,6 @@ body.aw-film-stage .aw-island {
   display: none;
 }
 
-/* the film section is the thing being recorded — keep it out of its own take */
-body.aw-film-stage .aw-film {
-  display: none;
-}
-
 .aw-cursor--real {
   transition: none !important;
   pointer-events: none !important;

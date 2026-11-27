@@ -1054,72 +1054,270 @@ section[id] {
   color: #fff;
 }
 
-/* Services */
+/* ── Capabilities: a fanned deck of moulded cards ───────────────────────
+   The reference is a hand of glossy cards: a big centre card, four behind it
+   stepping down and out, all cropped by the section's bottom edge. Depth is
+   cast with layered shadows plus a soft top sheen, not a photo. */
 .aw-services {
-  padding: clamp(64px, 7vw, 100px) 0;
+  position: relative;
+  overflow: hidden;
+  padding: clamp(56px, 6.5vw, 92px) 0 0;
+  /* the deck runs into the section's edge and crops there */
+  border-bottom: 1px solid var(--aw-line);
 }
 
-.aw-service-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 11px;
+.aw-deck-head {
+  max-width: 640px;
+  margin: 0 auto;
+  padding-bottom: clamp(28px, 3.4vw, 46px);
+  text-align: center;
 }
 
-.aw-service-grid > * {
+.aw-deck-head .aw-kicker {
+  justify-content: center;
+}
+
+.aw-deck-sub {
+  max-width: 420px;
+  margin: 16px auto 0;
+  color: var(--aw-muted);
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+/* the deck is wider than the text container so the outer cards can run past
+   the gutters, exactly like the reference's cropped side cards */
+.aw-deck-wrap {
+  max-width: 1440px;
+  padding-bottom: 0;
+  /* the fan is one object: below a phone it scales down rather than reflowing */
+  overflow: hidden;
+}
+
+.aw-deck {
+  position: relative;
   display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 clamp(10px, 2vw, 30px);
+  gap: 0;
+  min-height: clamp(250px, 26vw, 360px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.aw-service-card {
+.aw-deck-card {
+  --lift: 0px;
+  position: relative;
   display: flex;
-  flex: 1;
+  flex: 0 0 auto;
   flex-direction: column;
-  min-height: clamp(146px, 14vw, 190px);
-  padding: 17px;
-  border-radius: 14px;
-  color: var(--aw-ink);
-  transition: transform 0.25s ease;
+  justify-content: space-between;
+  width: clamp(172px, 19.6vw, 286px);
+  height: clamp(196px, 21vw, 296px);
+  /* negative margin is what makes it read as a deck rather than a row */
+  --tuck: clamp(26px, 2.4vw, 38px);
+  margin-left: calc(var(--tuck) * -1);
+  margin-right: calc(var(--tuck) * -1);
+  padding: clamp(13px, 1.3vw, 18px);
+  margin-bottom: var(--lift);
+  border-radius: clamp(14px, 1.5vw, 20px);
+  color: #fff;
+  /* the moulded look: a soft top sheen, an inner rim of light and a contact shadow */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    inset 0 -18px 30px -18px rgba(0, 0, 0, 0.4),
+    0 26px 40px -26px rgba(16, 17, 18, 0.55),
+    0 2px 6px rgba(16, 17, 18, 0.12);
+  transform: translateY(calc(var(--step) * -0.5));
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.42s ease;
+  isolation: isolate;
+  overflow: hidden;
 }
 
-.aw-service-card:hover {
-  transform: translateY(-2px);
+/* a specular sweep across the top third, as on a moulded plastic card */
+.aw-deck-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 42%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  opacity: 0.75;
+  pointer-events: none;
 }
 
-.aw-service-card--lav {
-  background: var(--aw-lav);
+/* the centre card sits forward and taller */
+.aw-deck-card.is-centre {
+  z-index: 3;
+  width: clamp(212px, 25vw, 356px);
+  height: clamp(268px, 32vw, 440px);
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: calc(var(--lift) + clamp(24px, 3vw, 52px));
+  transform: translateY(calc(var(--step) * -0.5 - clamp(18px, 2vw, 34px)));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -22px 38px -20px rgba(0, 0, 0, 0.4),
+    0 40px 60px -30px rgba(16, 17, 18, 0.6),
+    0 3px 8px rgba(16, 17, 18, 0.14);
 }
 
-.aw-service-card--pink {
-  background: var(--aw-pink);
+/* the cards closest to the centre sit highest, so the pair tucks behind it */
+.aw-deck-card:not(.is-centre) {
+  z-index: 1;
 }
 
-.aw-service-card--blue {
-  background: var(--aw-blue);
+.aw-deck-card[style*="--i: 1"],
+.aw-deck-card[style*="--i: 3"] {
+  z-index: 2;
 }
 
-.aw-service-card--peach {
-  background: var(--aw-peach);
+.aw-deck-card:hover {
+  transform: translateY(calc(var(--step) * -0.5 - 10px));
 }
 
-.aw-service-card--green {
-  background: var(--aw-green);
+.aw-deck-card.is-centre:hover {
+  transform: translateY(calc(var(--step) * -0.5 - clamp(26px, 2.6vw, 42px)));
 }
 
-.aw-service-icon {
-  display: grid;
-  width: 26px;
-  height: 26px;
-  place-items: center;
-  color: var(--aw-ink);
+/* ── tones, saturated like the reference ───────────────────────────────── */
+.aw-deck-card--pink {
+  background:
+    radial-gradient(120% 90% at 50% 0%, #ffb3e2 0%, #f973c9 42%, #d9379f 100%);
+  color: #fff;
 }
 
-.aw-service-label {
-  max-width: 130px;
-  margin-top: auto;
-  padding-top: 24px;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.15;
+.aw-deck-card--crimson {
+  background:
+    radial-gradient(120% 90% at 40% 0%, #ff7d6a 0%, #e8402f 46%, #a81b16 100%);
+}
+
+.aw-deck-card--sage {
+  background:
+    radial-gradient(120% 90% at 40% 0%, #d3efb6 0%, #a9d98a 46%, #74a860 100%);
+  color: #143d17;
+}
+
+.aw-deck-card--cobalt {
+  background:
+    radial-gradient(120% 90% at 60% 0%, #6db4ff 0%, #2f6fe0 46%, #1740a0 100%);
+}
+
+.aw-deck-card--violet {
+  background:
+    radial-gradient(120% 90% at 60% 0%, #c09bff 0%, #8b52f0 46%, #5a24b8 100%);
+}
+
+.aw-deck-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-right: calc(var(--tuck) * 0.5);
+  opacity: 0.92;
+}
+
+.aw-deck-index {
+  font-family: var(--aw-serif);
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  opacity: 0.8;
+}
+
+.aw-deck-foot {
+  position: relative;
+  z-index: 1;
+  display: block;
+  /* stay inside the visible strip of the card, clear of the next one */
+  padding-right: calc(var(--tuck) + 8px);
+}
+
+.aw-deck-label {
+  display: block;
+  font-size: clamp(13px, 1.15vw, 17px);
+  font-weight: 600;
+  line-height: 1.1;
   letter-spacing: -0.035em;
+}
+
+.aw-deck-card.is-centre .aw-deck-label {
+  font-size: clamp(19px, 2vw, 30px);
+  letter-spacing: -0.045em;
+}
+
+.aw-deck-note {
+  display: block;
+  max-width: 92%;
+  margin-top: 7px;
+  font-size: 10px;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.aw-deck-card.is-centre .aw-deck-note {
+  font-size: clamp(10px, 0.95vw, 12.5px);
+  opacity: 0.82;
+  transform: none;
+}
+
+/* the note only surfaces for the card you're actually looking at */
+.aw-deck-card:hover .aw-deck-note {
+  opacity: 0.86;
+  transform: none;
+}
+
+.aw-deck-card.is-centre .aw-deck-top,
+.aw-deck-card.is-centre .aw-deck-foot {
+  padding-right: 0;
+}
+
+/* Cards to the right of the centre are covered on their LEFT edge by the
+   card in front of them, so their content mirrors to the right-hand strip.
+   That is how a real fan of cards shows its faces. */
+.aw-deck-card[style*="--i: 3"],
+.aw-deck-card[style*="--i: 4"] {
+  text-align: right;
+}
+
+.aw-deck-card[style*="--i: 3"] .aw-deck-top,
+.aw-deck-card[style*="--i: 3"] .aw-deck-foot,
+.aw-deck-card[style*="--i: 4"] .aw-deck-top,
+.aw-deck-card[style*="--i: 4"] .aw-deck-foot {
+  padding-right: 0;
+  padding-left: calc(var(--tuck) + 8px);
+}
+
+.aw-deck-card[style*="--i: 3"] .aw-deck-note,
+.aw-deck-card[style*="--i: 4"] .aw-deck-note {
+  max-width: 100%;
+}
+
+/* the outer cards crop at the section's bottom edge */
+.aw-deck::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 4;
+  width: 100vw;
+  height: 1px;
+  background: var(--aw-line);
+  transform: translateX(-50%);
+}
+
+/* dark theme: the deck keeps its own light, only the room darkens */
+:root[data-theme="dark"] .aw-deck-card {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.26),
+    inset 0 -18px 30px -18px rgba(0, 0, 0, 0.5),
+    0 26px 44px -24px rgba(0, 0, 0, 0.9),
+    0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 .aw-stack-line {
@@ -2223,364 +2421,6 @@ section[id] {
 }
 
 
-/* ── Film: the recorded take, held in the same ticket grammar ─────────── */
-.aw-film {
-  padding: clamp(64px, 7vw, 100px) 0 clamp(40px, 5vw, 64px);
-  border-top: 1px solid var(--aw-line);
-}
-
-.aw-film-head {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.86fr);
-  align-items: end;
-  gap: clamp(20px, 4vw, 56px);
-  margin-bottom: clamp(24px, 3vw, 34px);
-}
-
-.aw-film-lead {
-  max-width: 420px;
-  margin: 0 0 4px;
-}
-
-.aw-film-frame {
-  --tk-notch: 11px;
-  --tk-stub: 150px;
-  margin: 0;
-}
-
-.aw-film-screen {
-  position: relative;
-  display: flex;
-  overflow: hidden;
-  border-radius: 20px;
-  background: #14131a;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
-    0 30px 60px -42px rgba(16, 17, 18, 0.7);
-  cursor: pointer;
-  isolation: isolate;
-}
-
-.aw-film-video {
-  display: block;
-  width: calc(100% - var(--tk-stub));
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  background: #14131a;
-}
-
-/* the poster and the take are both dark; the frame keeps its own edges */
-.aw-film-screen::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(180deg, rgba(10, 10, 14, 0.16), transparent 16%, transparent 78%, rgba(10, 10, 14, 0.22));
-}
-
-.aw-film-screen.is-started::after {
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-
-/* play affordance sits over the poster, never over the video once running */
-.aw-film-bigplay {
-  position: absolute;
-  z-index: 2;
-  left: 22px;
-  bottom: 22px;
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  padding: 11px 20px 11px 11px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 999px;
-  background: rgba(14, 14, 20, 0.62);
-  color: #fff;
-  text-align: left;
-  backdrop-filter: blur(14px);
-  transition: transform 0.24s ease, background 0.24s ease;
-}
-
-.aw-film-bigplay:hover {
-  transform: translateY(-2px);
-  background: rgba(14, 14, 20, 0.78);
-}
-
-.aw-film-bigplay-ring {
-  display: grid;
-  flex: none;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  background: #fff;
-  color: #14131a;
-}
-
-.aw-film-bigplay strong {
-  display: block;
-  font-size: 12.5px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.aw-film-bigplay em {
-  display: block;
-  margin-top: 2px;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 9.5px;
-  font-style: normal;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-/* perforated stub, as on the project tickets */
-.aw-film-stub {
-  position: relative;
-  display: flex;
-  flex: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: var(--tk-stub);
-  padding: 18px 15px 16px;
-  border-left: 1px dashed rgba(255, 255, 255, 0.24);
-  background:
-    radial-gradient(90% 110% at 100% 0%, rgba(158, 128, 255, 0.34), transparent 58%),
-    linear-gradient(160deg, #1d1b2c 0%, #221c38 52%, #101016 100%);
-  color: #f6f5fb;
-}
-
-/* punched notches at the seam, cut out of the frame itself */
-.aw-film-stub::before,
-.aw-film-stub::after {
-  content: "";
-  position: absolute;
-  left: -1px;
-  width: calc(var(--tk-notch) * 2);
-  height: calc(var(--tk-notch) * 2);
-  border-radius: 999px;
-  background: var(--aw-paper);
-}
-
-.aw-film-stub::before {
-  top: calc(var(--tk-notch) * -1);
-  transform: translateX(-50%);
-}
-
-.aw-film-stub::after {
-  bottom: calc(var(--tk-notch) * -1);
-  transform: translateX(-50%);
-}
-
-.aw-film-stub-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  color: rgba(246, 245, 251, 0.66);
-  font-size: 6.5px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.aw-film-stub-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 18px;
-}
-
-.aw-film-stub-label {
-  display: block;
-  color: rgba(246, 245, 251, 0.6);
-  font-size: 6.5px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.aw-film-stub-value {
-  display: block;
-  margin-top: 3px;
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.aw-film-bars {
-  display: flex;
-  align-items: flex-end;
-  gap: 3px;
-  height: 22px;
-  margin-top: 18px;
-  opacity: 0.5;
-}
-
-.aw-film-bars i {
-  flex: 1;
-  background: #f6f5fb;
-  border-radius: 1px;
-}
-
-/* progress hairline across the bottom of the whole frame */
-.aw-film-progress {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 2px;
-  max-width: calc(100% - var(--tk-stub));
-  background: linear-gradient(90deg, #b79bff, #7cf0a8);
-  transition: width 0.25s linear;
-}
-
-.aw-film-caption {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px 18px;
-  margin-top: 12px;
-}
-
-.aw-film-controls {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.aw-film-btn {
-  display: grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  border: 1px solid var(--aw-line);
-  border-radius: 999px;
-  color: var(--aw-ink);
-  transition: background 0.2s ease, border-color 0.2s ease;
-}
-
-.aw-film-btn:hover:not(:disabled) {
-  border-color: var(--aw-line-strong);
-  background: var(--aw-solid-2);
-}
-
-.aw-film-btn--static {
-  opacity: 1;
-  border-style: dashed;
-  color: var(--aw-faint);
-}
-
-.aw-film-btn--static:hover {
-  background: transparent;
-  border-color: var(--aw-line);
-}
-
-.aw-film-time {
-  margin-left: 4px;
-  color: var(--aw-faint);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  font-variant-numeric: tabular-nums;
-}
-
-.aw-film-note {
-  color: var(--aw-faint);
-  font-size: 9.5px;
-  letter-spacing: 0.01em;
-}
-
-@media (max-width: 1100px) {
-  .aw-film-head {
-    grid-template-columns: 1fr;
-    align-items: start;
-  }
-
-  .aw-film-lead {
-    max-width: 520px;
-  }
-
-  .aw-film-frame {
-    --tk-stub: 120px;
-  }
-}
-
-@media (max-width: 700px) {
-  /* the stub turns into a footer strip, exactly like the project tickets */
-  .aw-film-screen {
-    flex-direction: column;
-  }
-
-  .aw-film-video {
-    width: 100%;
-  }
-
-  .aw-film-stub {
-    width: auto;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px 18px;
-    padding: 12px 16px;
-    border-top: 1px dashed rgba(255, 255, 255, 0.24);
-    border-left: 0;
-  }
-
-  .aw-film-stub::before,
-  .aw-film-stub::after {
-    display: none;
-  }
-
-  .aw-film-stub-brand {
-    flex: 1 0 100%;
-  }
-
-  .aw-film-stub-meta {
-    flex-direction: row;
-    gap: 18px;
-    margin-top: 0;
-  }
-
-  .aw-film-bars {
-    flex: 1;
-    min-width: 54px;
-    height: 13px;
-    margin: 0;
-  }
-
-  .aw-film-progress {
-    max-width: 100%;
-  }
-
-  /* keep the pill on the video, clear of the footer strip */
-  .aw-film-bigplay {
-    left: 14px;
-    bottom: auto;
-    top: 14px;
-    padding: 8px 14px 8px 8px;
-    gap: 9px;
-  }
-
-  .aw-film-bigplay-ring {
-    width: 34px;
-    height: 34px;
-  }
-
-  .aw-film-bigplay strong {
-    font-size: 11px;
-  }
-
-  .aw-film-bigplay em {
-    font-size: 8px;
-  }
-
-  .aw-film-note {
-    display: none;
-  }
-}
-
 /* ── Skills ─────────────────────────────────────────────────────────── */
 .aw-skills {
   padding: clamp(72px, 8vw, 112px) 0;
@@ -3459,15 +3299,6 @@ section[id] {
     margin: 0 auto;
   }
 
-  .aw-service-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .aw-service-card:nth-child(4),
-  .aw-service-card:nth-child(5) {
-    grid-column: span 1;
-  }
-
   .aw-about-grid,
   .aw-trust-grid,
   .aw-team-grid {
@@ -3684,22 +3515,56 @@ section[id] {
     display: none;
   }
 
-  .aw-service-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* the fan keeps its shape; the tuck shrinks so every label still fits */
+  .aw-deck {
+    gap: 0;
+    min-height: 250px;
   }
 
-  .aw-service-grid > *:last-child {
-    grid-column: 1 / -1;
-    width: calc(50% - 4px);
-    justify-self: center;
+  .aw-deck-card {
+    --tuck: 18px;
+    width: clamp(126px, 22vw, 172px);
+    height: clamp(180px, 26vw, 232px);
   }
 
-  .aw-service-card {
-    min-height: 150px;
+  .aw-deck-card.is-centre {
+    width: clamp(158px, 30vw, 214px);
+    height: clamp(248px, 40vw, 320px);
   }
 
-  .aw-service-label {
-    font-size: 14px;
+  /* on a phone the fan becomes a swipeable strip: same object, no clipped labels */
+  .aw-deck-wrap {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+  }
+
+  .aw-deck-wrap::-webkit-scrollbar {
+    display: none;
+  }
+
+  .aw-deck {
+    justify-content: flex-start;
+    width: max-content;
+    padding: 0 18px;
+  }
+
+  .aw-deck-card {
+    scroll-snap-align: center;
+  }
+
+  .aw-deck-label {
+    font-size: 12px;
+  }
+
+  .aw-deck-card.is-centre .aw-deck-label {
+    font-size: 17px;
+  }
+
+  .aw-deck-note {
+    display: none;
   }
 
   .aw-about-grid {
@@ -3805,24 +3670,38 @@ section[id] {
     display: none;
   }
 
-  .aw-service-grid {
-    gap: 8px;
+  .aw-deck-card {
+    --tuck: 14px;
+    width: 104px;
+    height: 158px;
+    padding: 10px;
+    border-radius: 12px;
   }
 
-  .aw-service-card {
-    padding: 14px;
+  .aw-deck-card.is-centre {
+    width: 146px;
+    height: 198px;
+    border-radius: 14px;
   }
 
-  .aw-service-label {
-    max-width: 100px;
-    font-size: 13px;
+  .aw-deck-label {
+    font-size: 10.5px;
+    letter-spacing: -0.03em;
+  }
+
+  .aw-deck-card.is-centre .aw-deck-label {
+    font-size: 15px;
+  }
+
+  .aw-deck-index {
+    font-size: 10px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .aw-btn,
   .aw-work-card,
-  .aw-service-card,
+  .aw-deck-card,
   .aw-more-row,
   .aw-note-row {
     transition: none !important;

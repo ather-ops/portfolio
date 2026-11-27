@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import Hero from "./awake/Hero";
 import Intro from "./awake/Intro";
-import Film from "./awake/Film";
 import Work from "./awake/Work";
 import Services from "./awake/Services";
 import Skills from "./awake/Skills";
@@ -122,7 +121,6 @@ export default function App() {
           <main>
             <Hero />
             <Intro />
-            <Film />
             <Work />
             <Services />
             <Skills />
