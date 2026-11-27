@@ -1054,270 +1054,190 @@ section[id] {
   color: #fff;
 }
 
-/* ── Capabilities: a fanned deck of moulded cards ───────────────────────
-   The reference is a hand of glossy cards: a big centre card, four behind it
-   stepping down and out, all cropped by the section's bottom edge. Depth is
-   cast with layered shadows plus a soft top sheen, not a photo. */
+/* ── Capabilities: a shelf of book spines ────────────────────────────────
+   White slabs on electric blue, type running up the spine, a publisher mark
+   at the foot, one wide numeral card for the case-study count and one tilted
+   volume as the signature. The section's own surface is the shelf. */
 .aw-services {
   position: relative;
   overflow: hidden;
   padding: clamp(56px, 6.5vw, 92px) 0 0;
-  /* the deck runs into the section's edge and crops there */
-  border-bottom: 1px solid var(--aw-line);
 }
 
-.aw-deck-head {
-  max-width: 640px;
+.aw-shelf-head {
+  max-width: 660px;
   margin: 0 auto;
-  padding-bottom: clamp(28px, 3.4vw, 46px);
+  padding-bottom: clamp(26px, 3vw, 42px);
   text-align: center;
 }
 
-.aw-deck-head .aw-kicker {
+.aw-shelf-head .aw-kicker {
   justify-content: center;
 }
 
-.aw-deck-sub {
-  max-width: 420px;
+.aw-shelf-sub {
+  max-width: 440px;
   margin: 16px auto 0;
   color: var(--aw-muted);
   font-size: 12.5px;
   line-height: 1.55;
 }
 
-/* the deck is wider than the text container so the outer cards can run past
-   the gutters, exactly like the reference's cropped side cards */
-.aw-deck-wrap {
-  max-width: 1440px;
-  padding-bottom: 0;
-  /* the fan is one object: below a phone it scales down rather than reflowing */
-  overflow: hidden;
-}
-
-.aw-deck {
+/* the shelf itself: the electric blue field, cropped at the section's edge.
+   overflow clips the tilted volume flush to the floor, as in the reference. */
+.aw-shelf {
   position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding: 0 clamp(10px, 2vw, 30px);
-  gap: 0;
-  min-height: clamp(250px, 26vw, 360px);
+  min-height: clamp(390px, 39vw, 500px);
+  padding: clamp(30px, 4vw, 56px) clamp(16px, 3vw, 40px) 0;
+  background: #1c33ff;
+  border-radius: clamp(18px, 2vw, 26px) clamp(18px, 2vw, 26px) 0 0;
+  overflow: hidden;
+  /* the books sit on a shallow shelf shadow */
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.aw-books {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(8px, 1vw, 14px);
+  width: 100%;
   margin: 0;
-  padding: 0;
+  /* the tilted volume's rotated box leans right, so the run compensates */
+  padding: 0 clamp(36px, 5vw, 84px) 0 0;
   list-style: none;
 }
 
-.aw-deck-card {
-  --lift: 0px;
+.aw-book {
   position: relative;
   display: flex;
   flex: 0 0 auto;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
-  width: clamp(172px, 19.6vw, 286px);
-  height: clamp(196px, 21vw, 296px);
-  /* negative margin is what makes it read as a deck rather than a row */
-  --tuck: clamp(26px, 2.4vw, 38px);
-  margin-left: calc(var(--tuck) * -1);
-  margin-right: calc(var(--tuck) * -1);
-  padding: clamp(13px, 1.3vw, 18px);
-  margin-bottom: var(--lift);
-  border-radius: clamp(14px, 1.5vw, 20px);
-  color: #fff;
-  /* the moulded look: a soft top sheen, an inner rim of light and a contact shadow */
+  width: var(--w);
+  height: var(--h);
+  padding: 16px 0 13px;
+  border-radius: 2px 2px 0 0;
+  background: #fff;
+  color: #1c33ff;
+  text-align: center;
+  transform-origin: 50% 100%;
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), height 0.42s ease;
+  /* a printed edge, not a floating card */
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.34),
-    inset 0 -18px 30px -18px rgba(0, 0, 0, 0.4),
-    0 26px 40px -26px rgba(16, 17, 18, 0.55),
-    0 2px 6px rgba(16, 17, 18, 0.12);
-  transform: translateY(calc(var(--step) * -0.5));
-  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.42s ease;
-  isolation: isolate;
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    -11px 6px 22px -12px rgba(6, 12, 70, 0.55);
+}
+
+.aw-book:nth-child(2n) {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    9px 6px 22px -12px rgba(6, 12, 70, 0.55);
+}
+
+.aw-book:hover {
+  transform: translateY(-12px);
+}
+
+/* type runs up the spine */
+.aw-book-lines {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
   overflow: hidden;
 }
 
-/* a specular sweep across the top third, as on a moulded plastic card */
-.aw-deck-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  height: 42%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
-  opacity: 0.75;
-  pointer-events: none;
+.aw-book-title {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
-/* the centre card sits forward and taller */
-.aw-deck-card.is-centre {
-  z-index: 3;
-  width: clamp(212px, 25vw, 356px);
-  height: clamp(268px, 32vw, 440px);
-  margin-left: 0;
-  margin-right: 0;
-  margin-bottom: calc(var(--lift) + clamp(24px, 3vw, 52px));
-  transform: translateY(calc(var(--step) * -0.5 - clamp(18px, 2vw, 34px)));
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -22px 38px -20px rgba(0, 0, 0, 0.4),
-    0 40px 60px -30px rgba(16, 17, 18, 0.6),
-    0 3px 8px rgba(16, 17, 18, 0.14);
+.aw-book-title--lg {
+  font-size: 17px;
+  letter-spacing: -0.03em;
 }
 
-/* the cards closest to the centre sit highest, so the pair tucks behind it */
-.aw-deck-card:not(.is-centre) {
-  z-index: 1;
+.aw-book-sub {
+  color: rgba(28, 51, 255, 0.62);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.aw-deck-card[style*="--i: 1"],
-.aw-deck-card[style*="--i: 3"] {
-  z-index: 2;
+.aw-book-star {
+  display: grid;
+  place-items: center;
+  margin: 8px 0;
+  color: #1c33ff;
 }
 
-.aw-deck-card:hover {
-  transform: translateY(calc(var(--step) * -0.5 - 10px));
+.aw-book-pub {
+  display: block;
+  flex: none;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
-.aw-deck-card.is-centre:hover {
-  transform: translateY(calc(var(--step) * -0.5 - clamp(26px, 2.6vw, 42px)));
-}
-
-/* ── tones, saturated like the reference ───────────────────────────────── */
-.aw-deck-card--pink {
-  background:
-    radial-gradient(120% 90% at 50% 0%, #ffb3e2 0%, #f973c9 42%, #d9379f 100%);
-  color: #fff;
-}
-
-.aw-deck-card--crimson {
-  background:
-    radial-gradient(120% 90% at 40% 0%, #ff7d6a 0%, #e8402f 46%, #a81b16 100%);
-}
-
-.aw-deck-card--sage {
-  background:
-    radial-gradient(120% 90% at 40% 0%, #d3efb6 0%, #a9d98a 46%, #74a860 100%);
-  color: #143d17;
-}
-
-.aw-deck-card--cobalt {
-  background:
-    radial-gradient(120% 90% at 60% 0%, #6db4ff 0%, #2f6fe0 46%, #1740a0 100%);
-}
-
-.aw-deck-card--violet {
-  background:
-    radial-gradient(120% 90% at 60% 0%, #c09bff 0%, #8b52f0 46%, #5a24b8 100%);
-}
-
-.aw-deck-top {
-  position: relative;
-  z-index: 1;
-  display: flex;
+/* the wide numeral card, sitting lower than the spines around it */
+.aw-book--numeral {
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  padding-right: calc(var(--tuck) * 0.5);
-  opacity: 0.92;
+  height: var(--h);
+  margin-bottom: 0;
+  padding: 14px 0 13px;
 }
 
-.aw-deck-index {
-  font-family: var(--aw-serif);
-  font-size: 12px;
-  font-style: italic;
-  letter-spacing: -0.02em;
-  opacity: 0.8;
+.aw-book-note {
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  text-transform: uppercase;
 }
 
-.aw-deck-foot {
-  position: relative;
-  z-index: 1;
-  display: block;
-  /* stay inside the visible strip of the card, clear of the next one */
-  padding-right: calc(var(--tuck) + 8px);
+.aw-book-figure {
+  font-size: clamp(64px, 7vw, 96px);
+  font-weight: 500;
+  line-height: 0.82;
+  letter-spacing: -0.07em;
+  font-variant-numeric: tabular-nums;
 }
 
-.aw-deck-label {
-  display: block;
-  font-size: clamp(13px, 1.15vw, 17px);
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.035em;
-}
-
-.aw-deck-card.is-centre .aw-deck-label {
-  font-size: clamp(19px, 2vw, 30px);
-  letter-spacing: -0.045em;
-}
-
-.aw-deck-note {
-  display: block;
-  max-width: 92%;
-  margin-top: 7px;
-  font-size: 10px;
-  line-height: 1.4;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.aw-deck-card.is-centre .aw-deck-note {
-  font-size: clamp(10px, 0.95vw, 12.5px);
-  opacity: 0.82;
-  transform: none;
-}
-
-/* the note only surfaces for the card you're actually looking at */
-.aw-deck-card:hover .aw-deck-note {
-  opacity: 0.86;
-  transform: none;
-}
-
-.aw-deck-card.is-centre .aw-deck-top,
-.aw-deck-card.is-centre .aw-deck-foot {
-  padding-right: 0;
-}
-
-/* Cards to the right of the centre are covered on their LEFT edge by the
-   card in front of them, so their content mirrors to the right-hand strip.
-   That is how a real fan of cards shows its faces. */
-.aw-deck-card[style*="--i: 3"],
-.aw-deck-card[style*="--i: 4"] {
-  text-align: right;
-}
-
-.aw-deck-card[style*="--i: 3"] .aw-deck-top,
-.aw-deck-card[style*="--i: 3"] .aw-deck-foot,
-.aw-deck-card[style*="--i: 4"] .aw-deck-top,
-.aw-deck-card[style*="--i: 4"] .aw-deck-foot {
-  padding-right: 0;
-  padding-left: calc(var(--tuck) + 8px);
-}
-
-.aw-deck-card[style*="--i: 3"] .aw-deck-note,
-.aw-deck-card[style*="--i: 4"] .aw-deck-note {
-  max-width: 100%;
-}
-
-/* the outer cards crop at the section's bottom edge */
-.aw-deck::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  z-index: 4;
-  width: 100vw;
-  height: 1px;
-  background: var(--aw-line);
-  transform: translateX(-50%);
-}
-
-/* dark theme: the deck keeps its own light, only the room darkens */
-:root[data-theme="dark"] .aw-deck-card {
+/* the tilted volume: the signature of the shelf */
+.aw-book--tilt {
+  transform: rotate(var(--tilt));
+  transform-origin: 50% 100%;
+  margin-left: clamp(4px, 1vw, 14px);
+  margin-right: clamp(-6px, -0.4vw, -2px);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.26),
-    inset 0 -18px 30px -18px rgba(0, 0, 0, 0.5),
-    0 26px 44px -24px rgba(0, 0, 0, 0.9),
-    0 2px 6px rgba(0, 0, 0, 0.5);
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    14px 16px 30px -14px rgba(6, 12, 70, 0.6);
+}
+
+.aw-book--tilt:hover {
+  transform: rotate(calc(var(--tilt) - 2deg)) translateY(-8px);
+}
+
+/* dark theme keeps the shelf's own blue, only the room darkens */
+:root[data-theme="dark"] .aw-shelf {
+  background: #1626c9;
 }
 
 .aw-stack-line {
@@ -3515,56 +3435,49 @@ section[id] {
     display: none;
   }
 
-  /* the fan keeps its shape; the tuck shrinks so every label still fits */
-  .aw-deck {
-    gap: 0;
-    min-height: 250px;
-  }
-
-  .aw-deck-card {
-    --tuck: 18px;
-    width: clamp(126px, 22vw, 172px);
-    height: clamp(180px, 26vw, 232px);
-  }
-
-  .aw-deck-card.is-centre {
-    width: clamp(158px, 30vw, 214px);
-    height: clamp(248px, 40vw, 320px);
-  }
-
-  /* on a phone the fan becomes a swipeable strip: same object, no clipped labels */
-  .aw-deck-wrap {
+  /* on a tablet the shelf crops like the reference photograph and swipes */
+  .aw-shelf {
     overflow-x: auto;
     overflow-y: hidden;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x proximity;
+    min-height: 400px;
   }
 
-  .aw-deck-wrap::-webkit-scrollbar {
+  .aw-shelf::-webkit-scrollbar {
     display: none;
   }
 
-  .aw-deck {
+  .aw-books {
+    display: inline-flex;
     justify-content: flex-start;
     width: max-content;
-    padding: 0 18px;
+    min-width: 100%;
+    padding: 0 20px 0 0;
+    gap: 9px;
   }
 
-  .aw-deck-card {
-    scroll-snap-align: center;
+  .aw-book {
+    height: calc(var(--h) * 0.82);
+    scroll-snap-align: end;
   }
 
-  .aw-deck-label {
-    font-size: 12px;
+  .aw-book:hover {
+    transform: none;
   }
 
-  .aw-deck-card.is-centre .aw-deck-label {
-    font-size: 17px;
+  .aw-book--tilt,
+  .aw-book--tilt:hover {
+    transform: rotate(var(--tilt));
   }
 
-  .aw-deck-note {
-    display: none;
+  .aw-book-title {
+    font-size: 13.5px;
+  }
+
+  .aw-book-title--lg {
+    font-size: 14px;
   }
 
   .aw-about-grid {
@@ -3670,38 +3583,51 @@ section[id] {
     display: none;
   }
 
-  .aw-deck-card {
-    --tuck: 14px;
-    width: 104px;
-    height: 158px;
-    padding: 10px;
-    border-radius: 12px;
+  .aw-shelf {
+    min-height: 360px;
+    padding: 22px 0 0 12px;
+    border-radius: 14px 14px 0 0;
   }
 
-  .aw-deck-card.is-centre {
-    width: 146px;
-    height: 198px;
-    border-radius: 14px;
+  .aw-books {
+    gap: 8px;
+    padding: 0 16px 0 0;
   }
 
-  .aw-deck-label {
-    font-size: 10.5px;
-    letter-spacing: -0.03em;
+  .aw-book {
+    height: calc(var(--h) * 0.8);
+    padding: 12px 0 10px;
   }
 
-  .aw-deck-card.is-centre .aw-deck-label {
-    font-size: 15px;
+  .aw-book-title {
+    font-size: 13px;
   }
 
-  .aw-deck-index {
-    font-size: 10px;
+  .aw-book-title--lg {
+    font-size: 13.5px;
+  }
+
+  .aw-book-sub {
+    font-size: 8px;
+  }
+
+  .aw-book-pub {
+    font-size: 7.5px;
+  }
+
+  .aw-book-note {
+    font-size: 6.5px;
+  }
+
+  .aw-book-figure {
+    font-size: 42px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .aw-btn,
   .aw-work-card,
-  .aw-deck-card,
+  .aw-book,
   .aw-more-row,
   .aw-note-row {
     transition: none !important;
